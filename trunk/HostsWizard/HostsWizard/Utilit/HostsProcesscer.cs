@@ -18,6 +18,7 @@ namespace HostsWizard.Utilit
 
         public HostsProcesscer()
         {
+
             List<string> temp = FileHelper.GetHostsContent();
             string currentGroupName = "system";
             foreach (var item in temp)

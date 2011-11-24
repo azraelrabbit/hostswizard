@@ -11,14 +11,29 @@ namespace HostsWizard.Helpers
     {
         public static List<string> GetHostsContent()
         {
+            string[] splitStr = { "\r\n" };
+            List<string> headlistconst = Constants.WinHostsHead.Split(splitStr, StringSplitOptions.None).ToList();
+
             List<string> hostsContentList = new List<string>();
             using (FileStream fs = new FileStream(Constants.HostsPath, FileMode.Open, FileAccess.Read))
             {
                 using (StreamReader sr = new StreamReader(fs, Encoding.UTF8))
                 {
+                    int i = 0;
                     while (!sr.EndOfStream)
                     {
-                        hostsContentList.Add(sr.ReadLine());
+                        var item = sr.ReadLine();
+                        if (i < headlistconst.Count && headlistconst[i].Trim() == item.Trim())
+                        {                            
+                        }
+                        else
+                        {
+                            if (!string.IsNullOrEmpty(item))
+                            {
+                                hostsContentList.Add(item.Replace("\t","  "));
+                            }
+                        }
+                        i++;
                     }
                 }
             }
