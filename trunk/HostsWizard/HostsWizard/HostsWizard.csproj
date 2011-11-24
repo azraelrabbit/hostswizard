@@ -63,6 +63,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilit\Constants.cs" />
+    <Compile Include="Utilit\EnumItemType.cs" />
     <Compile Include="Utilit\HostsProcesscer.cs" />
     <Compile Include="Utilit\Utility.cs" />
     <EmbeddedResource Include="Form1.resx">
