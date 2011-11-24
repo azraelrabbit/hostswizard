@@ -19,35 +19,27 @@ namespace HostsWizard
 
         private void button1_Click(object sender, EventArgs e)
         {
-            listView1.ShowGroups = true;
+            listView1.Groups.Clear();
+            listView1.Items.Clear();
+           
             HostsProcesscer host = new HostsProcesscer();
-            ListViewGroupCollection groupList =listView1.Groups;
-            ListViewGroup header = new ListViewGroup("Header", "Header") { Name="header"};
+
+            listView1.GridLines = true;
+            listView1.View = View.Details;
+            listView1.Columns.Add(new ColumnHeader() { Text="IP",Name="ip", Width=200 });
+            listView1.Columns.Add(new ColumnHeader() { Text = "Domain",Name="domain" });
+           // listView1.Items.Add(new ListViewItem("asdfasdf"));
+
+            ListViewGroup header = new ListViewGroup("header", "header");
             
+            listView1.Groups.Add(header);
             foreach (var item in host.hostHead)
             {
-                //listBox1.Items.Add(item);
-                header.Items.Add(new ListViewItem(item));
+                ListViewItem im = new ListViewItem(item,header);
+               // im.SubItems.Add(item);
+
+                listView1.Items.Add(im);
             }
-            groupList.Add(header);
-
-            foreach (var item in host.hostBody)
-            {
-               // listBox1.Items.Add(item.Key);
-
-                ListViewGroup grp = new ListViewGroup(item.Key, item.Key) {  Name=item.Key};
-               
-                foreach (var hs in item.Value)
-                {
-                   // listBox1.Items.Add(hs.Value + "    " + hs.Key);
-
-                    string [] tm={hs.Value,hs.Key};
-                    ListViewItem li = new ListViewItem(hs.Value + "    " + hs.Key);
-                    grp.Items.Add(li);
-                }
-                groupList.Add(grp);
-            }
-
         }
     }
 }
