@@ -19,21 +19,21 @@ namespace HostsWizard
 
         private void button1_Click(object sender, EventArgs e)
         {
-            HostsProcesscer host = new HostsProcesscer();
-            listBox1.Items.Add("header:");
-            foreach (var item in host.hostHead)
-            {
-                listBox1.Items.Add(item);
-            }
-            listBox1.Items.Add("body:");
-            foreach (var item in host.hostBody)
-            {
-                listBox1.Items.Add(item.Key);
-                foreach (var hs in item.Value)
-                {
-                    listBox1.Items.Add(hs.Value + "    " + hs.Key);
-                }
-            }
+            //HostsProcesscer host = new HostsProcesscer();
+            //listBox1.Items.Add("header:");
+            //foreach (var item in host.hostHead)
+            //{
+            //    listBox1.Items.Add(item);
+            //}
+            //listBox1.Items.Add("body:");
+            //foreach (var item in host.hostBody)
+            //{
+            //    listBox1.Items.Add(item.Key);
+            //    foreach (var hs in item.Value)
+            //    {
+            //        listBox1.Items.Add(hs.Value + "    " + hs.Key);
+            //    }
+            //}
         }
 
         //private void button2_Click(object sender, EventArgs e)
