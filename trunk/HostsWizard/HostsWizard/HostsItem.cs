@@ -6,9 +6,21 @@ using HostsWizard.Utilit;
 
 namespace HostsWizard
 {
-	public class HostsItem
-	{
-        string _enabled=string.Empty;
+    public class HostsItem
+    {
+        string _enabled;
+
+        public Guid ID
+        {
+            get;
+            set;
+        }
+
+        public Guid ParentID
+        {
+            get;
+            set;
+        }
 
         public string IP
         {
@@ -22,23 +34,17 @@ namespace HostsWizard
             set;
         }
 
-        public string Group
-        {
-            get;
-            set;
-        }
-
         public bool Enable
         {
             get
             {
-                return (string.IsNullOrEmpty(_enabled));
+                return string.IsNullOrEmpty(_enabled) ? true : false;
             }
             set
             {
                 if (value)
                 {
-                    _enabled = string.Empty;
+                    _enabled = null;
                 }
                 else
                 {
@@ -47,11 +53,16 @@ namespace HostsWizard
             }
         }
 
-        public EnumItemType Type
+        public string Group
         {
             get;
             set;
         }
 
-	}
+        public EnumItemType Type
+        {
+            get;
+            set;
+        }
+    }
 }
