@@ -5,9 +5,10 @@ using System.Text;
 
 namespace HostsWizard.Utilit
 {
-	public enum EnumItemType
-	{
+    public enum EnumItemType
+    {
+        HostItem,
         Comment,
-        HostItem
-	}
+        GroupTag
+    }
 }

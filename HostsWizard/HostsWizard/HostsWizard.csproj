@@ -74,6 +74,12 @@
     </Compile>
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="HostsItem.cs" />
+    <Compile Include="HostWizardsMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HostWizardsMain.Designer.cs">
+      <DependentUpon>HostWizardsMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilit\Constants.cs" />
@@ -88,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form3.resx">
       <DependentUpon>Form3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HostWizardsMain.resx">
+      <DependentUpon>HostWizardsMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
