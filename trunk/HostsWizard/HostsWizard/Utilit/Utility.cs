@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Diagnostics;
 
 namespace HostsWizard.Utilit
 {
@@ -26,6 +27,20 @@ namespace HostsWizard.Utilit
             //}
             //finally
             //{ }
+        }
+
+        public static void FlushDNS()
+        {
+            using (Process p = new Process())
+            {
+                p.StartInfo = new ProcessStartInfo("cmd.exe", "ipconfig /flushdns");
+                p.Start();
+                int ret = p.ExitCode;
+                if (ret > 0)
+                {
+
+                }                
+            }
         }
     }
 }

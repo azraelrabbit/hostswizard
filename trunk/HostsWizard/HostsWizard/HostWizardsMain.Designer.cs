@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.tlHostlist = new DevExpress.XtraTreeList.TreeList();
+            this.clEnable = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.clIP = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.clDomain = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.clGroup = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.clEnable = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnFlushDns = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSaveApply = new DevExpress.XtraEditors.SimpleButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,10 +55,10 @@
             // tlHostlist
             // 
             this.tlHostlist.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
+            this.clEnable,
             this.clIP,
             this.clDomain,
-            this.clGroup,
-            this.clEnable});
+            this.clGroup});
             this.tlHostlist.CustomizationFormBounds = new System.Drawing.Rectangle(742, 532, 216, 187);
             this.tlHostlist.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlHostlist.Location = new System.Drawing.Point(0, 0);
@@ -70,33 +72,6 @@
             this.tlHostlist.AfterCheckNode += new DevExpress.XtraTreeList.NodeEventHandler(this.tlHostlist_AfterCheckNode);
             this.tlHostlist.CellValueChanged += new DevExpress.XtraTreeList.CellValueChangedEventHandler(this.tlHostlist_CellValueChanged);
             // 
-            // clIP
-            // 
-            this.clIP.Caption = "IP";
-            this.clIP.FieldName = "IP";
-            this.clIP.Name = "clIP";
-            this.clIP.Visible = true;
-            this.clIP.VisibleIndex = 1;
-            this.clIP.Width = 207;
-            // 
-            // clDomain
-            // 
-            this.clDomain.Caption = "Domain";
-            this.clDomain.FieldName = "Domain";
-            this.clDomain.Name = "clDomain";
-            this.clDomain.Visible = true;
-            this.clDomain.VisibleIndex = 2;
-            this.clDomain.Width = 112;
-            // 
-            // clGroup
-            // 
-            this.clGroup.Caption = "Group";
-            this.clGroup.FieldName = "Group";
-            this.clGroup.Name = "clGroup";
-            this.clGroup.Visible = true;
-            this.clGroup.VisibleIndex = 3;
-            this.clGroup.Width = 111;
-            // 
             // clEnable
             // 
             this.clEnable.AllowIncrementalSearch = false;
@@ -107,26 +82,77 @@
             this.clEnable.Format.FormatType = DevExpress.Utils.FormatType.Custom;
             this.clEnable.MinWidth = 32;
             this.clEnable.Name = "clEnable";
+            this.clEnable.OptionsColumn.AllowSort = false;
             this.clEnable.OptionsColumn.FixedWidth = true;
-            this.clEnable.SortOrder = System.Windows.Forms.SortOrder.Descending;
             this.clEnable.UnboundType = DevExpress.XtraTreeList.Data.UnboundColumnType.String;
             this.clEnable.Visible = true;
             this.clEnable.VisibleIndex = 0;
-            this.clEnable.Width = 59;
+            this.clEnable.Width = 153;
             // 
             // repositoryItemTextEdit1
             // 
             this.repositoryItemTextEdit1.AutoHeight = false;
             this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
             // 
+            // clIP
+            // 
+            this.clIP.Caption = "IP";
+            this.clIP.FieldName = "IP";
+            this.clIP.Name = "clIP";
+            this.clIP.Visible = true;
+            this.clIP.VisibleIndex = 1;
+            this.clIP.Width = 320;
+            // 
+            // clDomain
+            // 
+            this.clDomain.Caption = "Domain";
+            this.clDomain.FieldName = "Domain";
+            this.clDomain.Name = "clDomain";
+            this.clDomain.Visible = true;
+            this.clDomain.VisibleIndex = 2;
+            this.clDomain.Width = 208;
+            // 
+            // clGroup
+            // 
+            this.clGroup.Caption = "Group";
+            this.clGroup.FieldName = "Group";
+            this.clGroup.Name = "clGroup";
+            this.clGroup.Visible = true;
+            this.clGroup.VisibleIndex = 3;
+            this.clGroup.Width = 208;
+            // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnFlushDns);
+            this.panel1.Controls.Add(this.btnSaveApply);
             this.panel1.Controls.Add(this.menuStrip1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(907, 60);
             this.panel1.TabIndex = 1;
+            // 
+            // btnFlushDns
+            // 
+            this.btnFlushDns.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFlushDns.Location = new System.Drawing.Point(631, 25);
+            this.btnFlushDns.Name = "btnFlushDns";
+            this.btnFlushDns.Padding = new System.Windows.Forms.Padding(0, 5, 10, 0);
+            this.btnFlushDns.Size = new System.Drawing.Size(113, 32);
+            this.btnFlushDns.TabIndex = 2;
+            this.btnFlushDns.Text = "手动刷新DNS缓存";
+            this.btnFlushDns.Click += new System.EventHandler(this.btnFlushDns_Click);
+            // 
+            // btnSaveApply
+            // 
+            this.btnSaveApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSaveApply.Location = new System.Drawing.Point(779, 25);
+            this.btnSaveApply.Name = "btnSaveApply";
+            this.btnSaveApply.Padding = new System.Windows.Forms.Padding(0, 5, 10, 0);
+            this.btnSaveApply.Size = new System.Drawing.Size(113, 32);
+            this.btnSaveApply.TabIndex = 1;
+            this.btnSaveApply.Text = "保存并应用";
+            this.btnSaveApply.Click += new System.EventHandler(this.btnSaveApply_Click);
             // 
             // menuStrip1
             // 
@@ -229,5 +255,7 @@
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
+        private DevExpress.XtraEditors.SimpleButton btnSaveApply;
+        private DevExpress.XtraEditors.SimpleButton btnFlushDns;
     }
 }

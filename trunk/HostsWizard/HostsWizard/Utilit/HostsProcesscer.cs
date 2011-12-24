@@ -23,8 +23,16 @@ namespace HostsWizard.Utilit
 
         public List<HostsItem> fullContent = new List<HostsItem>();
 
+        string SolutionName;
+        Guid SolutionID;
+
         public HostsProcesscer(bool group)
         {
+            // 默认方案名称
+            SolutionName = "System";
+            //默认方案ID
+            SolutionID = Guid.Empty;
+
             List<string> temp = FileHelper.GetHostsContent();
 
             originList = ProcessOrigin(temp);
@@ -33,7 +41,7 @@ namespace HostsWizard.Utilit
             bodyList = ProcessBody2(temp);
 
             fullContent.AddRange(originList);
-            fullContent.AddRange(bodyList);
+            fullContent.AddRange(bodyList);           
 
         }
 
@@ -61,6 +69,25 @@ namespace HostsWizard.Utilit
                 {
                     break;
                 }
+                else if( item.Length>3 && item.Substring(0,3)=="#*#")
+                {// 方案名称
+                    if (!string.IsNullOrEmpty(item.Substring(3)))
+                    {
+                        SolutionName = item.Substring(3);
+                    }
+                }
+                else if (item.Length > 3 && item.Substring(0, 3) == "##*")
+                {// 方案ID
+                    if (!string.IsNullOrEmpty(item.Substring(3)))
+                    {
+                        var sid = item.Substring(3);
+                        var ssuid = new Guid();
+                        if(Guid.TryParse(sid,out ssuid))
+                        {
+                            SolutionID = ssuid;
+                        }
+                    }
+                }
                 else
                 {
                     var arry = item.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
@@ -82,7 +109,7 @@ namespace HostsWizard.Utilit
                     hostitem.Enable = (hostitem.IP.IndexOf("#") < 0);
                     waitRv.Add(item);
                     temp.Add(hostitem);
-                   // itemlist.Remove(item);
+                    // itemlist.Remove(item);
                 }
             }
 
