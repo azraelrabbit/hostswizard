@@ -97,11 +97,11 @@ namespace HostsWizard.Utilit
                     if (arry.Length > 1)
                     {
                         hostitem.Domain = arry[1];
-                        hostitem.Type = EnumItemType.Comment;
+                        hostitem.Type = EnumItemType.HostItem;
                     }
                     else
                     {
-                        hostitem.Type = EnumItemType.HostItem;
+                        hostitem.Type = EnumItemType.Comment;
                     }
 
                     hostitem.Group = groupParent.IP;
@@ -181,7 +181,7 @@ namespace HostsWizard.Utilit
                         gp.ID = Guid.NewGuid();
                         gp.IP = item.ToString();
                         gp.ParentID = Guid.Empty;
-
+                        gp.Type = EnumItemType.GroupTag;
                         currentGroupID = gp.ID;
                         temp.Add(gp);
                     }
@@ -197,11 +197,11 @@ namespace HostsWizard.Utilit
                     if (arry.Length > 1)
                     {
                         hostitem.Domain = arry[1];
-                        hostitem.Type = EnumItemType.Comment;
+                        hostitem.Type = EnumItemType.HostItem;
                     }
                     else
                     {
-                        hostitem.Type = EnumItemType.HostItem;
+                        hostitem.Type = EnumItemType.Comment;
                     }
 
                     hostitem.Group = currentGroupName;
