@@ -45,6 +45,7 @@
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.clType = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tlHostlist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -58,7 +59,8 @@
             this.clEnable,
             this.clIP,
             this.clDomain,
-            this.clGroup});
+            this.clGroup,
+            this.clType});
             this.tlHostlist.CustomizationFormBounds = new System.Drawing.Rectangle(742, 532, 216, 187);
             this.tlHostlist.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlHostlist.Location = new System.Drawing.Point(0, 0);
@@ -101,7 +103,7 @@
             this.clIP.Name = "clIP";
             this.clIP.Visible = true;
             this.clIP.VisibleIndex = 1;
-            this.clIP.Width = 320;
+            this.clIP.Width = 301;
             // 
             // clDomain
             // 
@@ -110,7 +112,7 @@
             this.clDomain.Name = "clDomain";
             this.clDomain.Visible = true;
             this.clDomain.VisibleIndex = 2;
-            this.clDomain.Width = 208;
+            this.clDomain.Width = 189;
             // 
             // clGroup
             // 
@@ -119,7 +121,7 @@
             this.clGroup.Name = "clGroup";
             this.clGroup.Visible = true;
             this.clGroup.VisibleIndex = 3;
-            this.clGroup.Width = 208;
+            this.clGroup.Width = 164;
             // 
             // panel1
             // 
@@ -217,6 +219,15 @@
             this.panel2.Size = new System.Drawing.Size(907, 485);
             this.panel2.TabIndex = 2;
             // 
+            // clType
+            // 
+            this.clType.Caption = "Type";
+            this.clType.FieldName = "Type";
+            this.clType.Name = "clType";
+            this.clType.Visible = true;
+            this.clType.VisibleIndex = 4;
+            this.clType.Width = 82;
+            // 
             // HostWizardsMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -257,5 +268,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         private DevExpress.XtraEditors.SimpleButton btnSaveApply;
         private DevExpress.XtraEditors.SimpleButton btnFlushDns;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn clType;
     }
 }
