@@ -6,6 +6,7 @@ using HostsWizard.Utilit;
 
 namespace HostsWizard
 {
+    [Serializable]
     public class HostsItem
     {
         string _enabled;

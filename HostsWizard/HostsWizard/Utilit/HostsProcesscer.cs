@@ -7,6 +7,7 @@ using HostsWizard.Utilit;
 
 namespace HostsWizard.Utilit
 {
+    [Serializable]
     public class HostsProcesscer
     {
         // public Dictionary<string, string> hostHeader = new Dictionary<string, string>();
@@ -23,8 +24,19 @@ namespace HostsWizard.Utilit
 
         public List<HostsItem> fullContent = new List<HostsItem>();
 
-        string SolutionName;
-        Guid SolutionID;
+        //方案名称
+        public string SolutionName
+        {
+            get;
+            set;
+        }
+
+        //方案ID
+        public Guid SolutionID
+        {
+            get;
+            set;
+        }
 
         public HostsProcesscer(bool group)
         {

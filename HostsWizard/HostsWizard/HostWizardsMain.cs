@@ -141,5 +141,10 @@ namespace HostsWizard
         {
 
         }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {//另存为
+             
+        }
     }
 }
