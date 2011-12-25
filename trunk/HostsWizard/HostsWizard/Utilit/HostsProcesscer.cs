@@ -183,8 +183,10 @@ namespace HostsWizard.Utilit
 
             foreach (var item in itemlist)
             {
-
-                if (item.Length > 3 && item.Substring(0, 3) == "###")
+                if (item.Length > 4 && item.Substring(0, 4) == "####")
+                {
+                }
+                else if (item.Length > 3 && item.Substring(0, 3) == "###")
                 {
                     if (!temp.Exists(p => p.IP == item.Trim()))
                     {

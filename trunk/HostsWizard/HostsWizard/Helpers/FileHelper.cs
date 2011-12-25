@@ -17,7 +17,7 @@ namespace HostsWizard.Helpers
             List<string> hostsContentList = new List<string>();
             using (FileStream fs = new FileStream(Constants.HostsPath, FileMode.Open, FileAccess.Read))
             {
-                using (StreamReader sr = new StreamReader(fs, Encoding.UTF8))
+                using (StreamReader sr = new StreamReader(fs, Encoding.Default))
                 {
                     int i = 0;
                     while (!sr.EndOfStream)
@@ -48,7 +48,7 @@ namespace HostsWizard.Helpers
 
             using (FileStream fs = new FileStream(Constants.HostsPath, FileMode.Create, FileAccess.ReadWrite))
             {
-                using (StreamWriter sw = new StreamWriter(fs, Encoding.UTF8))
+                using (StreamWriter sw = new StreamWriter(fs, Encoding.Default))
                 {
                     foreach (var hd in headlistconst)
                     {
@@ -71,7 +71,7 @@ namespace HostsWizard.Helpers
 
             using (FileStream fs = new FileStream(filePath, FileMode.Create, FileAccess.ReadWrite))
             {
-                using (StreamWriter sw = new StreamWriter(fs, Encoding.UTF8))
+                using (StreamWriter sw = new StreamWriter(fs, Encoding.Default))
                 {
                     foreach (var hd in headlistconst)
                     {
