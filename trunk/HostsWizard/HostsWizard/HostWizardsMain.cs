@@ -8,12 +8,16 @@ using System.Text;
 using System.Windows.Forms;
 using HostsWizard.Utilit;
 using DevExpress.XtraTreeList.Nodes;
+using HostsWizard.Helpers;
 
 namespace HostsWizard
 {
     public partial class HostWizardsMain : Form
     {
         HostsProcesscer host;
+
+        System.Timers.Timer t1;
+        System.Timers.Timer t2;
 
         public HostWizardsMain()
         {
@@ -134,17 +138,51 @@ namespace HostsWizard
 
         private void btnSaveApply_Click(object sender, EventArgs e)
         {
-
+            FileHelper.WriteHosts(host.ToStringList());
+            Utility.FlushDNS();
+            SetStatusText("已保存系统Hosts,并已刷新DNS缓存!");
         }
 
         private void btnFlushDns_Click(object sender, EventArgs e)
         {
-
+            Utility.FlushDNS();
+            SetStatusText("刷新DNS缓存成功!");
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {//另存为
-             
+            FileHelper.WriteHosts(host.ToStringList(), "c:\\hsts");
+            SetStatusText("另存为文件成功!");
+        }
+
+
+        private void HostWizardsMain_Load(object sender, EventArgs e)
+        {
+            t1 = new System.Timers.Timer();
+            //t2 = new System.Timers.Timer();
+            t1.Interval = Constants.StatusBarClearInterval;
+            t1.Elapsed += new System.Timers.ElapsedEventHandler(t1_Elapsed);
+           // t2.Interval = 3000;
+        }
+
+        void t1_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            tslblstatus.Text = "";
+            t1.Stop();
+        }
+
+        private void SetStatusText(string msg)
+        {
+            tslblstatus.Text = msg;
+            if (t1.Enabled)
+            {
+                t1.Stop();
+                t1.Start();
+            }
+            else
+            {
+                t1.Start();
+            }
         }
     }
 }
