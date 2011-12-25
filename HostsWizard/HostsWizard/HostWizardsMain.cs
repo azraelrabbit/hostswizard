@@ -27,11 +27,16 @@ namespace HostsWizard
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //打开文件 打开系统默认的Hosts 文件
+            LoadSystemHosts();
+
+        }
+
+        private void LoadSystemHosts()
+        {
             host = new HostsProcesscer(true);
             tlHostlist.DataSource = host.fullContent;
             CheckAllCheckState(tlHostlist.Nodes);
             tlHostlist.ExpandAll();
-
         }
 
         private void tlHostlist_AfterCheckNode(object sender, DevExpress.XtraTreeList.NodeEventArgs e)
@@ -140,6 +145,7 @@ namespace HostsWizard
         {
             FileHelper.WriteHosts(host.ToStringList());
             Utility.FlushDNS();
+            LoadSystemHosts();
             SetStatusText("已保存系统Hosts,并已刷新DNS缓存!");
         }
 

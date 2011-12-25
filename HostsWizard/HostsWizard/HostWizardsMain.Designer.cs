@@ -49,6 +49,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tslblstatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.tslbl2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnAddItem = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.tlHostlist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -138,6 +139,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnAddItem);
             this.panel1.Controls.Add(this.btnFlushDns);
             this.panel1.Controls.Add(this.btnSaveApply);
             this.panel1.Controls.Add(this.menuStrip1);
@@ -153,9 +155,9 @@
             this.btnFlushDns.Location = new System.Drawing.Point(631, 25);
             this.btnFlushDns.Name = "btnFlushDns";
             this.btnFlushDns.Padding = new System.Windows.Forms.Padding(0, 5, 10, 0);
-            this.btnFlushDns.Size = new System.Drawing.Size(113, 32);
+            this.btnFlushDns.Size = new System.Drawing.Size(119, 32);
             this.btnFlushDns.TabIndex = 2;
-            this.btnFlushDns.Text = "手动刷新DNS缓存";
+            this.btnFlushDns.Text = "Refresh DNS Cache";
             this.btnFlushDns.Click += new System.EventHandler(this.btnFlushDns_Click);
             // 
             // btnSaveApply
@@ -166,7 +168,7 @@
             this.btnSaveApply.Padding = new System.Windows.Forms.Padding(0, 5, 10, 0);
             this.btnSaveApply.Size = new System.Drawing.Size(113, 32);
             this.btnSaveApply.TabIndex = 1;
-            this.btnSaveApply.Text = "保存并应用";
+            this.btnSaveApply.Text = "Save And Apply";
             this.btnSaveApply.Click += new System.EventHandler(this.btnSaveApply_Click);
             // 
             // menuStrip1
@@ -256,6 +258,15 @@
             this.tslbl2.Name = "tslbl2";
             this.tslbl2.Size = new System.Drawing.Size(0, 17);
             // 
+            // btnAddItem
+            // 
+            this.btnAddItem.Location = new System.Drawing.Point(12, 25);
+            this.btnAddItem.Name = "btnAddItem";
+            this.btnAddItem.Padding = new System.Windows.Forms.Padding(0, 5, 10, 0);
+            this.btnAddItem.Size = new System.Drawing.Size(102, 32);
+            this.btnAddItem.TabIndex = 3;
+            this.btnAddItem.Text = "Add Hosts Item";
+            // 
             // HostWizardsMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -304,5 +315,6 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel tslblstatus;
         private System.Windows.Forms.ToolStripStatusLabel tslbl2;
+        private DevExpress.XtraEditors.SimpleButton btnAddItem;
     }
 }
