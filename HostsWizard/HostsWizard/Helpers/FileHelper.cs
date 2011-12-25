@@ -24,13 +24,13 @@ namespace HostsWizard.Helpers
                     {
                         var item = sr.ReadLine();
                         if (i < headlistconst.Count && headlistconst[i].Trim() == item.Trim())
-                        {                            
+                        {
                         }
                         else
                         {
                             if (!string.IsNullOrEmpty(item))
                             {
-                                hostsContentList.Add(item.Replace("\t","  "));
+                                hostsContentList.Add(item.Replace("\t", "  "));
                             }
                         }
                         i++;
@@ -43,18 +43,47 @@ namespace HostsWizard.Helpers
 
         public static void WriteHosts(List<string> hostContent)
         {
-            using (FileStream fs = new FileStream(Constants.HostsPath, FileMode.Create, FileAccess.ReadWrite, FileShare.Read))
+            string[] splitStr = { "\r\n" };
+            List<string> headlistconst = Constants.WinHostsHead.Split(splitStr, StringSplitOptions.None).ToList();
+
+            using (FileStream fs = new FileStream(Constants.HostsPath, FileMode.Create, FileAccess.ReadWrite))
             {
                 using (StreamWriter sw = new StreamWriter(fs, Encoding.UTF8))
                 {
+                    foreach (var hd in headlistconst)
+                    {
+                        sw.WriteLine(hd);
+                    }
+
                     foreach (var item in hostContent)
                     {
                         sw.WriteLine(item);
                     }
-                    sw.Flush();                    
+                    sw.Flush();
                 }
+            }
+        }
 
-                fs.Flush();
+        public static void WriteHosts(List<string> hostContent,string filePath)
+        {
+            string[] splitStr = { "\r\n" };
+            List<string> headlistconst = Constants.WinHostsHead.Split(splitStr, StringSplitOptions.None).ToList();
+
+            using (FileStream fs = new FileStream(filePath, FileMode.Create, FileAccess.ReadWrite))
+            {
+                using (StreamWriter sw = new StreamWriter(fs, Encoding.UTF8))
+                {
+                    foreach (var hd in headlistconst)
+                    {
+                        sw.WriteLine(hd);
+                    }
+
+                    foreach (var item in hostContent)
+                    {
+                        sw.WriteLine(item);
+                    }
+                    sw.Flush();
+                }
             }
         }
     }

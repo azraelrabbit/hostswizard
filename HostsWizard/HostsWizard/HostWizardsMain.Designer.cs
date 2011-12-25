@@ -34,6 +34,7 @@
             this.clIP = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.clDomain = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.clGroup = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.clType = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnFlushDns = new DevExpress.XtraEditors.SimpleButton();
             this.btnSaveApply = new DevExpress.XtraEditors.SimpleButton();
@@ -45,12 +46,15 @@
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.clType = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.tslblstatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tslbl2 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.tlHostlist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlHostlist
@@ -123,6 +127,15 @@
             this.clGroup.VisibleIndex = 3;
             this.clGroup.Width = 164;
             // 
+            // clType
+            // 
+            this.clType.Caption = "Type";
+            this.clType.FieldName = "Type";
+            this.clType.Name = "clType";
+            this.clType.Visible = true;
+            this.clType.VisibleIndex = 4;
+            this.clType.Width = 82;
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.btnFlushDns);
@@ -179,14 +192,14 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.saveToolStripMenuItem.Text = "Save As";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
@@ -213,6 +226,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.statusStrip1);
             this.panel2.Controls.Add(this.tlHostlist);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 60);
@@ -220,14 +234,27 @@
             this.panel2.Size = new System.Drawing.Size(907, 485);
             this.panel2.TabIndex = 2;
             // 
-            // clType
+            // statusStrip1
             // 
-            this.clType.Caption = "Type";
-            this.clType.FieldName = "Type";
-            this.clType.Name = "clType";
-            this.clType.Visible = true;
-            this.clType.VisibleIndex = 4;
-            this.clType.Width = 82;
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tslblstatus,
+            this.tslbl2});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 463);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.statusStrip1.Size = new System.Drawing.Size(907, 22);
+            this.statusStrip1.TabIndex = 1;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // tslblstatus
+            // 
+            this.tslblstatus.Name = "tslblstatus";
+            this.tslblstatus.Size = new System.Drawing.Size(0, 17);
+            // 
+            // tslbl2
+            // 
+            this.tslbl2.Name = "tslbl2";
+            this.tslbl2.Size = new System.Drawing.Size(0, 17);
             // 
             // HostWizardsMain
             // 
@@ -239,6 +266,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "HostWizardsMain";
             this.Text = "HostWizardsMain";
+            this.Load += new System.EventHandler(this.HostWizardsMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tlHostlist)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -246,6 +274,9 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -270,5 +301,8 @@
         private DevExpress.XtraEditors.SimpleButton btnSaveApply;
         private DevExpress.XtraEditors.SimpleButton btnFlushDns;
         private DevExpress.XtraTreeList.Columns.TreeListColumn clType;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel tslblstatus;
+        private System.Windows.Forms.ToolStripStatusLabel tslbl2;
     }
 }

@@ -53,7 +53,7 @@ namespace HostsWizard.Utilit
             bodyList = ProcessBody2(temp);
 
             fullContent.AddRange(originList);
-            fullContent.AddRange(bodyList);           
+            fullContent.AddRange(bodyList);
 
         }
 
@@ -75,13 +75,13 @@ namespace HostsWizard.Utilit
                 {
                     groupParent.ID = Guid.NewGuid();
                     groupParent.IP = item;
-                    groupParent.Type = EnumItemType.GroupTag;                   
+                    groupParent.Type = EnumItemType.GroupTag;
                 }
-                else if (item.Length>3 && item.Substring(0,3)=="###")
+                else if (item.Length > 3 && item.Substring(0, 3) == "###")
                 {
                     break;
                 }
-                else if( item.Length>3 && item.Substring(0,3)=="#*#")
+                else if (item.Length > 3 && item.Substring(0, 3) == "#*#")
                 {// 方案名称
                     if (!string.IsNullOrEmpty(item.Substring(3)))
                     {
@@ -94,7 +94,7 @@ namespace HostsWizard.Utilit
                     {
                         var sid = item.Substring(3);
                         var ssuid = new Guid();
-                        if(Guid.TryParse(sid,out ssuid))
+                        if (Guid.TryParse(sid, out ssuid))
                         {
                             SolutionID = ssuid;
                         }
@@ -135,8 +135,8 @@ namespace HostsWizard.Utilit
 
         private Dictionary<string, List<HostsItem>> ProcessBody(List<string> itemlist)
         {
-            Dictionary<string, List<HostsItem>> temp=new Dictionary<string,List<HostsItem>>();
-            List<HostsItem> gpList=null;
+            Dictionary<string, List<HostsItem>> temp = new Dictionary<string, List<HostsItem>>();
+            List<HostsItem> gpList = null;
             string currentGroupName = string.Empty;
             foreach (var item in itemlist)
             {
@@ -146,7 +146,7 @@ namespace HostsWizard.Utilit
                     {
                         temp.Add(currentGroupName, gpList.ToList());
                     }
-                    
+
                     gpList = new List<HostsItem>();
                     currentGroupName = item;
                 }
@@ -176,20 +176,20 @@ namespace HostsWizard.Utilit
 
         private List<HostsItem> ProcessBody2(List<string> itemlist)
         {
-            List<HostsItem> temp = new  List<HostsItem>();      
+            List<HostsItem> temp = new List<HostsItem>();
             string currentGroupName = string.Empty;
 
             Guid currentGroupID = new Guid();
-            
+
             foreach (var item in itemlist)
             {
-                
+
                 if (item.Length > 3 && item.Substring(0, 3) == "###")
                 {
                     if (!temp.Exists(p => p.IP == item.Trim()))
                     {
                         HostsItem gp = new HostsItem();
-                        
+
                         gp.ID = Guid.NewGuid();
                         gp.IP = item.ToString();
                         gp.ParentID = Guid.Empty;
@@ -204,7 +204,7 @@ namespace HostsWizard.Utilit
                     HostsItem hostitem = new HostsItem();
                     hostitem.ID = Guid.NewGuid();
                     hostitem.ParentID = currentGroupID;
-                    
+
                     hostitem.IP = arry[0];
                     if (arry.Length > 1)
                     {
@@ -223,6 +223,47 @@ namespace HostsWizard.Utilit
             }
 
             return temp;
+        }
+
+        public List<string> ToStringList()
+        {
+            List<string> hostlist = new List<string>();
+            var grouplist = fullContent.Where(p => p.Type == EnumItemType.GroupTag);
+
+            foreach (var group in grouplist)
+            {
+                var groupstring = string.Empty;
+                groupstring += group.IP +"  "+ group.Domain;
+                hostlist.Add(groupstring);
+
+                //查找分组下所有的item
+                var itemList = fullContent.Where(p => p.ParentID == group.ID);
+                foreach (var item in itemList)
+                {
+                    var itemstring = string.Empty;
+                    if (item.Type == EnumItemType.HostItem)
+                    {
+                        if (item.Enable)
+                        {
+                            if (item.IP.Substring(0, 1) == "#")
+                            {
+                                item.IP = item.IP.Replace("#", string.Empty);
+                            }
+                        }
+                        else
+                        {
+                            if (item.IP.Substring(0, 1) != "#")
+                            {
+                                item.IP = "#" + item.IP;
+                            }
+                        }
+                    }
+
+                    itemstring = item.IP +"  "+ item.Domain;
+                    hostlist.Add(itemstring);
+                }
+            }
+            return hostlist;
         }
     }
 }

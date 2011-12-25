@@ -9,6 +9,7 @@ namespace HostsWizard.Utilit
     {
         public static readonly string HostsPath = (Environment.SystemDirectory + @"\drivers\etc\Hosts");
 
+        public static int StatusBarClearInterval = 4000;
 
 
         public static readonly string WinHostsHead = "# Copyright (c) 1993-2009 Microsoft Corp.\r\n"
