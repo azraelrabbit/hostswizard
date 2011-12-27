@@ -38,6 +38,11 @@ namespace HostsWizard.Utilit
             set;
         }
 
+        public HostsProcesscer()
+        {
+
+        }
+
         public HostsProcesscer(bool group)
         {
             // 默认方案名称
@@ -150,6 +155,13 @@ namespace HostsWizard.Utilit
                     gpList = new List<HostsItem>();
                     currentGroupName = item;
                 }
+                else if (item.Length > 3 && item.Substring(0, 3) == "#*#")
+                {//solution name
+                }
+                else if (item.Length > 3 && item.Substring(0, 3) == "##*")
+                {//solution id
+
+                }
                 else
                 {
                     var arry = item.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
@@ -200,6 +212,13 @@ namespace HostsWizard.Utilit
                         temp.Add(gp);
                     }
                 }
+                else if (item.Length > 3 && item.Substring(0, 3) == "#*#")
+                {//solution name
+                }
+                else if (item.Length > 3 && item.Substring(0, 3) == "##*")
+                {//solution id
+
+                }
                 else
                 {
                     var arry = item.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
@@ -230,6 +249,14 @@ namespace HostsWizard.Utilit
         public List<string> ToStringList()
         {
             List<string> hostlist = new List<string>();
+
+            // 保存solution 信息
+
+            hostlist.Add(string.Empty);
+            hostlist.Add("#*#" + SolutionName);
+            hostlist.Add("##*" + SolutionID.ToString());
+            hostlist.Add(string.Empty);
+
             var grouplist = fullContent.Where(p => p.Type == EnumItemType.GroupTag);
 
             foreach (var group in grouplist)
@@ -237,6 +264,7 @@ namespace HostsWizard.Utilit
                 var groupstring = string.Empty;
                 groupstring += group.IP +"  "+ group.Domain;
                 hostlist.Add(groupstring);
+                hostlist.Add(string.Empty);
 
                 //查找分组下所有的item
                 var itemList = fullContent.Where(p => p.ParentID == group.ID);
@@ -264,6 +292,7 @@ namespace HostsWizard.Utilit
                     itemstring = item.IP +"  "+ item.Domain;
                     hostlist.Add(itemstring);
                 }
+                hostlist.Add(string.Empty);
             }
             return hostlist;
         }
