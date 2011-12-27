@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using HostsWizard.Utilit;
 using DevExpress.XtraTreeList.Nodes;
 using HostsWizard.Helpers;
+using HostsWizard.DL;
 
 namespace HostsWizard
 {
@@ -16,13 +17,36 @@ namespace HostsWizard
     {
         HostsProcesscer host;
 
-        System.Timers.Timer t1;
-        System.Timers.Timer t2;
+        ToolStripMenuItem menuSolutions;
+
+        List<HostsProcesscer> hostlist = new List<HostsProcesscer>();
+
+
+        System.Timers.Timer t1=null;
+        //System.Timers.Timer t2;
 
         public HostWizardsMain()
         {
             InitializeComponent();
         }
+
+        private void HostWizardsMain_Load(object sender, EventArgs e)
+        {
+            this.Text = Constants.ApplicationName;
+            t1 = new System.Timers.Timer();
+            //t2 = new System.Timers.Timer();
+            t1.Interval = Constants.StatusBarClearInterval;
+            t1.Elapsed += new System.Timers.ElapsedEventHandler(t1_Elapsed);
+            // t2.Interval = 3000;
+
+            menuSolutions = tsMISolutions;
+            menuSolutions.DropDownItemClicked += new ToolStripItemClickedEventHandler(menuSolutions_DropDownItemClicked);
+            //初始化方案列表
+            LoadSolutionList();
+            InitSolutionMenuItems();
+        }
+
+
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -33,10 +57,43 @@ namespace HostsWizard
 
         private void LoadSystemHosts()
         {
+            SetStatusText("loading system hosts file ......");
             host = new HostsProcesscer(true);
+            SetStatusText("loading completed! And now binding to treelist!");
             tlHostlist.DataSource = host.fullContent;
+            SetStatusText("binding completed! Then refresh checked state!");
             CheckAllCheckState(tlHostlist.Nodes);
             tlHostlist.ExpandAll();
+            SetStatusText("Init completed! Enjoy!");
+
+            this.Text =Constants.ApplicationName+ "--[Current SolutionName:"+host.SolutionName+"]";
+        }
+
+        public void RefreshTreeList()
+        {
+            SetStatusText("Refreshing ... ...");
+            tlHostlist.DataSource = null;           
+            tlHostlist.DataSource = host.fullContent;
+            tlHostlist.Refresh();
+            CheckAllCheckState(tlHostlist.Nodes);
+            tlHostlist.ExpandAll();
+            SetStatusText("Refresh completed!");
+        }
+
+        public void AddItem(HostsItem item)
+        {
+            host.fullContent.Add(item);
+            SetStatusText("成功添加一条Hosts!");
+            RefreshTreeList();
+            
+        }
+
+        public void AddGroup(HostsItem groupItem)
+        {
+            host.fullContent.Add(groupItem);
+            SetStatusText("成功添加一条Hosts分组!");
+            RefreshTreeList();
+            
         }
 
         private void tlHostlist_AfterCheckNode(object sender, DevExpress.XtraTreeList.NodeEventArgs e)
@@ -143,6 +200,12 @@ namespace HostsWizard
 
         private void btnSaveApply_Click(object sender, EventArgs e)
         {
+            SaveAndApply();
+        }
+
+        //保存并应用host,同事刷新DNS缓存
+        private void SaveAndApply()
+        {
             FileHelper.WriteHosts(host.ToStringList());
             Utility.FlushDNS();
             LoadSystemHosts();
@@ -150,6 +213,12 @@ namespace HostsWizard
         }
 
         private void btnFlushDns_Click(object sender, EventArgs e)
+        {
+            RefreshDNS();
+        }
+
+        //刷新DNS缓存
+        private void RefreshDNS()
         {
             Utility.FlushDNS();
             SetStatusText("刷新DNS缓存成功!");
@@ -162,14 +231,7 @@ namespace HostsWizard
         }
 
 
-        private void HostWizardsMain_Load(object sender, EventArgs e)
-        {
-            t1 = new System.Timers.Timer();
-            //t2 = new System.Timers.Timer();
-            t1.Interval = Constants.StatusBarClearInterval;
-            t1.Elapsed += new System.Timers.ElapsedEventHandler(t1_Elapsed);
-           // t2.Interval = 3000;
-        }
+      
 
         void t1_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
@@ -182,13 +244,167 @@ namespace HostsWizard
             tslblstatus.Text = msg;
             if (t1.Enabled)
             {
-                t1.Stop();
-                t1.Start();
+                t1.Stop();              
+            }
+            t1.Start();
+        }
+
+        private void btnAddItem_Click(object sender, EventArgs e)
+        {
+            AddItem additemForm = new AddItem();
+            additemForm.hosts = host;
+            additemForm.ShowDialog(this);
+        }
+
+        private void btnAddGroup_Click(object sender, EventArgs e)
+        {
+            AddSolution addgroupForm = new AddSolution();
+            addgroupForm.grouplist = host.fullContent.Where(p => p.Type == EnumItemType.GroupTag).ToList();
+            addgroupForm.ShowDialog(this);
+        }
+
+        private void miAbout_Click(object sender, EventArgs e)
+        {//关于
+            AboutForm about = new AboutForm();
+            about.ShowDialog(this);
+        }
+
+        private void saveAndApplyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveAndApply();
+        }
+
+        private void refreshDNSCacheToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RefreshDNS();
+        }
+
+
+        //--------------solutions--------------------------------
+
+        private void InitSolutionMenuItems()
+        {
+            menuSolutions.DropDownItems.Clear();
+            foreach (var s in hostlist)
+            {
+                ToolStripMenuItem solutionMenuItem = new ToolStripMenuItem();
+                solutionMenuItem.Text = s.SolutionName;
+                solutionMenuItem.AutoToolTip = true;
+                solutionMenuItem.ToolTipText = s.SolutionID.ToString();
+                solutionMenuItem.Tag = s;
+                solutionMenuItem.CheckOnClick = true;
+                menuSolutions.DropDownItems.Add(solutionMenuItem);
+            }
+
+        }
+
+        //void solutionMenuItem_CheckStateChanged(object sender, EventArgs e)
+        //{
+        //    //方案被选中时
+        //    ToolStripMenuItem item = (ToolStripMenuItem)sender;
+        //    if (item.CheckState == CheckState.Checked)
+        //    {
+
+        //    }
+        //}
+
+        void menuSolutions_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            //单击方案项
+            ToolStripMenuItem item = (ToolStripMenuItem)e.ClickedItem;
+            if (item.CheckState == CheckState.Checked)
+            {
+                foreach (ToolStripMenuItem mu in menuSolutions.DropDownItems)
+                {
+                    if(!mu.Equals(item))
+                    {
+                        mu.CheckState = CheckState.Unchecked;
+                    }
+                }
+            }
+            this.host = (HostsProcesscer)item.Tag;
+            RefreshTreeList();
+            SaveAndApply();
+        }
+
+        private void LoadSolutionList()
+        {
+            SolutionDL dl = new SolutionDL();
+            hostlist = dl.GetSolutionAll();
+        }
+
+        private void tsMenuSaveSolution_Click(object sender, EventArgs e)
+        {// 已隐藏,暂不使用此菜单
+
+        }
+
+        private void SaveNewSolution()
+        {
+            SolutionDL dl = new SolutionDL();
+            if (dl.SolutionExist(host.SolutionID))
+            {
+                dl.UpdateSolution(host);
             }
             else
             {
-                t1.Start();
+                if (host.SolutionID == Guid.Empty)
+                {
+                    host.SolutionID = Guid.NewGuid();
+                }
+                dl.AddNewSolution(host);
+            }
+
+            LoadSolutionList();
+            InitSolutionMenuItems();
+            SetCurrentSolutionHost();
+        }
+
+        private void SetCurrentSolutionHost()
+        {
+            foreach (ToolStripMenuItem item in menuSolutions.DropDownItems)
+            {
+                HostsProcesscer htemp = (HostsProcesscer)item.Tag;
+                if (htemp.SolutionID == host.SolutionID)
+                {
+                    item.CheckState = CheckState.Checked;
+                }
             }
         }
+
+        public void SetSolutionName(string solutionName)
+        {
+            this.host.SolutionName = solutionName;
+
+        }
+
+        public void SetNewSolution(string solutionName)
+        {
+            this.host.SolutionName = solutionName;
+            RefreshTreeList();
+        }
+
+        private void tsMenuUpdateSolution_Click(object sender, EventArgs e)
+        {// 保存方案
+            if (host != null)
+            {
+                SaveNewSolution();
+            }
+        }
+
+        private void createNewSolutionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.host = new HostsProcesscer();
+            host.SolutionID = Guid.NewGuid();
+            CreateNewSolution nesolutionForm = new CreateNewSolution();
+            nesolutionForm.ShowDialog(this);
+        }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {//备份系统hosts
+
+        }
+
+
+
     }
 }
