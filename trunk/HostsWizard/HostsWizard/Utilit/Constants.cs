@@ -12,7 +12,7 @@ namespace HostsWizard.Utilit
 
         public static readonly string HostsPath = (Environment.SystemDirectory + @"\drivers\etc\Hosts");
 
-        public static int StatusBarClearInterval = 4000;
+        public static int StatusBarClearInterval = 8000;
 
         public static string SqliteDBConfig = "Data Source=|DataDirectory|\\hsw.db;Pooling=true;FailIfMissing=false";
 
