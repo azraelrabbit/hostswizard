@@ -161,9 +161,6 @@
       <DependentUpon>CreateNewSolution.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <Content Include="App_Data\hw">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="hsw.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -177,9 +174,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
