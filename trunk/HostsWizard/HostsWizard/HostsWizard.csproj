@@ -62,6 +62,9 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>330.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Data.v11.1, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
@@ -152,6 +155,14 @@
     <Compile Include="CreateNewSolution.Designer.cs">
       <DependentUpon>CreateNewSolution.cs</DependentUpon>
     </Compile>
+    <None Include="Resources\hacks.ico" />
+    <None Include="Resources\categories.ico" />
+    <None Include="Resources\blaster.ico" />
+    <None Include="Resources\340.ico" />
+    <None Include="Resources\330.ico" />
+    <None Include="Resources\312.ico" />
+    <None Include="Resources\125.ico" />
+    <None Include="Resources\thunder3a.ico" />
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>
@@ -185,6 +196,7 @@
       <DependentUpon>CreateNewSolution.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <Content Include="330.ico" />
     <Content Include="hsw.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
