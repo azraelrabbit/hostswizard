@@ -59,5 +59,61 @@ namespace HostsWizard.Properties {
                 resourceCulture = value;
             }
         }
+        
+        internal static System.Drawing.Icon _125 {
+            get {
+                object obj = ResourceManager.GetObject("_125", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon _312 {
+            get {
+                object obj = ResourceManager.GetObject("_312", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon _330 {
+            get {
+                object obj = ResourceManager.GetObject("_330", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon _340 {
+            get {
+                object obj = ResourceManager.GetObject("_340", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon blaster {
+            get {
+                object obj = ResourceManager.GetObject("blaster", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon categories {
+            get {
+                object obj = ResourceManager.GetObject("categories", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon hacks {
+            get {
+                object obj = ResourceManager.GetObject("hacks", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon thunder3a {
+            get {
+                object obj = ResourceManager.GetObject("thunder3a", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
     }
 }
