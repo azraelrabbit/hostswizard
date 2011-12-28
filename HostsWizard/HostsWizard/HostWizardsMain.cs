@@ -32,6 +32,12 @@ namespace HostsWizard
 
         private void HostWizardsMain_Load(object sender, EventArgs e)
         {
+            this.saveFileDialog1.Filter = "HostsWizards Solution Files|*.hws";
+            saveFileDialog1.DefaultExt = ".hws";
+            saveFileDialog1.AddExtension = true;
+
+            this.openFileDialog1.Filter = "HostsWizards Solution Files|*.hws";
+
             this.Text = Constants.ApplicationName;
             t1 = new System.Timers.Timer();
             //t2 = new System.Timers.Timer();
@@ -239,7 +245,7 @@ namespace HostsWizard
             t1.Stop();
         }
 
-        private void SetStatusText(string msg)
+        public void SetStatusText(string msg)
         {
             tslblstatus.Text = msg;
             t1.Dispose();
@@ -426,6 +432,65 @@ namespace HostsWizard
             SetStatusText("已删除项!");
         }
 
+        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void ExportSolutionFile()
+        {
+            DialogResult dr = saveFileDialog1.ShowDialog(this);
+            if (dr == DialogResult.OK)
+            {
+                var filePath = saveFileDialog1.FileName;
+                byte[] hostcontents = SerializationHelper.GetBinaryFormatSerialize(host);
+                FileHelper.WriteSolutionFile(hostcontents, filePath);
+                SetStatusText("方案已导出到文件:" + filePath);
+            }
+        }
+
+        private void exportCurrentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportSolutionFile();
+        }
+
+        private void exportOthersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //导出其他方案
+            ExportForm exportForm = new ExportForm();
+            exportForm.ShowDialog(this);
+        }
+
+        private void importToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = openFileDialog1.ShowDialog(this);
+            if (dr == DialogResult.OK)
+            {
+                var filePath = openFileDialog1.FileName;
+                var item= FileHelper.ReadSolutionFile(filePath);
+                ImportSolution(item);
+            }
+        }
+        private void ImportSolution(HostsProcesscer item)
+        {
+            SolutionDL dl = new SolutionDL();
+            if (dl.SolutionExist(item.SolutionID))
+            {
+                dl.UpdateSolution(item);
+            }
+            else
+            {
+                if (item.SolutionID == Guid.Empty)
+                {
+                    item.SolutionID = Guid.NewGuid();
+                }
+                dl.AddNewSolution(item);
+            }
+
+            LoadSolutionList();
+            InitSolutionMenuItems();
+            SetCurrentSolutionHost();
+        }
 
 
     }

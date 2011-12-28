@@ -36,6 +36,8 @@
             this.clDomain = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.clGroup = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.clType = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsCDel = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAddGroup = new DevExpress.XtraEditors.SimpleButton();
             this.btnAddItem = new DevExpress.XtraEditors.SimpleButton();
@@ -53,6 +55,10 @@
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportCurrentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportOthersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMISolutions = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miAbout = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,16 +67,16 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tslblstatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.tslbl2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tsCDel = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.tlHostlist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlHostlist
@@ -146,6 +152,7 @@
             this.clDomain,
             this.clGroup,
             this.clType});
+            this.tlHostlist.ContextMenuStrip = this.contextMenuStrip1;
             this.tlHostlist.CustomizationFormBounds = new System.Drawing.Rectangle(742, 532, 216, 187);
             this.tlHostlist.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlHostlist.Location = new System.Drawing.Point(0, 0);
@@ -220,6 +227,20 @@
             this.clType.Visible = true;
             this.clType.VisibleIndex = 4;
             this.clType.Width = 82;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsCDel});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(114, 26);
+            // 
+            // tsCDel
+            // 
+            this.tsCDel.Name = "tsCDel";
+            this.tsCDel.Size = new System.Drawing.Size(113, 22);
+            this.tsCDel.Text = "Delete";
+            this.tsCDel.Click += new System.EventHandler(this.tsCDel_Click);
             // 
             // panel1
             // 
@@ -363,7 +384,9 @@
             // 
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addToolStripMenuItem,
-            this.toolStripMenuItem2});
+            this.toolStripMenuItem2,
+            this.exportToolStripMenuItem,
+            this.importToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(42, 21);
             this.editToolStripMenuItem.Text = "Edit";
@@ -380,6 +403,37 @@
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(243, 22);
             this.toolStripMenuItem2.Text = "Restore System Hosts ";
+            // 
+            // exportToolStripMenuItem
+            // 
+            this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exportCurrentToolStripMenuItem,
+            this.exportOthersToolStripMenuItem});
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.exportToolStripMenuItem.Text = "Export Solution ...";
+            this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
+            // 
+            // exportCurrentToolStripMenuItem
+            // 
+            this.exportCurrentToolStripMenuItem.Name = "exportCurrentToolStripMenuItem";
+            this.exportCurrentToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.exportCurrentToolStripMenuItem.Text = "Export Current";
+            this.exportCurrentToolStripMenuItem.Click += new System.EventHandler(this.exportCurrentToolStripMenuItem_Click);
+            // 
+            // exportOthersToolStripMenuItem
+            // 
+            this.exportOthersToolStripMenuItem.Name = "exportOthersToolStripMenuItem";
+            this.exportOthersToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.exportOthersToolStripMenuItem.Text = "Export Others ...";
+            this.exportOthersToolStripMenuItem.Click += new System.EventHandler(this.exportOthersToolStripMenuItem_Click);
+            // 
+            // importToolStripMenuItem
+            // 
+            this.importToolStripMenuItem.Name = "importToolStripMenuItem";
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.importToolStripMenuItem.Text = "Import Solution ...";
+            this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
             // 
             // tsMISolutions
             // 
@@ -446,19 +500,9 @@
             this.tslbl2.Name = "tslbl2";
             this.tslbl2.Size = new System.Drawing.Size(0, 17);
             // 
-            // contextMenuStrip1
+            // openFileDialog1
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsCDel});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 48);
-            // 
-            // tsCDel
-            // 
-            this.tsCDel.Name = "tsCDel";
-            this.tsCDel.Size = new System.Drawing.Size(152, 22);
-            this.tsCDel.Text = "Delete";
-            this.tsCDel.Click += new System.EventHandler(this.tsCDel_Click);
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // HostWizardsMain
             // 
@@ -474,6 +518,7 @@
             this.Load += new System.EventHandler(this.HostWizardsMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tlHostlist)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -483,7 +528,6 @@
             this.panel3.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -524,5 +568,11 @@
         private System.Windows.Forms.ToolStripMenuItem createNewSolutionToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem tsCDel;
+        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.ToolStripMenuItem exportCurrentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportOthersToolStripMenuItem;
     }
 }
