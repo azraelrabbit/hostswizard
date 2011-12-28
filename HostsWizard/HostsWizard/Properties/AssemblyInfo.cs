@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过以下
 // 特性集控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("HostsWizard")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("HostsWizards")]
+[assembly: AssemblyDescription("System Hosts Utility")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("HostsWizard")]
-[assembly: AssemblyCopyright("Copyright ©  2011")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("R.K")]
+[assembly: AssemblyProduct("HostsWizards")]
+[assembly: AssemblyCopyright("Copyright Rocky Kent ©  2011")]
+[assembly: AssemblyTrademark("R.K")]
 [assembly: AssemblyCulture("")]
 
 // 将 ComVisible 设置为 false 使此程序集中的类型
