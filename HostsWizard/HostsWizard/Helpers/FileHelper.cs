@@ -93,8 +93,8 @@ namespace HostsWizard.Helpers
             {
                 using (StreamWriter sw = new StreamWriter(fs, Encoding.UTF8))
                 {
-                    string content = Encoding.UTF8.GetString(hostContent);
-                    sw.Write(content);
+                   // string content = Encoding.UTF8.GetString(hostContent);
+                    sw.BaseStream.Write(hostContent,0,hostContent.Length);
                     sw.Flush();
                 }
             }
@@ -119,9 +119,11 @@ namespace HostsWizard.Helpers
             {
                 using (StreamReader sr = new StreamReader(fs, Encoding.UTF8))
                 {
-                  string content=sr.ReadToEnd();
+                    hostContent = new byte[sr.BaseStream.Length];
+                 // string content=sr.ReadToEnd();
+                  sr.BaseStream.Read(hostContent, 0, (int)sr.BaseStream.Length);
 
-                  hostContent= Encoding.UTF8.GetBytes(content);
+                  
                 }
             }
 

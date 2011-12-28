@@ -376,16 +376,19 @@ namespace HostsWizard
 
         private void SetCurrentSolutionHost()
         {
-            foreach (ToolStripMenuItem item in menuSolutions.DropDownItems)
+            if (host != null)
             {
-                HostsProcesscer htemp = (HostsProcesscer)item.Tag;
-                if (htemp.SolutionID == host.SolutionID)
+                foreach (ToolStripMenuItem item in menuSolutions.DropDownItems)
                 {
-                    item.CheckState = CheckState.Checked;
-                }
-                else
-                {
-                    item.CheckState = CheckState.Unchecked;
+                    HostsProcesscer htemp = (HostsProcesscer)item.Tag;
+                    if (htemp.SolutionID == host.SolutionID)
+                    {
+                        item.CheckState = CheckState.Checked;
+                    }
+                    else
+                    {
+                        item.CheckState = CheckState.Unchecked;
+                    }
                 }
             }
         }
@@ -463,12 +466,20 @@ namespace HostsWizard
 
         private void importToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult dr = openFileDialog1.ShowDialog(this);
-            if (dr == DialogResult.OK)
+            try
             {
-                var filePath = openFileDialog1.FileName;
-                var item= FileHelper.ReadSolutionFile(filePath);
-                ImportSolution(item);
+                DialogResult dr = openFileDialog1.ShowDialog(this);
+                if (dr == DialogResult.OK)
+                {
+                    var filePath = openFileDialog1.FileName;
+                    var item = FileHelper.ReadSolutionFile(filePath);
+                    ImportSolution(item);
+                    SetStatusText("导入方案成功,方案名: " + item.SolutionName);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("导入失败,不是方案文件,或文件被破坏!\r\n INFO:"+ex.Message);
             }
         }
         private void ImportSolution(HostsProcesscer item)
