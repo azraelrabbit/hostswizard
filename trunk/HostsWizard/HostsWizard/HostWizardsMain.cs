@@ -242,10 +242,11 @@ namespace HostsWizard
         private void SetStatusText(string msg)
         {
             tslblstatus.Text = msg;
-            if (t1.Enabled)
-            {
-                t1.Stop();              
-            }
+            t1.Dispose();
+            t1 = new System.Timers.Timer();
+            //t2 = new System.Timers.Timer();
+            t1.Interval = Constants.StatusBarClearInterval;
+            t1.Elapsed += new System.Timers.ElapsedEventHandler(t1_Elapsed);
             t1.Start();
         }
 
@@ -292,7 +293,7 @@ namespace HostsWizard
                 solutionMenuItem.AutoToolTip = true;
                 solutionMenuItem.ToolTipText = s.SolutionID.ToString();
                 solutionMenuItem.Tag = s;
-                solutionMenuItem.CheckOnClick = true;
+                //solutionMenuItem.CheckOnClick = true;
                 menuSolutions.DropDownItems.Add(solutionMenuItem);
             }
 
@@ -312,19 +313,27 @@ namespace HostsWizard
         {
             //单击方案项
             ToolStripMenuItem item = (ToolStripMenuItem)e.ClickedItem;
-            if (item.CheckState == CheckState.Checked)
-            {
-                foreach (ToolStripMenuItem mu in menuSolutions.DropDownItems)
-                {
-                    if(!mu.Equals(item))
-                    {
-                        mu.CheckState = CheckState.Unchecked;
-                    }
-                }
-            }
-            this.host = (HostsProcesscer)item.Tag;
-            RefreshTreeList();
-            SaveAndApply();
+            //if (item.CheckState == CheckState.Checked)
+            //{
+                //foreach (ToolStripMenuItem mu in menuSolutions.DropDownItems)
+                //{
+                //    var it = (HostsProcesscer)mu.Tag;
+                //    if(mu.Text==item.Text)
+                //    {
+                //        mu.CheckState = CheckState.Checked;
+                //        mu.Checked = true;                       
+                //    }
+                //    else{
+                //        mu.CheckState = CheckState.Unchecked;
+                //        mu.Checked = false;
+                //    }
+                //}
+                this.host = (HostsProcesscer)item.Tag;
+                RefreshTreeList();
+                SaveAndApply();
+                SetCurrentSolutionHost();
+            //}
+            
         }
 
         private void LoadSolutionList()
@@ -368,6 +377,10 @@ namespace HostsWizard
                 {
                     item.CheckState = CheckState.Checked;
                 }
+                else
+                {
+                    item.CheckState = CheckState.Unchecked;
+                }
             }
         }
 
@@ -402,6 +415,15 @@ namespace HostsWizard
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {//备份系统hosts
 
+        }
+
+        private void tsCDel_Click(object sender, EventArgs e)
+        {
+            TreeListNode tln = (TreeListNode)sender;
+            Guid sid = (Guid)tln["ID"];
+            host.fullContent.RemoveAll(p => p.ID == sid);
+            RefreshTreeList();
+            SetStatusText("已删除项!");
         }
 
 

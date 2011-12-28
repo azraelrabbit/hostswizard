@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tlHostlist = new DevExpress.XtraTreeList.TreeList();
             this.clEnable = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
@@ -60,6 +61,8 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tslblstatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.tslbl2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsCDel = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.tlHostlist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -67,6 +70,7 @@
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlHostlist
@@ -442,6 +446,20 @@
             this.tslbl2.Name = "tslbl2";
             this.tslbl2.Size = new System.Drawing.Size(0, 17);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsCDel});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 48);
+            // 
+            // tsCDel
+            // 
+            this.tsCDel.Name = "tsCDel";
+            this.tsCDel.Size = new System.Drawing.Size(152, 22);
+            this.tsCDel.Text = "Delete";
+            this.tsCDel.Click += new System.EventHandler(this.tsCDel_Click);
+            // 
             // HostWizardsMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -465,6 +483,7 @@
             this.panel3.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -503,5 +522,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsMenuSaveSolution;
         private System.Windows.Forms.ToolStripMenuItem tsMenuUpdateSolution;
         private System.Windows.Forms.ToolStripMenuItem createNewSolutionToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem tsCDel;
     }
 }
