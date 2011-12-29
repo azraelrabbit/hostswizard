@@ -73,7 +73,7 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Basket full.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\320.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Data.v11.1, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
@@ -94,6 +94,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.66.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
       <Private>True</Private>
@@ -101,6 +102,7 @@
     <Reference Include="System.Data.SQLite.Linq, Version=2.0.38.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -165,6 +167,7 @@
     <Compile Include="CreateNewSolution.Designer.cs">
       <DependentUpon>CreateNewSolution.cs</DependentUpon>
     </Compile>
+    <Content Include="Resources\320.ico" />
     <None Include="Resources\hacks.ico" />
     <None Include="Resources\categories.ico" />
     <None Include="Resources\blaster.ico" />
@@ -206,9 +209,7 @@
       <DependentUpon>CreateNewSolution.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <Content Include="312.ico" />
     <Content Include="330.ico" />
-    <Content Include="Basket full.ico" />
     <Content Include="hsw.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
