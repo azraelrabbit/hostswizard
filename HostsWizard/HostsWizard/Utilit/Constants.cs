@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
+using System.Windows.Forms;
 
 namespace HostsWizard.Utilit
 {
@@ -12,9 +14,19 @@ namespace HostsWizard.Utilit
 
         public static readonly string HostsPath = (Environment.SystemDirectory + @"\drivers\etc\Hosts");
 
+        public static readonly string ApplicationStartUpPath = Application.StartupPath;
+
+        public static readonly string DefaultAppDataFilePath = ApplicationStartUpPath + "\\hsw.db";
+
+        public static readonly string AppDataLocalPath=Path.GetDirectoryName(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData))+"\\Local";
+
+        public static readonly string HostsWizardsDataPath = AppDataLocalPath + "\\HostsWizards\\Data";
+
+        public static readonly string HostsWizardsDataFilePath = HostsWizardsDataPath + "\\hsw.db";
+
         public static int StatusBarClearInterval = 8000;
 
-        public static string SqliteDBConfig = "Data Source=|DataDirectory|\\hsw.db;Pooling=true;FailIfMissing=false";
+        public static string SqliteDBConfig = "Data Source=" + HostsWizardsDataFilePath + ";Pooling=true;FailIfMissing=false";
 
         public static readonly string WinHostsHead = "# Copyright (c) 1993-2009 Microsoft Corp.\r\n"
 + "#\r\n"

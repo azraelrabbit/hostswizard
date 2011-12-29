@@ -32,6 +32,9 @@ namespace HostsWizard
 
         private void HostWizardsMain_Load(object sender, EventArgs e)
         {
+            //检查sqlite库是否存在,不存在则拷贝自己的,存在则略过
+            FileHelper.InitAppDataFile();
+
             this.saveFileDialog1.Filter = "HostsWizards Solution Files|*.hws";
             saveFileDialog1.DefaultExt = ".hws";
             saveFileDialog1.AddExtension = true;
@@ -258,6 +261,10 @@ namespace HostsWizard
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
+            if (host == null)
+            {
+                MessageBox.Show("未加载任何Hosts信息!");
+            }
             AddItem additemForm = new AddItem();
             additemForm.hosts = host;
             additemForm.ShowDialog(this);
@@ -265,6 +272,12 @@ namespace HostsWizard
 
         private void btnAddGroup_Click(object sender, EventArgs e)
         {
+
+            if (host == null)
+            {
+                MessageBox.Show("未加载任何Hosts信息!");
+            }
+
             AddSolution addgroupForm = new AddSolution();
             addgroupForm.grouplist = host.fullContent.Where(p => p.Type == EnumItemType.GroupTag).ToList();
             addgroupForm.ShowDialog(this);
@@ -336,8 +349,9 @@ namespace HostsWizard
                 //}
                 this.host = (HostsProcesscer)item.Tag;
                 RefreshTreeList();
-                SaveAndApply();
+                //SaveAndApply();
                 SetCurrentSolutionHost();
+                SetStatusText("方案: " + host.SolutionName + " 加载成功!");
             //}
             
         }
@@ -395,6 +409,7 @@ namespace HostsWizard
 
         public void SetSolutionName(string solutionName)
         {
+            
             this.host.SolutionName = solutionName;
 
         }
@@ -442,6 +457,11 @@ namespace HostsWizard
 
         private void ExportSolutionFile()
         {
+            if (host == null)
+            {
+                MessageBox.Show("未加载任何Hosts信息!");
+            }
+
             DialogResult dr = saveFileDialog1.ShowDialog(this);
             if (dr == DialogResult.OK)
             {

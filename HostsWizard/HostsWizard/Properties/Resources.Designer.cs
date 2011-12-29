@@ -109,6 +109,13 @@ namespace HostsWizard.Properties {
             }
         }
         
+        internal static byte[] hsw {
+            get {
+                object obj = ResourceManager.GetObject("hsw", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
         internal static System.Drawing.Icon thunder3a {
             get {
                 object obj = ResourceManager.GetObject("thunder3a", resourceCulture);
