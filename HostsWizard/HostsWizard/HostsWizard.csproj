@@ -33,7 +33,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <DisallowUrlActivation>true</DisallowUrlActivation>
-    <ApplicationRevision>20</ApplicationRevision>
+    <ApplicationRevision>22</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -73,7 +73,7 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>330.ico</ApplicationIcon>
+    <ApplicationIcon>Basket full.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Data.v11.1, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
@@ -206,7 +206,9 @@
       <DependentUpon>CreateNewSolution.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <Content Include="312.ico" />
     <Content Include="330.ico" />
+    <Content Include="Basket full.ico" />
     <Content Include="hsw.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
