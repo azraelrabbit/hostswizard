@@ -17,7 +17,7 @@ namespace HostsWizard
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             
-            Application.Run(new HostWizardsMain());
+            Application.Run(new frmMain());
         }
     }
 }

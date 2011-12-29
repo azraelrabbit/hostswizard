@@ -10,11 +10,11 @@ using HostsWizard.Utilit;
 
 namespace HostsWizard
 {
-    public partial class AddItem : Form
+    public partial class frmAddItem : Form
     {
         public HostsProcesscer hosts;
 
-        public AddItem()
+        public frmAddItem()
         {
             InitializeComponent();
         }
@@ -26,7 +26,7 @@ namespace HostsWizard
 
         private void btnAdditem_Click(object sender, EventArgs e)
         {//添加item
-            Guid parentid=(Guid)ddlGroup.SelectedValue;
+            Guid parentid = (Guid)ddlGroup.SelectedValue;
             string groupname = ddlGroup.Text;
             string ip = txtIp.Text.Trim();
             string domain = txtDomain.Text.Trim();
@@ -35,22 +35,25 @@ namespace HostsWizard
             item.Domain = domain;
             item.Enable = true;
             item.Type = EnumItemType.HostItem;
-            item.ParentID=parentid;
+            item.ParentID = parentid;
             item.Group = groupname;
             item.ID = Guid.NewGuid();
 
-            ((HostWizardsMain)this.Owner).AddItem(item);
+            ((frmMain)this.Owner).AddItem(item);
             this.Close();
         }
 
         private void AddItem_Load(object sender, EventArgs e)
         {
+            //多语言
+            (new LanguageUtility()).SetCurrentLanguage(this);
+
             //绑定group
             var group = hosts.fullContent.Where(p => p.Type == EnumItemType.GroupTag).ToList();
             ddlGroup.DataSource = group;
             ddlGroup.DisplayMember = "IP";
-            ddlGroup.ValueMember = "ID";            
-            
+            ddlGroup.ValueMember = "ID";
+
         }
     }
 }

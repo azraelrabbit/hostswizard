@@ -151,9 +151,26 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Global.en-US2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Global.en-US.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Global.zh-CN1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Global.zh-CN.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\AppConfigHelper.cs" />
+    <Compile Include="Resources\Global.en-US.Designer.cs">
+      <DependentUpon>Global.en-US.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Utilit\Constants.cs" />
     <Compile Include="Utilit\EnumItemType.cs" />
     <Compile Include="Utilit\HostsProcesscer.cs" />
+    <Compile Include="Utilit\LanguageUtility.cs" />
     <Compile Include="Utilit\Utility.cs" />
     <Compile Include="AddGroup.cs">
       <SubType>Form</SubType>
@@ -168,6 +185,14 @@
       <DependentUpon>CreateNewSolution.cs</DependentUpon>
     </Compile>
     <Content Include="Resources\320.ico" />
+    <EmbeddedResource Include="Resources\Global.zh-CN.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Global.zh-CN1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Global.en-US.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Global.en-US2.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="Resources\hacks.ico" />
     <None Include="Resources\categories.ico" />
     <None Include="Resources\blaster.ico" />

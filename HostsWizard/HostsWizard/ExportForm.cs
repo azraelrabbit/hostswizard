@@ -13,10 +13,10 @@ using HostsWizard.DL;
 
 namespace HostsWizard
 {
-    public partial class ExportForm : Form
+    public partial class frmExportForm : Form
     {
         List<HostsProcesscer> solutionList = new List<HostsProcesscer>();
-        public ExportForm()
+        public frmExportForm()
         {
             InitializeComponent();
         }
@@ -24,6 +24,9 @@ namespace HostsWizard
 
         private void ExportForm_Load(object sender, EventArgs e)
         {
+            //多语言
+            (new LanguageUtility()).SetCurrentLanguage(this);
+
             this.saveFileDialog1.Filter = "HostsWizards Solution Files|*.hws";
             saveFileDialog1.DefaultExt = ".hws";
             saveFileDialog1.AddExtension = true;
@@ -49,7 +52,7 @@ namespace HostsWizard
         private void btnExport_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             //导出
-           
+
             //得到当前行的RowHandle   
             DataRow myDataRow = gridView1.GetDataRow(gridView1.FocusedRowHandle);
             //去出你想要的字段   
@@ -57,13 +60,13 @@ namespace HostsWizard
             var item = solutionList.FirstOrDefault(p => p.SolutionID == sid);
             if (item != null)
             {
-                
+
             }
         }
 
         private void ExportSolutionFile(HostsProcesscer host)
         {
-            
+
             saveFileDialog1.Filter = "*.hws";
             DialogResult dr = saveFileDialog1.ShowDialog(this);
             if (dr == DialogResult.OK)
@@ -72,12 +75,12 @@ namespace HostsWizard
                 byte[] hostcontents = SerializationHelper.GetBinaryFormatSerialize(host);
                 FileHelper.WriteSolutionFile(hostcontents, filePath);
                 MessageBox.Show("方案已导出到文件:" + filePath);
-               ((HostWizardsMain)this.Owner).SetStatusText("方案已导出到文件:" + filePath);
+                ((frmMain)this.Owner).SetStatusText("方案已导出到文件:" + filePath);
             }
         }
 
         private void btnBack_Click(object sender, EventArgs e)
-        {            
+        {
             this.Close();
         }
 
