@@ -7,6 +7,7 @@ using System.Data.SQLite;
 using System.IO;
 using System.Windows;
 using System.Windows.Forms;
+using HostsWizard.Utilit;
 
 namespace HostsWizard.Helpers
 {
@@ -14,7 +15,7 @@ namespace HostsWizard.Helpers
     {
         private static string password = "";  //请修改***为实际密码
 
-        private static string dbFilePath = Application.StartupPath + "\\hsw.db";  //请修改***为实际SQLite数据库名
+        private static string dbFilePath = Constants.HostsWizardsDataFilePath;  //请修改***为实际SQLite数据库名
         private static string connectString = string.Format("Data Source ={0}", dbFilePath, password);
         private static SQLiteConnection myConnect = new SQLiteConnection(connectString);
 

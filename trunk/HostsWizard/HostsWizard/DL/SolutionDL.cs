@@ -59,7 +59,7 @@ namespace HostsWizard.DL
             paramList.Add(paramName);
             paramList.Add(paramBody);
 
-            string sql = "update Solution set [SolutionName]='@solutionname',[SolutionBody]='@solutionbody' where [SolutionID]=@solutionid ";
+            string sql = "update Solution set [SolutionName]='@solutionname',[SolutionBody]=@solutionbody where [SolutionID]=@solutionid ";
 
             int ret = SqliteHelper2.ExecuteNonQuery(sql, paramList.ToArray());
             return ret;

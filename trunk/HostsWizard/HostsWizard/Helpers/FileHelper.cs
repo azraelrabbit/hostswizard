@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using HostsWizard.Utilit;
+using System.Windows.Forms;
+using System.Deployment.Application;
+using System.Resources;
 
 namespace HostsWizard.Helpers
 {
@@ -100,6 +103,19 @@ namespace HostsWizard.Helpers
             }
         }
 
+        public static void WriteDBFile(byte[] filebuffer, string filePath)
+        {
+            using (FileStream fs = new FileStream(filePath, FileMode.Create, FileAccess.ReadWrite))
+            {
+                using (StreamWriter sw = new StreamWriter(fs, Encoding.UTF8))
+                {
+                    // string content = Encoding.UTF8.GetString(hostContent);
+                    sw.BaseStream.Write(filebuffer, 0, filebuffer.Length);
+                    sw.Flush();
+                }
+            }
+        }
+
         public static void WriteSolutionFile(string hostContent, string filePath,Encoding encoding)
         {
             using (FileStream fs = new FileStream(filePath, FileMode.Create, FileAccess.ReadWrite))
@@ -153,6 +169,31 @@ namespace HostsWizard.Helpers
         public static HostsProcesscer GetSolutionFileConten(byte[] hostsContent)
         {
             return SerializationHelper.RetrieveDeserialize<HostsProcesscer>(hostsContent);            
+        }
+
+        public static void InitAppDataFile()
+        {
+            
+            DirectoryInfo di = new DirectoryInfo(Constants.HostsWizardsDataPath);
+            if (!di.Exists)
+            {
+                di.Create();
+            }
+
+            FileInfo fi = new FileInfo(Constants.HostsWizardsDataFilePath);
+            //MessageBox.Show(Constants.HostsWizardsDataFilePath);
+            if (!fi.Exists)
+            {
+                //FileInfo defaultDb = new FileInfo(Constants.DefaultAppDataFilePath);
+                //defaultDb.CopyTo(Constants.HostsWizardsDataFilePath);
+                WriteDBFile(HostsWizard.Properties.Resources.hsw, Constants.HostsWizardsDataFilePath);
+            }
+
+            //MessageBox.Show(Constants.HostsWizardsDataPath);
+            //MessageBox.Show(Constants.HostsWizardsDataFilePath);
+            //MessageBox.Show(Constants.DefaultAppDataFilePath);
+            //MessageBox.Show(Constants.HostsWizardsDataFilePath);
+           // MessageBox.Show(Constants.SqliteDBConfig);
         }
     }
 }
