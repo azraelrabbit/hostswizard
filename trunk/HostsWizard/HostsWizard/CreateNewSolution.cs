@@ -10,10 +10,10 @@ using HostsWizard.Utilit;
 
 namespace HostsWizard
 {
-    public partial class CreateNewSolution : Form
+    public partial class frmCreateNewSolution : Form
     {
-       
-        public CreateNewSolution()
+
+        public frmCreateNewSolution()
         {
             InitializeComponent();
         }
@@ -25,7 +25,8 @@ namespace HostsWizard
 
         private void AddGroup_Load(object sender, EventArgs e)
         {
-            
+            //多语言
+            (new LanguageUtility()).SetCurrentLanguage(this);
         }
 
         private void btnAddGroup_Click(object sender, EventArgs e)
@@ -35,15 +36,15 @@ namespace HostsWizard
             {
                 name = "Auto" + DateTime.Now.ToString("yyyyMMddHHmmss");
             }
-            ((HostWizardsMain)this.Owner).SetNewSolution(name);
+            ((frmMain)this.Owner).SetNewSolution(name);
             this.Close();
         }
 
         private void CreateNewSolution_FormClosing(object sender, FormClosingEventArgs e)
         {
-           // e.Cancel = true;
+            // e.Cancel = true;
         }
-       
+
 
     }
 }

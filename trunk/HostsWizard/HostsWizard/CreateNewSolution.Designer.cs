@@ -1,6 +1,6 @@
 ﻿namespace HostsWizard
 {
-    partial class CreateNewSolution
+    partial class frmCreateNewSolution
     {
         /// <summary>
         /// Required designer variable.
@@ -28,36 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateNewSolution));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCreateNewSolution));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnAddGroup = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.txtSolutionName = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.lblSolutionName = new DevExpress.XtraEditors.LabelControl();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSolutionName.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnAddGroup);
+            this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.txtSolutionName);
-            this.panel1.Controls.Add(this.labelControl1);
+            this.panel1.Controls.Add(this.lblSolutionName);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(464, 105);
             this.panel1.TabIndex = 0;
             // 
-            // btnAddGroup
+            // btnSave
             // 
-            this.btnAddGroup.Location = new System.Drawing.Point(366, 60);
-            this.btnAddGroup.Name = "btnAddGroup";
-            this.btnAddGroup.Size = new System.Drawing.Size(74, 23);
-            this.btnAddGroup.TabIndex = 9;
-            this.btnAddGroup.Text = "Save";
-            this.btnAddGroup.Click += new System.EventHandler(this.btnAddGroup_Click);
+            this.btnSave.Location = new System.Drawing.Point(366, 60);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(74, 23);
+            this.btnSave.TabIndex = 9;
+            this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnAddGroup_Click);
             // 
             // btnCancel
             // 
@@ -76,15 +76,15 @@
             this.txtSolutionName.Size = new System.Drawing.Size(329, 21);
             this.txtSolutionName.TabIndex = 6;
             // 
-            // labelControl1
+            // lblSolutionName
             // 
-            this.labelControl1.Location = new System.Drawing.Point(22, 15);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(83, 14);
-            this.labelControl1.TabIndex = 1;
-            this.labelControl1.Text = "Solution Name:";
+            this.lblSolutionName.Location = new System.Drawing.Point(22, 15);
+            this.lblSolutionName.Name = "lblSolutionName";
+            this.lblSolutionName.Size = new System.Drawing.Size(83, 14);
+            this.lblSolutionName.TabIndex = 1;
+            this.lblSolutionName.Text = "Solution Name:";
             // 
-            // CreateNewSolution
+            // frmCreateNewSolution
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -93,7 +93,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "CreateNewSolution";
+            this.Name = "frmCreateNewSolution";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "New Solution";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CreateNewSolution_FormClosing);
@@ -109,8 +109,8 @@
 
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraEditors.TextEdit txtSolutionName;
-        private DevExpress.XtraEditors.SimpleButton btnAddGroup;
+        private DevExpress.XtraEditors.SimpleButton btnSave;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.LabelControl lblSolutionName;
     }
 }

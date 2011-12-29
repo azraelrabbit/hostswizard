@@ -13,7 +13,7 @@ using HostsWizard.DL;
 
 namespace HostsWizard
 {
-    public partial class HostWizardsMain : Form
+    public partial class frmMain : Form
     {
         HostsProcesscer host;
 
@@ -22,16 +22,21 @@ namespace HostsWizard
         List<HostsProcesscer> hostlist = new List<HostsProcesscer>();
 
 
-        System.Timers.Timer t1=null;
+        System.Timers.Timer t1 = null;
         //System.Timers.Timer t2;
 
-        public HostWizardsMain()
+        public frmMain()
         {
             InitializeComponent();
         }
 
         private void HostWizardsMain_Load(object sender, EventArgs e)
         {
+
+            //多语言
+            (new LanguageUtility()).SetCurrentLanguage(this);
+            CheckLanguageMenuStatus();
+
             //检查sqlite库是否存在,不存在则拷贝自己的,存在则略过
             FileHelper.InitAppDataFile();
 
@@ -48,7 +53,7 @@ namespace HostsWizard
             t1.Elapsed += new System.Timers.ElapsedEventHandler(t1_Elapsed);
             // t2.Interval = 3000;
 
-            menuSolutions = tsMISolutions;
+            menuSolutions = tsMSolutions;
             menuSolutions.DropDownItemClicked += new ToolStripItemClickedEventHandler(menuSolutions_DropDownItemClicked);
             //初始化方案列表
             LoadSolutionList();
@@ -75,13 +80,13 @@ namespace HostsWizard
             tlHostlist.ExpandAll();
             SetStatusText("Init completed! Enjoy!");
 
-            this.Text =Constants.ApplicationName+ "--[Current SolutionName:"+host.SolutionName+"]";
+            this.Text = Constants.ApplicationName + "--[Current SolutionName:" + host.SolutionName + "]";
         }
 
         public void RefreshTreeList()
         {
             SetStatusText("Refreshing ... ...");
-            tlHostlist.DataSource = null;           
+            tlHostlist.DataSource = null;
             tlHostlist.DataSource = host.fullContent;
             tlHostlist.Refresh();
             CheckAllCheckState(tlHostlist.Nodes);
@@ -94,7 +99,7 @@ namespace HostsWizard
             host.fullContent.Add(item);
             SetStatusText("成功添加一条Hosts!");
             RefreshTreeList();
-            
+
         }
 
         public void AddGroup(HostsItem groupItem)
@@ -102,7 +107,7 @@ namespace HostsWizard
             host.fullContent.Add(groupItem);
             SetStatusText("成功添加一条Hosts分组!");
             RefreshTreeList();
-            
+
         }
 
         private void tlHostlist_AfterCheckNode(object sender, DevExpress.XtraTreeList.NodeEventArgs e)
@@ -240,7 +245,7 @@ namespace HostsWizard
         }
 
 
-      
+
 
         void t1_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
@@ -265,7 +270,7 @@ namespace HostsWizard
             {
                 MessageBox.Show("未加载任何Hosts信息!");
             }
-            AddItem additemForm = new AddItem();
+            frmAddItem additemForm = new frmAddItem();
             additemForm.hosts = host;
             additemForm.ShowDialog(this);
         }
@@ -278,14 +283,14 @@ namespace HostsWizard
                 MessageBox.Show("未加载任何Hosts信息!");
             }
 
-            AddSolution addgroupForm = new AddSolution();
+            frmAddGroup addgroupForm = new frmAddGroup();
             addgroupForm.grouplist = host.fullContent.Where(p => p.Type == EnumItemType.GroupTag).ToList();
             addgroupForm.ShowDialog(this);
         }
 
         private void miAbout_Click(object sender, EventArgs e)
         {//关于
-            AboutForm about = new AboutForm();
+            frmAbout about = new frmAbout();
             about.ShowDialog(this);
         }
 
@@ -334,37 +339,32 @@ namespace HostsWizard
             ToolStripMenuItem item = (ToolStripMenuItem)e.ClickedItem;
             //if (item.CheckState == CheckState.Checked)
             //{
-                //foreach (ToolStripMenuItem mu in menuSolutions.DropDownItems)
-                //{
-                //    var it = (HostsProcesscer)mu.Tag;
-                //    if(mu.Text==item.Text)
-                //    {
-                //        mu.CheckState = CheckState.Checked;
-                //        mu.Checked = true;                       
-                //    }
-                //    else{
-                //        mu.CheckState = CheckState.Unchecked;
-                //        mu.Checked = false;
-                //    }
-                //}
-                this.host = (HostsProcesscer)item.Tag;
-                RefreshTreeList();
-                //SaveAndApply();
-                SetCurrentSolutionHost();
-                SetStatusText("方案: " + host.SolutionName + " 加载成功!");
+            //foreach (ToolStripMenuItem mu in menuSolutions.DropDownItems)
+            //{
+            //    var it = (HostsProcesscer)mu.Tag;
+            //    if(mu.Text==item.Text)
+            //    {
+            //        mu.CheckState = CheckState.Checked;
+            //        mu.Checked = true;                       
+            //    }
+            //    else{
+            //        mu.CheckState = CheckState.Unchecked;
+            //        mu.Checked = false;
+            //    }
             //}
-            
+            this.host = (HostsProcesscer)item.Tag;
+            RefreshTreeList();
+            //SaveAndApply();
+            SetCurrentSolutionHost();
+            SetStatusText("方案: " + host.SolutionName + " 加载成功!");
+            //}
+
         }
 
         private void LoadSolutionList()
         {
             SolutionDL dl = new SolutionDL();
             hostlist = dl.GetSolutionAll();
-        }
-
-        private void tsMenuSaveSolution_Click(object sender, EventArgs e)
-        {// 已隐藏,暂不使用此菜单
-
         }
 
         private void SaveNewSolution()
@@ -409,7 +409,7 @@ namespace HostsWizard
 
         public void SetSolutionName(string solutionName)
         {
-            
+
             this.host.SolutionName = solutionName;
 
         }
@@ -432,7 +432,7 @@ namespace HostsWizard
         {
             this.host = new HostsProcesscer();
             host.SolutionID = Guid.NewGuid();
-            CreateNewSolution nesolutionForm = new CreateNewSolution();
+            frmCreateNewSolution nesolutionForm = new frmCreateNewSolution();
             nesolutionForm.ShowDialog(this);
         }
 
@@ -443,16 +443,21 @@ namespace HostsWizard
 
         private void tsCDel_Click(object sender, EventArgs e)
         {
-            TreeListNode tln = (TreeListNode)sender;
-            Guid sid = (Guid)tln["ID"];
-            host.fullContent.RemoveAll(p => p.ID == sid);
-            RefreshTreeList();
-            SetStatusText("已删除项!");
+            string delMsg = "删除选中项?";
+            DialogResult dr = MessageBox.Show(delMsg, tsCDel.Text, MessageBoxButtons.OKCancel);
+            if (dr == DialogResult.OK)
+            {
+                TreeListNode tln = (TreeListNode)sender;
+                Guid sid = (Guid)tln["ID"];
+                host.fullContent.RemoveAll(p => p.ID == sid);
+                RefreshTreeList();
+                SetStatusText("已删除项!");
+            }
         }
 
         private void exportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void ExportSolutionFile()
@@ -480,7 +485,7 @@ namespace HostsWizard
         private void exportOthersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //导出其他方案
-            ExportForm exportForm = new ExportForm();
+            frmExportForm exportForm = new frmExportForm();
             exportForm.ShowDialog(this);
         }
 
@@ -497,9 +502,9 @@ namespace HostsWizard
                     SetStatusText("导入方案成功,方案名: " + item.SolutionName);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("导入失败,不是方案文件,或文件被破坏!\r\n INFO:"+ex.Message);
+                MessageBox.Show("导入失败,不是方案文件,或文件被破坏!\r\n INFO:" + ex.Message);
             }
         }
         private void ImportSolution(HostsProcesscer item)
@@ -523,6 +528,45 @@ namespace HostsWizard
             SetCurrentSolutionHost();
         }
 
+        private void tsMzhCN_Click(object sender, EventArgs e)
+        {
+            AppConfigHelper.UpdateAppConfig("Language", "zh-CN");
+            (new LanguageUtility()).SetCurrentLanguage(this);
+            CheckLanguageMenuStatus();
+        }
+
+        private void tsMenUS_Click(object sender, EventArgs e)
+        {
+            AppConfigHelper.UpdateAppConfig("Language", "en-US");
+            (new LanguageUtility()).SetCurrentLanguage(this);
+            CheckLanguageMenuStatus();
+        }
+        private void CheckLanguageMenuStatus()
+        {
+            var currentLang = AppConfigHelper.GetAppConfig("Language");
+
+            if (currentLang == "zh-CN")
+            {
+                this.tsMzhCN.CheckState = CheckState.Checked;
+                this.tsMenUS.CheckState = CheckState.Unchecked;
+            }
+            else
+            {
+                this.tsMzhCN.CheckState = CheckState.Unchecked;
+                this.tsMenUS.CheckState = CheckState.Checked;
+            }
+        }
+
+        private void tsMExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            // Application.Exit();
+        }
+
+        private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
 
     }
 }

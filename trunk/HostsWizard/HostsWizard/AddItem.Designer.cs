@@ -1,6 +1,6 @@
 ﻿namespace HostsWizard
 {
-    partial class AddItem
+    partial class frmAddItem
     {
         /// <summary>
         /// Required designer variable.
@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddItem));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddItem));
             this.panel1 = new System.Windows.Forms.Panel();
             this.ddlGroup = new System.Windows.Forms.ComboBox();
             this.btnAdditem = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.txtDomain = new DevExpress.XtraEditors.TextEdit();
             this.txtIp = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.lblDomain = new DevExpress.XtraEditors.LabelControl();
+            this.lblIp = new DevExpress.XtraEditors.LabelControl();
+            this.lblGroup = new DevExpress.XtraEditors.LabelControl();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDomain.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIp.Properties)).BeginInit();
@@ -50,9 +50,9 @@
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.txtDomain);
             this.panel1.Controls.Add(this.txtIp);
-            this.panel1.Controls.Add(this.labelControl3);
-            this.panel1.Controls.Add(this.labelControl2);
-            this.panel1.Controls.Add(this.labelControl1);
+            this.panel1.Controls.Add(this.lblDomain);
+            this.panel1.Controls.Add(this.lblIp);
+            this.panel1.Controls.Add(this.lblGroup);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -99,31 +99,31 @@
             this.txtIp.Size = new System.Drawing.Size(360, 21);
             this.txtIp.TabIndex = 6;
             // 
-            // labelControl3
+            // lblDomain
             // 
-            this.labelControl3.Location = new System.Drawing.Point(15, 93);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(44, 14);
-            this.labelControl3.TabIndex = 5;
-            this.labelControl3.Text = "Domain:";
+            this.lblDomain.Location = new System.Drawing.Point(15, 93);
+            this.lblDomain.Name = "lblDomain";
+            this.lblDomain.Size = new System.Drawing.Size(44, 14);
+            this.lblDomain.TabIndex = 5;
+            this.lblDomain.Text = "Domain:";
             // 
-            // labelControl2
+            // lblIp
             // 
-            this.labelControl2.Location = new System.Drawing.Point(44, 54);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(15, 14);
-            this.labelControl2.TabIndex = 3;
-            this.labelControl2.Text = "IP:";
+            this.lblIp.Location = new System.Drawing.Point(44, 54);
+            this.lblIp.Name = "lblIp";
+            this.lblIp.Size = new System.Drawing.Size(15, 14);
+            this.lblIp.TabIndex = 3;
+            this.lblIp.Text = "IP:";
             // 
-            // labelControl1
+            // lblGroup
             // 
-            this.labelControl1.Location = new System.Drawing.Point(22, 15);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(37, 14);
-            this.labelControl1.TabIndex = 1;
-            this.labelControl1.Text = "Group:";
+            this.lblGroup.Location = new System.Drawing.Point(22, 15);
+            this.lblGroup.Name = "lblGroup";
+            this.lblGroup.Size = new System.Drawing.Size(37, 14);
+            this.lblGroup.TabIndex = 1;
+            this.lblGroup.Text = "Group:";
             // 
-            // AddItem
+            // frmAddItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -132,7 +132,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "AddItem";
+            this.Name = "frmAddItem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddItem";
             this.Load += new System.EventHandler(this.AddItem_Load);
@@ -147,11 +147,11 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.LabelControl lblGroup;
+        private DevExpress.XtraEditors.LabelControl lblIp;
         private DevExpress.XtraEditors.TextEdit txtDomain;
         private DevExpress.XtraEditors.TextEdit txtIp;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.LabelControl lblDomain;
         private DevExpress.XtraEditors.SimpleButton btnAdditem;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
         private System.Windows.Forms.ComboBox ddlGroup;

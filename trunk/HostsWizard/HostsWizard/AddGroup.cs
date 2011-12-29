@@ -10,11 +10,11 @@ using HostsWizard.Utilit;
 
 namespace HostsWizard
 {
-    public partial class AddSolution : Form
+    public partial class frmAddGroup : Form
     {
         public List<HostsItem> grouplist;
 
-        public AddSolution()
+        public frmAddGroup()
         {
             InitializeComponent();
         }
@@ -26,7 +26,8 @@ namespace HostsWizard
 
         private void AddGroup_Load(object sender, EventArgs e)
         {
-           
+            //多语言
+            (new LanguageUtility()).SetCurrentLanguage(this);
         }
 
         private void btnAddGroup_Click(object sender, EventArgs e)
@@ -41,10 +42,10 @@ namespace HostsWizard
             item.Group = string.Empty;
             item.ID = Guid.NewGuid();
 
-            ((HostWizardsMain)this.Owner).AddGroup(item);
+            ((frmMain)this.Owner).AddGroup(item);
             this.Close();
         }
-       
+
 
     }
 }

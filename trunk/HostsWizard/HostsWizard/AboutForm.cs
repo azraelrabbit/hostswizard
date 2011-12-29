@@ -6,14 +6,22 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using HostsWizard.Utilit;
 
 namespace HostsWizard
 {
-    public partial class AboutForm : Form
+    public partial class frmAbout : Form
     {
-        public AboutForm()
+        public frmAbout()
         {
             InitializeComponent();
+        }
+
+        private void frmAbout_Load(object sender, EventArgs e)
+        {
+            //多语言
+            //(new LanguageUtility()).SetCurrentLanguage("zh-CN",this);
+            (new LanguageUtility()).SetCurrentLanguage(this);
         }
     }
 }

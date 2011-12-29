@@ -1,6 +1,6 @@
 ﻿namespace HostsWizard
 {
-    partial class AddSolution
+    partial class frmAddGroup
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddSolution));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddGroup));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAddGroup = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.txtGroupName = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.lblGroup = new DevExpress.XtraEditors.LabelControl();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtGroupName.Properties)).BeginInit();
             this.SuspendLayout();
@@ -43,7 +43,7 @@
             this.panel1.Controls.Add(this.btnAddGroup);
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.txtGroupName);
-            this.panel1.Controls.Add(this.labelControl1);
+            this.panel1.Controls.Add(this.lblGroup);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -75,15 +75,15 @@
             this.txtGroupName.Size = new System.Drawing.Size(360, 21);
             this.txtGroupName.TabIndex = 6;
             // 
-            // labelControl1
+            // lblGroup
             // 
-            this.labelControl1.Location = new System.Drawing.Point(22, 15);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(37, 14);
-            this.labelControl1.TabIndex = 1;
-            this.labelControl1.Text = "Group:";
+            this.lblGroup.Location = new System.Drawing.Point(22, 15);
+            this.lblGroup.Name = "lblGroup";
+            this.lblGroup.Size = new System.Drawing.Size(37, 14);
+            this.lblGroup.TabIndex = 1;
+            this.lblGroup.Text = "Group:";
             // 
-            // AddSolution
+            // frmAddGroup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -92,9 +92,9 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "AddSolution";
+            this.Name = "frmAddGroup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "AddItem";
+            this.Text = "AddGroup";
             this.Load += new System.EventHandler(this.AddGroup_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -109,6 +109,6 @@
         private DevExpress.XtraEditors.TextEdit txtGroupName;
         private DevExpress.XtraEditors.SimpleButton btnAddGroup;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.LabelControl lblGroup;
     }
 }

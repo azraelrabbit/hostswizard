@@ -1,6 +1,6 @@
 ﻿namespace HostsWizard
 {
-    partial class HostWizardsMain
+    partial class frmMain
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HostWizardsMain));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.tlHostlist = new DevExpress.XtraTreeList.TreeList();
             this.clEnable = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
@@ -45,24 +45,27 @@
             this.btnFlushDns = new DevExpress.XtraEditors.SimpleButton();
             this.btnSaveApply = new DevExpress.XtraEditors.SimpleButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.createNewSolutionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveAndApplyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.refreshDNSCacheToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsMenuSaveSolution = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsMenuUpdateSolution = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportCurrentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportOthersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsMISolutions = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.miAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMOpenHosts = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMNewSolution = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmSaveAs = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMApply = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMRefreshDns = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMSaveSolution = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMBackupHosts = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMRestoreHosts = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMExportMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMExportCurrent = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMExportOther = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMImport = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMLanguage = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMzhCN = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMenUS = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMSolutions = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -301,162 +304,186 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.editToolStripMenuItem,
-            this.tsMISolutions,
-            this.helpToolStripMenuItem});
+            this.tsMFile,
+            this.tsMEdit,
+            this.tsMSolutions,
+            this.tsMHelp});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(907, 25);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // fileToolStripMenuItem
+            // tsMFile
             // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openToolStripMenuItem,
-            this.createNewSolutionToolStripMenuItem,
-            this.saveToolStripMenuItem,
-            this.saveAndApplyToolStripMenuItem,
-            this.refreshDNSCacheToolStripMenuItem,
-            this.tsMenuSaveSolution,
-            this.tsMenuUpdateSolution});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(39, 21);
-            this.fileToolStripMenuItem.Text = "File";
+            this.tsMFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsMOpenHosts,
+            this.tsMNewSolution,
+            this.tsmSaveAs,
+            this.tsMApply,
+            this.tsMRefreshDns,
+            this.tsMSaveSolution,
+            this.tsMExit});
+            this.tsMFile.Name = "tsMFile";
+            this.tsMFile.Size = new System.Drawing.Size(39, 21);
+            this.tsMFile.Text = "File";
             // 
-            // openToolStripMenuItem
+            // tsMOpenHosts
             // 
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
-            this.openToolStripMenuItem.Text = "Open";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            this.tsMOpenHosts.Name = "tsMOpenHosts";
+            this.tsMOpenHosts.Size = new System.Drawing.Size(234, 22);
+            this.tsMOpenHosts.Text = "Open System Hosts";
+            this.tsMOpenHosts.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
-            // createNewSolutionToolStripMenuItem
+            // tsMNewSolution
             // 
-            this.createNewSolutionToolStripMenuItem.Name = "createNewSolutionToolStripMenuItem";
-            this.createNewSolutionToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.createNewSolutionToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
-            this.createNewSolutionToolStripMenuItem.Text = "Create New Solution";
-            this.createNewSolutionToolStripMenuItem.Click += new System.EventHandler(this.createNewSolutionToolStripMenuItem_Click);
+            this.tsMNewSolution.Name = "tsMNewSolution";
+            this.tsMNewSolution.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.tsMNewSolution.Size = new System.Drawing.Size(234, 22);
+            this.tsMNewSolution.Text = "New Solution";
+            this.tsMNewSolution.Click += new System.EventHandler(this.createNewSolutionToolStripMenuItem_Click);
             // 
-            // saveToolStripMenuItem
+            // tsmSaveAs
             // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
-            this.saveToolStripMenuItem.Text = "Save As";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            this.tsmSaveAs.Name = "tsmSaveAs";
+            this.tsmSaveAs.Size = new System.Drawing.Size(234, 22);
+            this.tsmSaveAs.Text = "Save As";
+            this.tsmSaveAs.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
-            // saveAndApplyToolStripMenuItem
+            // tsMApply
             // 
-            this.saveAndApplyToolStripMenuItem.Name = "saveAndApplyToolStripMenuItem";
-            this.saveAndApplyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveAndApplyToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
-            this.saveAndApplyToolStripMenuItem.Text = "Save And Apply";
-            this.saveAndApplyToolStripMenuItem.Click += new System.EventHandler(this.saveAndApplyToolStripMenuItem_Click);
+            this.tsMApply.Name = "tsMApply";
+            this.tsMApply.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.tsMApply.Size = new System.Drawing.Size(234, 22);
+            this.tsMApply.Text = "Apply";
+            this.tsMApply.Click += new System.EventHandler(this.saveAndApplyToolStripMenuItem_Click);
             // 
-            // refreshDNSCacheToolStripMenuItem
+            // tsMRefreshDns
             // 
-            this.refreshDNSCacheToolStripMenuItem.Name = "refreshDNSCacheToolStripMenuItem";
-            this.refreshDNSCacheToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.refreshDNSCacheToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
-            this.refreshDNSCacheToolStripMenuItem.Text = "Refresh DNS Cache";
-            this.refreshDNSCacheToolStripMenuItem.Click += new System.EventHandler(this.refreshDNSCacheToolStripMenuItem_Click);
+            this.tsMRefreshDns.Name = "tsMRefreshDns";
+            this.tsMRefreshDns.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+            this.tsMRefreshDns.Size = new System.Drawing.Size(234, 22);
+            this.tsMRefreshDns.Text = "Refresh DNS Cache";
+            this.tsMRefreshDns.Click += new System.EventHandler(this.refreshDNSCacheToolStripMenuItem_Click);
             // 
-            // tsMenuSaveSolution
+            // tsMSaveSolution
             // 
-            this.tsMenuSaveSolution.Name = "tsMenuSaveSolution";
-            this.tsMenuSaveSolution.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S)));
-            this.tsMenuSaveSolution.Size = new System.Drawing.Size(242, 22);
-            this.tsMenuSaveSolution.Text = "Save New Solution";
-            this.tsMenuSaveSolution.Visible = false;
-            this.tsMenuSaveSolution.Click += new System.EventHandler(this.tsMenuSaveSolution_Click);
-            // 
-            // tsMenuUpdateSolution
-            // 
-            this.tsMenuUpdateSolution.Name = "tsMenuUpdateSolution";
-            this.tsMenuUpdateSolution.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            this.tsMSaveSolution.Name = "tsMSaveSolution";
+            this.tsMSaveSolution.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
-            this.tsMenuUpdateSolution.Size = new System.Drawing.Size(242, 22);
-            this.tsMenuUpdateSolution.Text = "Save Solution";
-            this.tsMenuUpdateSolution.Click += new System.EventHandler(this.tsMenuUpdateSolution_Click);
+            this.tsMSaveSolution.Size = new System.Drawing.Size(234, 22);
+            this.tsMSaveSolution.Text = "Save Solution";
+            this.tsMSaveSolution.Click += new System.EventHandler(this.tsMenuUpdateSolution_Click);
             // 
-            // editToolStripMenuItem
+            // tsMExit
             // 
-            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addToolStripMenuItem,
-            this.toolStripMenuItem2,
-            this.exportToolStripMenuItem,
-            this.importToolStripMenuItem});
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(42, 21);
-            this.editToolStripMenuItem.Text = "Edit";
+            this.tsMExit.Name = "tsMExit";
+            this.tsMExit.Size = new System.Drawing.Size(234, 22);
+            this.tsMExit.Text = "Exit";
+            this.tsMExit.Click += new System.EventHandler(this.tsMExit_Click);
             // 
-            // addToolStripMenuItem
+            // tsMEdit
             // 
-            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
-            this.addToolStripMenuItem.Text = "Create System Hosts Backup";
-            this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
+            this.tsMEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsMBackupHosts,
+            this.tsMRestoreHosts,
+            this.tsMExportMenu,
+            this.tsMImport,
+            this.tsMLanguage});
+            this.tsMEdit.Name = "tsMEdit";
+            this.tsMEdit.Size = new System.Drawing.Size(42, 21);
+            this.tsMEdit.Text = "Edit";
             // 
-            // toolStripMenuItem2
+            // tsMBackupHosts
             // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(243, 22);
-            this.toolStripMenuItem2.Text = "Restore System Hosts ";
+            this.tsMBackupHosts.Enabled = false;
+            this.tsMBackupHosts.Name = "tsMBackupHosts";
+            this.tsMBackupHosts.Size = new System.Drawing.Size(207, 22);
+            this.tsMBackupHosts.Text = "Backup System Hosts";
+            this.tsMBackupHosts.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
-            // exportToolStripMenuItem
+            // tsMRestoreHosts
             // 
-            this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exportCurrentToolStripMenuItem,
-            this.exportOthersToolStripMenuItem});
-            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
-            this.exportToolStripMenuItem.Text = "Export Solution ...";
-            this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
+            this.tsMRestoreHosts.Enabled = false;
+            this.tsMRestoreHosts.Name = "tsMRestoreHosts";
+            this.tsMRestoreHosts.Size = new System.Drawing.Size(207, 22);
+            this.tsMRestoreHosts.Text = "Restore System Hosts ";
             // 
-            // exportCurrentToolStripMenuItem
+            // tsMExportMenu
             // 
-            this.exportCurrentToolStripMenuItem.Name = "exportCurrentToolStripMenuItem";
-            this.exportCurrentToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.exportCurrentToolStripMenuItem.Text = "Export Current";
-            this.exportCurrentToolStripMenuItem.Click += new System.EventHandler(this.exportCurrentToolStripMenuItem_Click);
+            this.tsMExportMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsMExportCurrent,
+            this.tsMExportOther});
+            this.tsMExportMenu.Name = "tsMExportMenu";
+            this.tsMExportMenu.Size = new System.Drawing.Size(207, 22);
+            this.tsMExportMenu.Text = "Export Solution ...";
+            this.tsMExportMenu.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
             // 
-            // exportOthersToolStripMenuItem
+            // tsMExportCurrent
             // 
-            this.exportOthersToolStripMenuItem.Name = "exportOthersToolStripMenuItem";
-            this.exportOthersToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.exportOthersToolStripMenuItem.Text = "Export Others ...";
-            this.exportOthersToolStripMenuItem.Click += new System.EventHandler(this.exportOthersToolStripMenuItem_Click);
+            this.tsMExportCurrent.Name = "tsMExportCurrent";
+            this.tsMExportCurrent.Size = new System.Drawing.Size(170, 22);
+            this.tsMExportCurrent.Text = "Export Current";
+            this.tsMExportCurrent.Click += new System.EventHandler(this.exportCurrentToolStripMenuItem_Click);
             // 
-            // importToolStripMenuItem
+            // tsMExportOther
             // 
-            this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
-            this.importToolStripMenuItem.Text = "Import Solution ...";
-            this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
+            this.tsMExportOther.Name = "tsMExportOther";
+            this.tsMExportOther.Size = new System.Drawing.Size(170, 22);
+            this.tsMExportOther.Text = "Export Others ...";
+            this.tsMExportOther.Click += new System.EventHandler(this.exportOthersToolStripMenuItem_Click);
             // 
-            // tsMISolutions
+            // tsMImport
             // 
-            this.tsMISolutions.CheckOnClick = true;
-            this.tsMISolutions.Name = "tsMISolutions";
-            this.tsMISolutions.Size = new System.Drawing.Size(73, 21);
-            this.tsMISolutions.Text = "Solutions";
+            this.tsMImport.Name = "tsMImport";
+            this.tsMImport.Size = new System.Drawing.Size(207, 22);
+            this.tsMImport.Text = "Import Solution ...";
+            this.tsMImport.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
             // 
-            // helpToolStripMenuItem
+            // tsMLanguage
             // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.miAbout});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(47, 21);
-            this.helpToolStripMenuItem.Text = "Help";
+            this.tsMLanguage.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsMzhCN,
+            this.tsMenUS});
+            this.tsMLanguage.Name = "tsMLanguage";
+            this.tsMLanguage.Size = new System.Drawing.Size(207, 22);
+            this.tsMLanguage.Text = "Languages";
             // 
-            // miAbout
+            // tsMzhCN
             // 
-            this.miAbout.Name = "miAbout";
-            this.miAbout.Size = new System.Drawing.Size(111, 22);
-            this.miAbout.Text = "About";
-            this.miAbout.Click += new System.EventHandler(this.miAbout_Click);
+            this.tsMzhCN.Name = "tsMzhCN";
+            this.tsMzhCN.Size = new System.Drawing.Size(182, 22);
+            this.tsMzhCN.Text = "Chinese Simplified";
+            this.tsMzhCN.Click += new System.EventHandler(this.tsMzhCN_Click);
+            // 
+            // tsMenUS
+            // 
+            this.tsMenUS.Name = "tsMenUS";
+            this.tsMenUS.Size = new System.Drawing.Size(182, 22);
+            this.tsMenUS.Text = "English";
+            this.tsMenUS.Click += new System.EventHandler(this.tsMenUS_Click);
+            // 
+            // tsMSolutions
+            // 
+            this.tsMSolutions.CheckOnClick = true;
+            this.tsMSolutions.Name = "tsMSolutions";
+            this.tsMSolutions.Size = new System.Drawing.Size(73, 21);
+            this.tsMSolutions.Text = "Solutions";
+            // 
+            // tsMHelp
+            // 
+            this.tsMHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsMAbout});
+            this.tsMHelp.Name = "tsMHelp";
+            this.tsMHelp.Size = new System.Drawing.Size(47, 21);
+            this.tsMHelp.Text = "Help";
+            // 
+            // tsMAbout
+            // 
+            this.tsMAbout.Name = "tsMAbout";
+            this.tsMAbout.Size = new System.Drawing.Size(111, 22);
+            this.tsMAbout.Text = "About";
+            this.tsMAbout.Click += new System.EventHandler(this.miAbout_Click);
             // 
             // panel2
             // 
@@ -505,7 +532,7 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // HostWizardsMain
+            // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -515,8 +542,9 @@
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "HostWizardsMain";
+            this.Name = "frmMain";
             this.Text = "HostWizardsMain";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
             this.Load += new System.EventHandler(this.HostWizardsMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tlHostlist)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
@@ -544,12 +572,12 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn clDomain;
         private DevExpress.XtraTreeList.Columns.TreeListColumn clGroup;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem tsMFile;
+        private System.Windows.Forms.ToolStripMenuItem tsMOpenHosts;
+        private System.Windows.Forms.ToolStripMenuItem tsmSaveAs;
+        private System.Windows.Forms.ToolStripMenuItem tsMEdit;
+        private System.Windows.Forms.ToolStripMenuItem tsMBackupHosts;
+        private System.Windows.Forms.ToolStripMenuItem tsMRestoreHosts;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         private DevExpress.XtraEditors.SimpleButton btnSaveApply;
         private DevExpress.XtraEditors.SimpleButton btnFlushDns;
@@ -560,21 +588,24 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel tslblstatus;
         private System.Windows.Forms.ToolStripStatusLabel tslbl2;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem miAbout;
-        private System.Windows.Forms.ToolStripMenuItem saveAndApplyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem refreshDNSCacheToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tsMISolutions;
-        private System.Windows.Forms.ToolStripMenuItem tsMenuSaveSolution;
-        private System.Windows.Forms.ToolStripMenuItem tsMenuUpdateSolution;
-        private System.Windows.Forms.ToolStripMenuItem createNewSolutionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsMHelp;
+        private System.Windows.Forms.ToolStripMenuItem tsMAbout;
+        private System.Windows.Forms.ToolStripMenuItem tsMApply;
+        private System.Windows.Forms.ToolStripMenuItem tsMRefreshDns;
+        private System.Windows.Forms.ToolStripMenuItem tsMSolutions;
+        private System.Windows.Forms.ToolStripMenuItem tsMSaveSolution;
+        private System.Windows.Forms.ToolStripMenuItem tsMNewSolution;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem tsCDel;
-        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsMExportMenu;
+        private System.Windows.Forms.ToolStripMenuItem tsMImport;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.ToolStripMenuItem exportCurrentToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exportOthersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsMExportCurrent;
+        private System.Windows.Forms.ToolStripMenuItem tsMExportOther;
+        private System.Windows.Forms.ToolStripMenuItem tsMExit;
+        private System.Windows.Forms.ToolStripMenuItem tsMLanguage;
+        private System.Windows.Forms.ToolStripMenuItem tsMzhCN;
+        private System.Windows.Forms.ToolStripMenuItem tsMenUS;
     }
 }
