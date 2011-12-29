@@ -209,6 +209,7 @@ namespace HostsWizard.Utilit
                         gp.ParentID = Guid.Empty;
                         gp.Type = EnumItemType.GroupTag;
                         currentGroupID = gp.ID;
+                        currentGroupName = item.ToString();
                         temp.Add(gp);
                     }
                 }
