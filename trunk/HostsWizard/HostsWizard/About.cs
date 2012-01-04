@@ -18,7 +18,7 @@ namespace HostsWizard
 
         private void About_Load(object sender, EventArgs e)
         {
-            string strAbout = "Made by Rocky.zhang . ;)__\r\n Prohibit use in a server environment!\r\n";
+            string strAbout = "Made by Rocky.zhang . ;)__| Prohibit use in a server environment!|";
             strAbout += "Contact me if any problem: zhangjq@ourgame.com";
 
             // strAbout = "Rocky.zhang出品.必属精品!\r\n 禁止用于服务器环境!\r\n 如果有问题请联系: zhangjq@ourgame.com";
@@ -29,8 +29,8 @@ namespace HostsWizard
             {
                 strAbout = msg;
             }
-
-            this.richTextBox1.Text = strAbout;
+            //this.richTextBox1.Text = strAbout;
+            richTextBox1.Lines = strAbout.Split('|');
 
         }
 
