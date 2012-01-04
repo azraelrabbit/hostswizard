@@ -15,9 +15,9 @@ namespace HostsWizard.DL
         public int AddNewSolution(HostsProcesscer host)
         {
             byte[] hostsContent = SerializationHelper.GetBinaryFormatSerialize(host);
-                        
 
-            List<SQLiteParameter> paramList=new List<SQLiteParameter>();
+
+            List<SQLiteParameter> paramList = new List<SQLiteParameter>();
 
             SQLiteParameter paramId = new SQLiteParameter("@solutionid", System.Data.DbType.Guid);
             paramId.Value = host.SolutionID;
@@ -34,7 +34,7 @@ namespace HostsWizard.DL
 
             string sql = "insert into Solution values(@solutionid,@solutionname,@solutionbody)";
 
-            int ret=SqliteHelper2.ExecuteNonQuery(sql, paramList.ToArray());
+            int ret = SqliteHelper2.ExecuteNonQuery(sql, paramList.ToArray());
             return ret;
         }
 
@@ -42,7 +42,7 @@ namespace HostsWizard.DL
         {
             byte[] hostsContent = SerializationHelper.GetBinaryFormatSerialize(host);
 
-            var strhostContent = FileHelper.GetBytesString(hostsContent);
+            //var strhostContent = FileHelper.GetBytesString(hostsContent);
 
             List<SQLiteParameter> paramList = new List<SQLiteParameter>();
 
@@ -53,7 +53,7 @@ namespace HostsWizard.DL
             paramName.Value = host.SolutionName;
 
             SQLiteParameter paramBody = new SQLiteParameter("@solutionbody", System.Data.DbType.Object);
-            paramBody.Value = strhostContent;
+            paramBody.Value = hostsContent;
 
             paramList.Add(paramId);
             paramList.Add(paramName);
@@ -108,8 +108,8 @@ namespace HostsWizard.DL
             List<HostsProcesscer> hostlist = new List<HostsProcesscer>();
 
             var datalist = SqliteHelper2.ExecuteDataSet(sql, null);
-            
-            if (datalist.Tables.Count > 0 && datalist.Tables[0]!=null)
+
+            if (datalist.Tables.Count > 0 && datalist.Tables[0] != null)
             {
                 foreach (DataRow dr in datalist.Tables[0].Rows)
                 {
@@ -136,7 +136,7 @@ namespace HostsWizard.DL
             paramList.Add(paramId);
 
             var data = SqliteHelper2.ExecuteScalar(sql, paramList.ToArray());
-            if (data!=null)
+            if (data != null)
             {
                 HostsProcesscer host = new HostsProcesscer();
                 var hostcontent = (byte[])data;
