@@ -396,7 +396,6 @@
             // 
             // tsMBackupHosts
             // 
-            this.tsMBackupHosts.Enabled = false;
             this.tsMBackupHosts.Name = "tsMBackupHosts";
             this.tsMBackupHosts.Size = new System.Drawing.Size(207, 22);
             this.tsMBackupHosts.Text = "Backup System Hosts";
