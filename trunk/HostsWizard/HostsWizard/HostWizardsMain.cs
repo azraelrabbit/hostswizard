@@ -438,7 +438,7 @@ namespace HostsWizard
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {//备份系统hosts
-
+            FileHelper.BackupSystemHost();
         }
 
         private void tsCDel_Click(object sender, EventArgs e)

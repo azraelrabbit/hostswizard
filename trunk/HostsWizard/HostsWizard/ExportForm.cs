@@ -55,12 +55,12 @@ namespace HostsWizard
 
             //得到当前行的RowHandle   
             DataRow myDataRow = gridView1.GetDataRow(gridView1.FocusedRowHandle);
-            //去出你想要的字段   
+            //取出你想要的字段   
             Guid sid = (Guid)myDataRow["ID"];
             var item = solutionList.FirstOrDefault(p => p.SolutionID == sid);
             if (item != null)
             {
-
+                ExportSolutionFile(item);
             }
         }
 
