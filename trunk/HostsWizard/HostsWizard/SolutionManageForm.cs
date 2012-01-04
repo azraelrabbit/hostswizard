@@ -26,9 +26,9 @@ namespace HostsWizard
             //多语言
             (new LanguageUtility()).SetCurrentLanguage(this);
 
-            this.saveFileDialog1.Filter = "HostsWizards Solution Files|*.hws";
-            saveFileDialog1.DefaultExt = ".hws";
-            saveFileDialog1.AddExtension = true;
+            //this.saveFileDialog1.Filter = "HostsWizards Solution Files|*.hws";
+            //saveFileDialog1.DefaultExt = ".hws";
+            //saveFileDialog1.AddExtension = true;
 
             //saveFileDialog1.Filter += "|Excel Files|*.xls;*.xlsx";
             //saveFileDialog1.Filter += "|Word Files|*.doc;*.docx";
@@ -49,17 +49,26 @@ namespace HostsWizard
 
         private void btnExport_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            //导出
-
-            //得到当前行的RowHandle   
+            // 删除:
+            ////得到当前行的RowHandle   
             DataRow myDataRow = gridView1.GetDataRow(gridView1.FocusedRowHandle);
-            //去出你想要的字段   
+            ////去出你想要的字段   
             Guid sid = (Guid)myDataRow["ID"];
-            var item = solutionList.FirstOrDefault(p => p.SolutionID == sid);
-            if (item != null)
-            {
+            DL.SolutionDL dl = new SolutionDL();
+            dl.DeleteSolution(sid);
+            LoadSolutionList();
+            BindSolutionList();
+            ////导出
 
-            }
+            ////得到当前行的RowHandle   
+            //DataRow myDataRow = gridView1.GetDataRow(gridView1.FocusedRowHandle);
+            ////去出你想要的字段   
+            //Guid sid = (Guid)myDataRow["ID"];
+            //var item = solutionList.FirstOrDefault(p => p.SolutionID == sid);
+            //if (item != null)
+            //{
+
+            //}
         }
 
         private void ExportSolutionFile(HostsProcesscer host)
