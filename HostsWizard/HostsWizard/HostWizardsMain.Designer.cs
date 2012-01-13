@@ -40,6 +40,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsCDel = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnAddItems = new DevExpress.XtraEditors.SimpleButton();
             this.btnAddGroup = new DevExpress.XtraEditors.SimpleButton();
             this.btnAddItem = new DevExpress.XtraEditors.SimpleButton();
             this.btnFlushDns = new DevExpress.XtraEditors.SimpleButton();
@@ -63,6 +64,8 @@
             this.tsMLanguage = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMzhCN = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMenUS = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmSolotionMgr = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMSolutions = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMAbout = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,6 +76,19 @@
             this.tslbl2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar3 = new DevExpress.XtraBars.Bar();
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.barMenuDelete = new DevExpress.XtraBars.BarButtonItem();
+            this.barMuDeleteGroup = new DevExpress.XtraBars.BarButtonItem();
+            this.barMuAddItems = new DevExpress.XtraBars.BarButtonItem();
+            this.barMuAdditem = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.popUpMuChild = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.popupMuGroup = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.tlHostlist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -81,6 +97,9 @@
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popUpMuChild)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMuGroup)).BeginInit();
             this.SuspendLayout();
             // 
             // tlHostlist
@@ -156,7 +175,6 @@
             this.clDomain,
             this.clGroup,
             this.clType});
-            this.tlHostlist.ContextMenuStrip = this.contextMenuStrip1;
             this.tlHostlist.CustomizationFormBounds = new System.Drawing.Rectangle(742, 532, 216, 187);
             this.tlHostlist.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlHostlist.Location = new System.Drawing.Point(0, 0);
@@ -169,10 +187,11 @@
             this.tlHostlist.Padding = new System.Windows.Forms.Padding(0, 0, 45, 0);
             this.tlHostlist.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1});
-            this.tlHostlist.Size = new System.Drawing.Size(907, 461);
+            this.tlHostlist.Size = new System.Drawing.Size(907, 438);
             this.tlHostlist.TabIndex = 0;
             this.tlHostlist.AfterCheckNode += new DevExpress.XtraTreeList.NodeEventHandler(this.tlHostlist_AfterCheckNode);
             this.tlHostlist.CellValueChanged += new DevExpress.XtraTreeList.CellValueChangedEventHandler(this.tlHostlist_CellValueChanged);
+            this.tlHostlist.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tlHostlist_MouseDown);
             // 
             // clEnable
             // 
@@ -248,6 +267,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnAddItems);
             this.panel1.Controls.Add(this.btnAddGroup);
             this.panel1.Controls.Add(this.btnAddItem);
             this.panel1.Controls.Add(this.btnFlushDns);
@@ -259,9 +279,19 @@
             this.panel1.Size = new System.Drawing.Size(907, 60);
             this.panel1.TabIndex = 1;
             // 
+            // btnAddItems
+            // 
+            this.btnAddItems.Location = new System.Drawing.Point(124, 25);
+            this.btnAddItems.Name = "btnAddItems";
+            this.btnAddItems.Padding = new System.Windows.Forms.Padding(0, 5, 10, 0);
+            this.btnAddItems.Size = new System.Drawing.Size(102, 32);
+            this.btnAddItems.TabIndex = 5;
+            this.btnAddItems.Text = "Add Hosts Items";
+            this.btnAddItems.Click += new System.EventHandler(this.btnAddItems_Click);
+            // 
             // btnAddGroup
             // 
-            this.btnAddGroup.Location = new System.Drawing.Point(146, 25);
+            this.btnAddGroup.Location = new System.Drawing.Point(236, 25);
             this.btnAddGroup.Name = "btnAddGroup";
             this.btnAddGroup.Padding = new System.Windows.Forms.Padding(0, 5, 10, 0);
             this.btnAddGroup.Size = new System.Drawing.Size(102, 32);
@@ -369,7 +399,7 @@
             // tsMSaveSolution
             // 
             this.tsMSaveSolution.Name = "tsMSaveSolution";
-            this.tsMSaveSolution.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            this.tsMSaveSolution.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
             | System.Windows.Forms.Keys.S)));
             this.tsMSaveSolution.Size = new System.Drawing.Size(234, 22);
             this.tsMSaveSolution.Text = "Save Solution";
@@ -389,7 +419,9 @@
             this.tsMRestoreHosts,
             this.tsMExportMenu,
             this.tsMImport,
-            this.tsMLanguage});
+            this.tsMLanguage,
+            this.tsmSolotionMgr,
+            this.toolStripMenuItem2});
             this.tsMEdit.Name = "tsMEdit";
             this.tsMEdit.Size = new System.Drawing.Size(42, 21);
             this.tsMEdit.Text = "Edit";
@@ -462,6 +494,19 @@
             this.tsMenUS.Text = "English";
             this.tsMenUS.Click += new System.EventHandler(this.tsMenUS_Click);
             // 
+            // tsmSolotionMgr
+            // 
+            this.tsmSolotionMgr.Name = "tsmSolotionMgr";
+            this.tsmSolotionMgr.Size = new System.Drawing.Size(207, 22);
+            this.tsmSolotionMgr.Text = "Solution Manager...";
+            this.tsmSolotionMgr.Click += new System.EventHandler(this.tsmSolotionMgr_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(207, 22);
+            this.toolStripMenuItem2.Text = " ";
+            // 
             // tsMSolutions
             // 
             this.tsMSolutions.CheckOnClick = true;
@@ -493,14 +538,14 @@
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 24);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 24);
-            this.panel2.Size = new System.Drawing.Size(907, 485);
+            this.panel2.Size = new System.Drawing.Size(907, 462);
             this.panel2.TabIndex = 2;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.statusStrip1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 522);
+            this.panel3.Location = new System.Drawing.Point(0, 499);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(907, 23);
             this.panel3.TabIndex = 3;
@@ -531,6 +576,115 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // barManager1
+            // 
+            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
+            this.bar3});
+            this.barManager1.DockControls.Add(this.barDockControlTop);
+            this.barManager1.DockControls.Add(this.barDockControlBottom);
+            this.barManager1.DockControls.Add(this.barDockControlLeft);
+            this.barManager1.DockControls.Add(this.barDockControlRight);
+            this.barManager1.Form = this;
+            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.barMenuDelete,
+            this.barMuDeleteGroup,
+            this.barMuAddItems,
+            this.barMuAdditem,
+            this.barButtonItem2});
+            this.barManager1.MaxItemId = 5;
+            this.barManager1.StatusBar = this.bar3;
+            // 
+            // bar3
+            // 
+            this.bar3.BarName = "Status bar";
+            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
+            this.bar3.DockCol = 0;
+            this.bar3.DockRow = 0;
+            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
+            this.bar3.OptionsBar.AllowQuickCustomization = false;
+            this.bar3.OptionsBar.DrawDragBorder = false;
+            this.bar3.OptionsBar.UseWholeRow = true;
+            this.bar3.Text = "Status bar";
+            this.bar3.Visible = false;
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(907, 0);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 522);
+            this.barDockControlBottom.Size = new System.Drawing.Size(907, 23);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 522);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(907, 0);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 522);
+            // 
+            // barMenuDelete
+            // 
+            this.barMenuDelete.Caption = "Delete";
+            this.barMenuDelete.Id = 0;
+            this.barMenuDelete.Name = "barMenuDelete";
+            this.barMenuDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barMenuDelete_ItemClick);
+            // 
+            // barMuDeleteGroup
+            // 
+            this.barMuDeleteGroup.Caption = "Delete";
+            this.barMuDeleteGroup.Id = 1;
+            this.barMuDeleteGroup.Name = "barMuDeleteGroup";
+            this.barMuDeleteGroup.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barMuDeleteGroup_ItemClick);
+            // 
+            // barMuAddItems
+            // 
+            this.barMuAddItems.Caption = "Add Items";
+            this.barMuAddItems.Id = 2;
+            this.barMuAddItems.Name = "barMuAddItems";
+            this.barMuAddItems.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barMuAddItems_ItemClick);
+            // 
+            // barMuAdditem
+            // 
+            this.barMuAdditem.Caption = "Add Item";
+            this.barMuAdditem.Id = 3;
+            this.barMuAdditem.Name = "barMuAdditem";
+            this.barMuAdditem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "barButtonItem2";
+            this.barButtonItem2.Id = 4;
+            this.barButtonItem2.Name = "barButtonItem2";
+            // 
+            // popUpMuChild
+            // 
+            this.popUpMuChild.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barMenuDelete)});
+            this.popUpMuChild.Manager = this.barManager1;
+            this.popUpMuChild.Name = "popUpMuChild";
+            // 
+            // popupMuGroup
+            // 
+            this.popupMuGroup.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barMuDeleteGroup),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barMuAddItems),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Caption, this.barMuAdditem, "Add Item")});
+            this.popupMuGroup.Manager = this.barManager1;
+            this.popupMuGroup.Name = "popupMuGroup";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -539,6 +693,10 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.barDockControlLeft);
+            this.Controls.Add(this.barDockControlRight);
+            this.Controls.Add(this.barDockControlBottom);
+            this.Controls.Add(this.barDockControlTop);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMain";
@@ -557,6 +715,9 @@
             this.panel3.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popUpMuChild)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMuGroup)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -606,5 +767,21 @@
         private System.Windows.Forms.ToolStripMenuItem tsMLanguage;
         private System.Windows.Forms.ToolStripMenuItem tsMzhCN;
         private System.Windows.Forms.ToolStripMenuItem tsMenUS;
+        private DevExpress.XtraEditors.SimpleButton btnAddItems;
+        private System.Windows.Forms.ToolStripMenuItem tsmSolotionMgr;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private DevExpress.XtraBars.BarManager barManager1;
+        private DevExpress.XtraBars.Bar bar3;
+        private DevExpress.XtraBars.BarDockControl barDockControlTop;
+        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+        private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private DevExpress.XtraBars.PopupMenu popUpMuChild;
+        private DevExpress.XtraBars.BarButtonItem barMenuDelete;
+        private DevExpress.XtraBars.BarButtonItem barMuDeleteGroup;
+        private DevExpress.XtraBars.BarButtonItem barMuAddItems;
+        private DevExpress.XtraBars.BarButtonItem barMuAdditem;
+        private DevExpress.XtraBars.PopupMenu popupMuGroup;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
     }
 }

@@ -255,4 +255,37 @@
   <data name="frmMain_tsMzhCN" xml:space="preserve">
     <value>简体中文</value>
   </data>
+  <data name="frmMain_btnAddItems" xml:space="preserve">
+    <value>批量添加项</value>
+  </data>
+  <data name="AddItems_xtpAddbyLists" xml:space="preserve">
+    <value>通过列表添加</value>
+  </data>
+  <data name="AddItems_xtpAddbyText" xml:space="preserve">
+    <value>通过文本添加</value>
+  </data>
+  <data name="AddItems" xml:space="preserve">
+    <value>批量添加项</value>
+  </data>
+  <data name="frmMain_tsmSolotionMgr" xml:space="preserve">
+    <value>方案管理</value>
+  </data>
+  <data name="SolutionManageForm" xml:space="preserve">
+    <value>方案管理</value>
+  </data>
+  <data name="SolutionManageForm_btnBack" xml:space="preserve">
+    <value>返回</value>
+  </data>
+  <data name="frmMain_barMenuDelete" xml:space="preserve">
+    <value>删除项</value>
+  </data>
+  <data name="frmMain_barMuAdditem" xml:space="preserve">
+    <value>添加项</value>
+  </data>
+  <data name="frmMain_barMuAddItems" xml:space="preserve">
+    <value>批量添加项</value>
+  </data>
+  <data name="frmMain_barMuDeleteGroup" xml:space="preserve">
+    <value>删除分组</value>
+  </data>
 </root>

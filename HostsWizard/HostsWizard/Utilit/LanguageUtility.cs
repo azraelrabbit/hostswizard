@@ -6,6 +6,7 @@ using System.Resources;
 using System.Threading;
 using System.Globalization;
 using System.Windows.Forms;
+using System.ComponentModel;
 
 namespace HostsWizard.Utilit
 {
@@ -37,6 +38,7 @@ namespace HostsWizard.Utilit
             var lang = AppConfigHelper.GetAppConfig("Language");
             Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(lang);
             this.SetLanguage(form);
+
 
         }
 
@@ -109,6 +111,14 @@ namespace HostsWizard.Utilit
                         if (((MenuStrip)item).Items.Count > 0)
                         {
                             ForeachMenu(((MenuStrip)item).Items);
+                        }
+                    }
+                    else if (item.GetType() == typeof(DevExpress.XtraBars.BarButtonItem))
+                    {
+                        var tst = getMsg(formName + item.Name);
+                        if (!string.IsNullOrEmpty(tst))
+                        {
+                            item.Text = tst;
                         }
                     }
                 }
