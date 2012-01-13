@@ -13,6 +13,7 @@ namespace HostsWizard
     public partial class frmAddItem : Form
     {
         public HostsProcesscer hosts;
+        public List<HostsItem> hostItemList;
 
         public frmAddItem()
         {
@@ -49,7 +50,7 @@ namespace HostsWizard
             (new LanguageUtility()).SetCurrentLanguage(this);
 
             //绑定group
-            var group = hosts.fullContent.Where(p => p.Type == EnumItemType.GroupTag).ToList();
+            var group = hostItemList.Where(p => p.Type == EnumItemType.GroupTag).ToList();
             ddlGroup.DataSource = group;
             ddlGroup.DisplayMember = "IP";
             ddlGroup.ValueMember = "ID";

@@ -96,7 +96,7 @@ namespace HostsWizard.DL
 
             paramList.Add(paramId);
 
-            string sql = "delete Solution where [SolutionID]=@solutionid ";
+            string sql = "delete from Solution where [SolutionID]=@solutionid ";
 
             return SqliteHelper2.ExecuteNonQuery(sql, paramList.ToArray());
         }

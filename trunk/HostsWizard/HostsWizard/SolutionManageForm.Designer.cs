@@ -91,8 +91,7 @@
             serializableAppearanceObject1.Options.UseTextOptions = true;
             serializableAppearanceObject1.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.btnExport.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Delete", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1,
-                null, null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Delete", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, null, null, null, true)});
             this.btnExport.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.btnExport.Name = "btnExport";
             this.btnExport.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
@@ -100,7 +99,7 @@
             // 
             // clID
             // 
-            this.clID.Caption = "gridColumn1";
+            this.clID.Caption = "ID";
             this.clID.FieldName = "ID";
             this.clID.Name = "clID";
             // 
@@ -123,7 +122,7 @@
             this.btnBack.Text = "Back";
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // frmExportForm
+            // SolutionManageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -134,7 +133,9 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SolutionManageForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "SolutionManageForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SolutionManageForm_FormClosing);
             this.Load += new System.EventHandler(this.SolutionManageForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();

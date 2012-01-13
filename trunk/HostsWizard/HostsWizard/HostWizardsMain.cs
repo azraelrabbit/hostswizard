@@ -10,6 +10,7 @@ using HostsWizard.Utilit;
 using DevExpress.XtraTreeList.Nodes;
 using HostsWizard.Helpers;
 using HostsWizard.DL;
+using DevExpress.XtraTreeList;
 
 namespace HostsWizard
 {
@@ -61,6 +62,12 @@ namespace HostsWizard
         }
 
 
+        public void ReloadSolution()
+        {
+            //初始化方案列表
+            LoadSolutionList();
+            InitSolutionMenuItems();
+        }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -98,6 +105,14 @@ namespace HostsWizard
         {
             host.fullContent.Add(item);
             SetStatusText("成功添加一条Hosts!");
+            RefreshTreeList();
+
+        }
+
+        public void AddItems(List<HostsItem> items)
+        {//批量添加item
+            host.fullContent.AddRange(items);
+            SetStatusText("成功添加" + items.Count + " 条 Hosts!");
             RefreshTreeList();
 
         }
@@ -271,7 +286,7 @@ namespace HostsWizard
                 MessageBox.Show("未加载任何Hosts信息!");
             }
             frmAddItem additemForm = new frmAddItem();
-            additemForm.hosts = host;
+            additemForm.hostItemList = host.fullContent;
             additemForm.ShowDialog(this);
         }
 
@@ -443,15 +458,31 @@ namespace HostsWizard
 
         private void tsCDel_Click(object sender, EventArgs e)
         {
+            // DeleteItem();
+        }
+
+        private void DeleteItem(HostsItem item)
+        {
             string delMsg = "删除选中项?";
             DialogResult dr = MessageBox.Show(delMsg, tsCDel.Text, MessageBoxButtons.OKCancel);
             if (dr == DialogResult.OK)
             {
-                TreeListNode tln = (TreeListNode)sender;
-                Guid sid = (Guid)tln["ID"];
-                host.fullContent.RemoveAll(p => p.ID == sid);
+                host.fullContent.Remove(item);
                 RefreshTreeList();
                 SetStatusText("已删除项!");
+            }
+        }
+
+        private void DeleteGroup(HostsItem item)
+        {
+            string delMsg = "删除选中分组?此操作将删除分组及其所有子项!";
+            DialogResult dr = MessageBox.Show(delMsg, tsCDel.Text, MessageBoxButtons.OKCancel);
+            if (dr == DialogResult.OK)
+            {
+                host.fullContent.Remove(item);
+                host.fullContent.RemoveAll(p => p.ParentID == item.ID);
+                RefreshTreeList();
+                SetStatusText("已删除分组!");
             }
         }
 
@@ -566,6 +597,96 @@ namespace HostsWizard
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void tsmSolotionMgr_Click(object sender, EventArgs e)
+        {//方案管理
+            SolutionManageForm smf = new SolutionManageForm();
+            smf.ShowDialog(this);
+        }
+
+        private void btnAddItems_Click(object sender, EventArgs e)
+        {//批量添加
+            if (host == null)
+            {
+                MessageBox.Show("未加载任何Hosts信息!");
+            }
+            //frmAddItem additemForm = new frmAddItem();
+            //additemForm.hosts = host;
+            //additemForm.ShowDialog(this);
+
+            AddItems additems = new AddItems();
+            additems.hostItemList = host.fullContent;
+            additems.ShowDialog(this);
+        }
+
+        private void tlHostlist_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {//右键弹出菜单
+                tlHostlist.ContextMenuStrip = null;
+                TreeListHitInfo hInfo = tlHostlist.CalcHitInfo(new Point(e.X, e.Y));
+                TreeListNode node = hInfo.Node;
+                tlHostlist.FocusedNode = node;
+                if (node != null)
+                {
+                    //tlHostlist.ContextMenuStrip = popUpMuChild;
+                    if (((EnumItemType)node["Type"]) == EnumItemType.GroupTag)
+                    {//分组
+                        barManager1.SetPopupContextMenu(tlHostlist, popupMuGroup);
+                    }
+                    else
+                    {//普通项
+                        barManager1.SetPopupContextMenu(tlHostlist, popUpMuChild);
+                    }
+                }
+            }
+        }
+
+        private void barMenuDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {//删除子项
+            var node = tlHostlist.FocusedNode;
+            var id = (Guid)node["ID"];
+            var item = host.fullContent.FirstOrDefault(p => p.ID == id);
+            DeleteItem(item);
+        }
+
+        private void barMuAddItems_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {//给当前选中组,批量添加项
+            var node = tlHostlist.FocusedNode;
+            var id = (Guid)node["ID"];
+            var item = host.fullContent.FirstOrDefault(p => p.ID == id);
+
+            if (host == null)
+            {
+                MessageBox.Show("未加载任何Hosts信息!");
+            }
+            //frmAddItem additemForm = new frmAddItem();
+            //additemForm.hosts = host;
+            //additemForm.ShowDialog(this);
+
+            AddItems additems = new AddItems();
+            additems.hostItemList = new List<HostsItem>() { item };
+            additems.ShowDialog(this);
+        }
+
+        private void barMuDeleteGroup_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {//删除分组
+            var node = tlHostlist.FocusedNode;
+            var id = (Guid)node["ID"];
+            var item = host.fullContent.FirstOrDefault(p => p.ID == id);
+            DeleteGroup(item);
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {//给当前分组单条添加host
+            var node = tlHostlist.FocusedNode;
+            var id = (Guid)node["ID"];
+            var item = host.fullContent.FirstOrDefault(p => p.ID == id);
+
+            frmAddItem additem = new frmAddItem();
+            additem.hostItemList = new List<HostsItem>() { item };
+            additem.Show(this);
         }
 
     }
