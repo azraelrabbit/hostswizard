@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraTreeList.StyleFormatConditions.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraTreeList.StyleFormatConditions.StyleFormatCondition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
+            this.clType = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.clGroup = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.tlHostlist = new DevExpress.XtraTreeList.TreeList();
             this.clEnable = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.clIP = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.clDomain = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.clGroup = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.clType = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsCDel = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -102,6 +103,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMuGroup)).BeginInit();
             this.SuspendLayout();
             // 
+            // clType
+            // 
+            this.clType.Caption = "Type";
+            this.clType.FieldName = "Type";
+            this.clType.Name = "clType";
+            this.clType.Visible = true;
+            this.clType.VisibleIndex = 4;
+            this.clType.Width = 82;
+            // 
+            // clGroup
+            // 
+            this.clGroup.Caption = "Group";
+            this.clGroup.FieldName = "Group";
+            this.clGroup.Name = "clGroup";
+            this.clGroup.Visible = true;
+            this.clGroup.VisibleIndex = 3;
+            this.clGroup.Width = 164;
+            // 
             // tlHostlist
             // 
             this.tlHostlist.Appearance.Empty.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(244)))), ((int)(((byte)(232)))));
@@ -129,7 +148,7 @@
             this.tlHostlist.Appearance.GroupButton.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(204)))), ((int)(((byte)(124)))));
             this.tlHostlist.Appearance.GroupButton.Options.UseBackColor = true;
             this.tlHostlist.Appearance.GroupButton.Options.UseBorderColor = true;
-            this.tlHostlist.Appearance.GroupFooter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(204)))), ((int)(((byte)(124)))));
+            this.tlHostlist.Appearance.GroupFooter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.tlHostlist.Appearance.GroupFooter.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(204)))), ((int)(((byte)(124)))));
             this.tlHostlist.Appearance.GroupFooter.ForeColor = System.Drawing.Color.Black;
             this.tlHostlist.Appearance.GroupFooter.Options.UseBackColor = true;
@@ -177,6 +196,19 @@
             this.clType});
             this.tlHostlist.CustomizationFormBounds = new System.Drawing.Rectangle(742, 532, 216, 187);
             this.tlHostlist.Dock = System.Windows.Forms.DockStyle.Fill;
+            styleFormatCondition1.Appearance.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            styleFormatCondition1.Appearance.BackColor2 = System.Drawing.SystemColors.ActiveCaption;
+            styleFormatCondition1.Appearance.BorderColor = System.Drawing.Color.Navy;
+            styleFormatCondition1.Appearance.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Bold);
+            styleFormatCondition1.Appearance.Options.UseBackColor = true;
+            styleFormatCondition1.Appearance.Options.UseBorderColor = true;
+            styleFormatCondition1.Appearance.Options.UseFont = true;
+            styleFormatCondition1.ApplyToRow = true;
+            styleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
+            styleFormatCondition1.Expression = "IsNullOrEmpty([Group])";
+            styleFormatCondition1.Value1 = "";
+            this.tlHostlist.FormatConditions.AddRange(new DevExpress.XtraTreeList.StyleFormatConditions.StyleFormatCondition[] {
+            styleFormatCondition1});
             this.tlHostlist.Location = new System.Drawing.Point(0, 0);
             this.tlHostlist.Margin = new System.Windows.Forms.Padding(3, 3, 21, 3);
             this.tlHostlist.Name = "tlHostlist";
@@ -187,7 +219,7 @@
             this.tlHostlist.Padding = new System.Windows.Forms.Padding(0, 0, 45, 0);
             this.tlHostlist.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1});
-            this.tlHostlist.Size = new System.Drawing.Size(907, 438);
+            this.tlHostlist.Size = new System.Drawing.Size(907, 434);
             this.tlHostlist.TabIndex = 0;
             this.tlHostlist.AfterCheckNode += new DevExpress.XtraTreeList.NodeEventHandler(this.tlHostlist_AfterCheckNode);
             this.tlHostlist.CellValueChanged += new DevExpress.XtraTreeList.CellValueChangedEventHandler(this.tlHostlist_CellValueChanged);
@@ -232,24 +264,6 @@
             this.clDomain.Visible = true;
             this.clDomain.VisibleIndex = 2;
             this.clDomain.Width = 189;
-            // 
-            // clGroup
-            // 
-            this.clGroup.Caption = "Group";
-            this.clGroup.FieldName = "Group";
-            this.clGroup.Name = "clGroup";
-            this.clGroup.Visible = true;
-            this.clGroup.VisibleIndex = 3;
-            this.clGroup.Width = 164;
-            // 
-            // clType
-            // 
-            this.clType.Caption = "Type";
-            this.clType.FieldName = "Type";
-            this.clType.Name = "clType";
-            this.clType.Visible = true;
-            this.clType.VisibleIndex = 4;
-            this.clType.Width = 82;
             // 
             // contextMenuStrip1
             // 
@@ -399,7 +413,7 @@
             // tsMSaveSolution
             // 
             this.tsMSaveSolution.Name = "tsMSaveSolution";
-            this.tsMSaveSolution.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
+            this.tsMSaveSolution.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
             this.tsMSaveSolution.Size = new System.Drawing.Size(234, 22);
             this.tsMSaveSolution.Text = "Save Solution";
@@ -538,14 +552,14 @@
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 24);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 24);
-            this.panel2.Size = new System.Drawing.Size(907, 462);
+            this.panel2.Size = new System.Drawing.Size(907, 458);
             this.panel2.TabIndex = 2;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.statusStrip1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 499);
+            this.panel3.Location = new System.Drawing.Point(0, 495);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(907, 23);
             this.panel3.TabIndex = 3;
@@ -618,22 +632,22 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 522);
-            this.barDockControlBottom.Size = new System.Drawing.Size(907, 23);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 518);
+            this.barDockControlBottom.Size = new System.Drawing.Size(907, 27);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 522);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 518);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(907, 0);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 522);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 518);
             // 
             // barMenuDelete
             // 
