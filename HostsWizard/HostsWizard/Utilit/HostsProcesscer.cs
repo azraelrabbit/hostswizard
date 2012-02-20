@@ -82,10 +82,10 @@ namespace HostsWizard.Utilit
                     Guid oriID = Guid.NewGuid();
                     if (arry.Length > 1)
                     {
-                        Guid.TryParse(arry[1], out oriID);
+                        Guid.TryParse(arry[1].Trim(), out oriID);
                     }
                     groupParent.ID = oriID;
-                    groupParent.IP = arry[0];
+                    groupParent.IP = arry[0].Trim();
                     groupParent.Type = EnumItemType.GroupTag;
                 }
                 else if (item.Length > 3 && item.Substring(0, 3) == "###")
@@ -213,11 +213,11 @@ namespace HostsWizard.Utilit
                         Guid grpID = Guid.NewGuid();
                         if (arry.Length > 1)
                         {
-                            Guid.TryParse(arry[1], out grpID);
+                            Guid.TryParse(arry[1].Trim(), out grpID);
                         }
 
                         gp.ID = grpID;//组ID
-                        gp.IP = arry[0];//组名
+                        gp.IP = arry[0].Trim();//组名
                         gp.ParentID = Guid.Empty;
                         gp.Type = EnumItemType.GroupTag;
                         currentGroupID = gp.ID;
