@@ -79,13 +79,14 @@ namespace HostsWizard.Utilit
                 if (item.Length > 4 && item.Substring(0, 4) == "####")
                 {
                     var arry = item.Split(new string[] { "|" }, StringSplitOptions.RemoveEmptyEntries);
+                    string groupName = arry[0].Trim();
                     Guid oriID = Guid.NewGuid();
                     if (arry.Length > 1)
                     {
                         Guid.TryParse(arry[1].Trim(), out oriID);
                     }
                     groupParent.ID = oriID;
-                    groupParent.IP = arry[0].Trim();
+                    groupParent.IP = groupName;
                     groupParent.Type = EnumItemType.GroupTag;
                 }
                 else if (item.Length > 3 && item.Substring(0, 3) == "###")
@@ -210,6 +211,7 @@ namespace HostsWizard.Utilit
                     {
                         HostsItem gp = new HostsItem();
                         var arry = item.Split(new string[] { "|" }, StringSplitOptions.RemoveEmptyEntries);
+                        string groupName = arry[0].Trim();
                         Guid grpID = Guid.NewGuid();
                         if (arry.Length > 1)
                         {
@@ -217,11 +219,11 @@ namespace HostsWizard.Utilit
                         }
 
                         gp.ID = grpID;//组ID
-                        gp.IP = arry[0].Trim();//组名
+                        gp.IP = groupName;//组名
                         gp.ParentID = Guid.Empty;
                         gp.Type = EnumItemType.GroupTag;
                         currentGroupID = gp.ID;
-                        currentGroupName = item.ToString();
+                        currentGroupName = groupName;
                         temp.Add(gp);
                     }
                 }
