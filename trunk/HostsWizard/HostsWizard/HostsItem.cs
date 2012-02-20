@@ -54,6 +54,12 @@ namespace HostsWizard
             }
         }
 
+        public bool Expended
+        {
+            get;
+            set;
+        }
+
         public string Group
         {
             get;

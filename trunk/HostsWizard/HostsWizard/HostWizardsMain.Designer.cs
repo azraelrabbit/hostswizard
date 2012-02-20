@@ -206,7 +206,7 @@
             styleFormatCondition1.ApplyToRow = true;
             styleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
             styleFormatCondition1.Expression = "IsNullOrEmpty([Group])";
-            styleFormatCondition1.Value1 = "";
+            //styleFormatCondition1.Value1 = global::HostsWizard.Resources.Global_en_US.aboutMsg;
             this.tlHostlist.FormatConditions.AddRange(new DevExpress.XtraTreeList.StyleFormatConditions.StyleFormatCondition[] {
             styleFormatCondition1});
             this.tlHostlist.Location = new System.Drawing.Point(0, 0);
@@ -219,8 +219,10 @@
             this.tlHostlist.Padding = new System.Windows.Forms.Padding(0, 0, 45, 0);
             this.tlHostlist.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1});
-            this.tlHostlist.Size = new System.Drawing.Size(907, 434);
+            this.tlHostlist.Size = new System.Drawing.Size(907, 438);
             this.tlHostlist.TabIndex = 0;
+            this.tlHostlist.AfterExpand += new DevExpress.XtraTreeList.NodeEventHandler(this.tlHostlist_AfterExpand);
+            this.tlHostlist.AfterCollapse += new DevExpress.XtraTreeList.NodeEventHandler(this.tlHostlist_AfterCollapse);
             this.tlHostlist.AfterCheckNode += new DevExpress.XtraTreeList.NodeEventHandler(this.tlHostlist_AfterCheckNode);
             this.tlHostlist.CellValueChanged += new DevExpress.XtraTreeList.CellValueChangedEventHandler(this.tlHostlist_CellValueChanged);
             this.tlHostlist.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tlHostlist_MouseDown);
@@ -413,7 +415,7 @@
             // tsMSaveSolution
             // 
             this.tsMSaveSolution.Name = "tsMSaveSolution";
-            this.tsMSaveSolution.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            this.tsMSaveSolution.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
             | System.Windows.Forms.Keys.S)));
             this.tsMSaveSolution.Size = new System.Drawing.Size(234, 22);
             this.tsMSaveSolution.Text = "Save Solution";
@@ -552,14 +554,14 @@
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 24);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 24);
-            this.panel2.Size = new System.Drawing.Size(907, 458);
+            this.panel2.Size = new System.Drawing.Size(907, 462);
             this.panel2.TabIndex = 2;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.statusStrip1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 495);
+            this.panel3.Location = new System.Drawing.Point(0, 499);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(907, 23);
             this.panel3.TabIndex = 3;
@@ -632,22 +634,22 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 518);
-            this.barDockControlBottom.Size = new System.Drawing.Size(907, 27);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 522);
+            this.barDockControlBottom.Size = new System.Drawing.Size(907, 23);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 518);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 522);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(907, 0);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 518);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 522);
             // 
             // barMenuDelete
             // 

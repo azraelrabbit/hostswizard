@@ -80,7 +80,7 @@ namespace HostsWizard
 
         private void LoadSystemHosts()
         {
-            RemGroupState();
+            // RemGroupState();
             SetStatusText("loading system hosts file ......");
             host = new HostsProcesscer(true);
             SetStatusText("loading completed! And now binding to treelist!");
@@ -88,7 +88,8 @@ namespace HostsWizard
             SetStatusText("binding completed! Then refresh checked state!");
             CheckAllCheckState(tlHostlist.Nodes);
             // tlHostlist.ExpandAll();
-            RestoreGroupState();
+            //RestoreGroupState();
+            CheckAllExpendedState();
             SetStatusText("Init completed! Enjoy!");
 
             this.Text = Constants.ApplicationName + "--[Current SolutionName:" + host.SolutionName + "]";
@@ -96,16 +97,25 @@ namespace HostsWizard
 
         public void RefreshTreeList()
         {
-            RemGroupState();
+            // RemGroupState();
             SetStatusText("Refreshing ... ...");
             tlHostlist.DataSource = null;
             tlHostlist.DataSource = host.fullContent;
             // tlHostlist.Refresh();
             CheckAllCheckState(tlHostlist.Nodes);
             // tlHostlist.ExpandAll();
-            RestoreGroupState();
+            //RestoreGroupState();
+            CheckAllExpendedState();
             SetStatusText("Refresh completed!");
 
+        }
+
+        private void CheckAllExpendedState()
+        {
+            foreach (TreeListNode tln in tlHostlist.Nodes)
+            {
+                tln.Expanded = (bool)tln["Expended"];
+            }
         }
 
         Dictionary<string, bool> groupStatus = new Dictionary<string, bool>();
@@ -718,6 +728,16 @@ namespace HostsWizard
             frmAddItem additem = new frmAddItem();
             additem.hostItemList = new List<HostsItem>() { item };
             additem.Show(this);
+        }
+
+        private void tlHostlist_AfterExpand(object sender, NodeEventArgs e)
+        {
+            e.Node["Expended"] = true;
+        }
+
+        private void tlHostlist_AfterCollapse(object sender, NodeEventArgs e)
+        {
+            e.Node["Expended"] = false;
         }
 
     }
