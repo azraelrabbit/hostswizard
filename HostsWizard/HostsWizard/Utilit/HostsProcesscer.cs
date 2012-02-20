@@ -78,8 +78,14 @@ namespace HostsWizard.Utilit
             {
                 if (item.Length > 4 && item.Substring(0, 4) == "####")
                 {
-                    groupParent.ID = Guid.NewGuid();
-                    groupParent.IP = item;
+                    var arry = item.Split(new string[] { "|" }, StringSplitOptions.RemoveEmptyEntries);
+                    Guid oriID = Guid.NewGuid();
+                    if (arry.Length > 1)
+                    {
+                        Guid.TryParse(arry[1], out oriID);
+                    }
+                    groupParent.ID = oriID;
+                    groupParent.IP = arry[0];
                     groupParent.Type = EnumItemType.GroupTag;
                 }
                 else if (item.Length > 3 && item.Substring(0, 3) == "###")
@@ -203,9 +209,15 @@ namespace HostsWizard.Utilit
                     if (!temp.Exists(p => p.IP == item.Trim()))
                     {
                         HostsItem gp = new HostsItem();
+                        var arry = item.Split(new string[] { "|" }, StringSplitOptions.RemoveEmptyEntries);
+                        Guid grpID = Guid.NewGuid();
+                        if (arry.Length > 1)
+                        {
+                            Guid.TryParse(arry[1], out grpID);
+                        }
 
-                        gp.ID = Guid.NewGuid();
-                        gp.IP = item.ToString();
+                        gp.ID = grpID;//组ID
+                        gp.IP = arry[0];//组名
                         gp.ParentID = Guid.Empty;
                         gp.Type = EnumItemType.GroupTag;
                         currentGroupID = gp.ID;
@@ -263,7 +275,7 @@ namespace HostsWizard.Utilit
             foreach (var group in grouplist)
             {
                 var groupstring = string.Empty;
-                groupstring += group.IP +"  "+ group.Domain;
+                groupstring += group.IP + "  |" + group.ID.ToString() + "  |" + group.Domain;
                 hostlist.Add(groupstring);
                 hostlist.Add(string.Empty);
 
@@ -290,7 +302,7 @@ namespace HostsWizard.Utilit
                         }
                     }
 
-                    itemstring = item.IP +"  "+ item.Domain;
+                    itemstring = item.IP + "  " + item.Domain;
                     hostlist.Add(itemstring);
                 }
                 hostlist.Add(string.Empty);

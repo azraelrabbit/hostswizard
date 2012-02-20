@@ -59,6 +59,8 @@ namespace HostsWizard
             //初始化方案列表
             LoadSolutionList();
             InitSolutionMenuItems();
+
+
         }
 
 
@@ -78,13 +80,15 @@ namespace HostsWizard
 
         private void LoadSystemHosts()
         {
+            RemGroupState();
             SetStatusText("loading system hosts file ......");
             host = new HostsProcesscer(true);
             SetStatusText("loading completed! And now binding to treelist!");
             tlHostlist.DataSource = host.fullContent;
             SetStatusText("binding completed! Then refresh checked state!");
             CheckAllCheckState(tlHostlist.Nodes);
-            tlHostlist.ExpandAll();
+            // tlHostlist.ExpandAll();
+            RestoreGroupState();
             SetStatusText("Init completed! Enjoy!");
 
             this.Text = Constants.ApplicationName + "--[Current SolutionName:" + host.SolutionName + "]";
@@ -92,14 +96,41 @@ namespace HostsWizard
 
         public void RefreshTreeList()
         {
+            RemGroupState();
             SetStatusText("Refreshing ... ...");
             tlHostlist.DataSource = null;
             tlHostlist.DataSource = host.fullContent;
-            tlHostlist.Refresh();
+            // tlHostlist.Refresh();
             CheckAllCheckState(tlHostlist.Nodes);
-            tlHostlist.ExpandAll();
+            // tlHostlist.ExpandAll();
+            RestoreGroupState();
             SetStatusText("Refresh completed!");
+
         }
+
+        Dictionary<string, bool> groupStatus = new Dictionary<string, bool>();
+
+        //记录各个组节点的展开状态
+        private void RemGroupState()
+        {
+            groupStatus.Clear();
+            foreach (TreeListNode node in tlHostlist.Nodes)
+            {
+                groupStatus.Add(node["ID"].ToString(), node.Expanded);
+            }
+        }
+
+        private void RestoreGroupState()
+        {
+            if (groupStatus.Count > 0)
+            {
+                foreach (TreeListNode node in tlHostlist.Nodes)
+                {
+                    node.Expanded = groupStatus[node["ID"].ToString()];
+                }
+            }
+        }
+
 
         public void AddItem(HostsItem item)
         {
