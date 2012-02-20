@@ -218,10 +218,18 @@ namespace HostsWizard.Utilit
                             Guid.TryParse(arry[1].Trim(), out grpID);
                         }
 
+                        bool expend = false;
+
+                        if (arry.Length > 3)
+                        {
+                            bool.TryParse(arry[3].Trim(), out expend);
+                        }
+
                         gp.ID = grpID;//组ID
                         gp.IP = groupName;//组名
                         gp.ParentID = Guid.Empty;
                         gp.Type = EnumItemType.GroupTag;
+                        gp.Expended = expend;
                         currentGroupID = gp.ID;
                         currentGroupName = groupName;
                         temp.Add(gp);
@@ -277,7 +285,7 @@ namespace HostsWizard.Utilit
             foreach (var group in grouplist)
             {
                 var groupstring = string.Empty;
-                groupstring += group.IP + "  |" + group.ID.ToString() + "  |" + group.Domain;
+                groupstring += group.IP + "  |" + group.ID.ToString() + "  |" + group.Domain + "  |" + group.Expended.ToString();
                 hostlist.Add(groupstring);
                 hostlist.Add(string.Empty);
 
