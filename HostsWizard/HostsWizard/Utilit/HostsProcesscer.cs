@@ -72,6 +72,7 @@ namespace HostsWizard.Utilit
             groupParent.IP = "####源hosts配置项";
             groupParent.Type = EnumItemType.GroupTag;
             groupParent.ParentID = Guid.Empty;
+            groupParent.Expended = false;
             temp.Add(groupParent);
 
             foreach (var item in itemlist)
@@ -85,6 +86,9 @@ namespace HostsWizard.Utilit
                     {
                         Guid.TryParse(arry[1].Trim(), out oriID);
                     }
+                    bool expend = false;
+                    bool.TryParse(arry[3].Trim(), out expend);
+                    groupParent.Expended = expend;
                     groupParent.ID = oriID;
                     groupParent.IP = groupName;
                     groupParent.Type = EnumItemType.GroupTag;
