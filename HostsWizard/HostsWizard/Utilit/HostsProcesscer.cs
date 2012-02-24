@@ -87,7 +87,10 @@ namespace HostsWizard.Utilit
                         Guid.TryParse(arry[1].Trim(), out oriID);
                     }
                     bool expend = false;
-                    bool.TryParse(arry[3].Trim(), out expend);
+                    if (arry.Length > 3)
+                    {
+                        bool.TryParse(arry[3].Trim(), out expend);
+                    }
                     groupParent.Expended = expend;
                     groupParent.ID = oriID;
                     groupParent.IP = groupName;

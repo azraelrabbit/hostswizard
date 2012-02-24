@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostsWizard", "HostsWizard\HostsWizard.csproj", "{504C91A7-9212-4E16-9045-274B62D96803}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "HostsWizardsSetup", "HostsWizardsSetup\HostsWizardsSetup.vdproj", "{E997D30C-04F9-4719-BA31-0A891E03894B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -15,8 +13,6 @@ Global
 		{504C91A7-9212-4E16-9045-274B62D96803}.Debug|x86.Build.0 = Debug|x86
 		{504C91A7-9212-4E16-9045-274B62D96803}.Release|x86.ActiveCfg = Release|x86
 		{504C91A7-9212-4E16-9045-274B62D96803}.Release|x86.Build.0 = Release|x86
-		{E997D30C-04F9-4719-BA31-0A891E03894B}.Debug|x86.ActiveCfg = Debug
-		{E997D30C-04F9-4719-BA31-0A891E03894B}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
