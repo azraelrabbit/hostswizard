@@ -742,12 +742,12 @@ namespace HostsWizard
 
         private void tsMEnableDns_Click(object sender, EventArgs e)
         {
-            RegisterHelper.EnableDnsCache();
+            ProcessHelper.EnableDnsCache();
         }
 
         private void tsMDisableDns_Click(object sender, EventArgs e)
         {
-            RegisterHelper.DisableDnsCache();
+            ProcessHelper.DisableDnsCache();
         }
 
     }
