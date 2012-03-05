@@ -288,4 +288,10 @@
   <data name="frmMain_barMuDeleteGroup" xml:space="preserve">
     <value>删除分组</value>
   </data>
+  <data name="frmMain_tsMDisableDns" xml:space="preserve">
+    <value>禁用Dns缓存(hosts即时生效)</value>
+  </data>
+  <data name="frmMain_tsMEnableDns" xml:space="preserve">
+    <value>启用Dns缓存</value>
+  </data>
 </root>

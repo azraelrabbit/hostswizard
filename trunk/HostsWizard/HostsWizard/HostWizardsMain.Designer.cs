@@ -70,6 +70,8 @@
             this.tsMSolutions = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMEnableDns = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMDisableDns = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -206,7 +208,6 @@
             styleFormatCondition1.ApplyToRow = true;
             styleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
             styleFormatCondition1.Expression = "IsNullOrEmpty([Group])";
-            //styleFormatCondition1.Value1 = global::HostsWizard.Resources.Global_en_US.aboutMsg;
             this.tlHostlist.FormatConditions.AddRange(new DevExpress.XtraTreeList.StyleFormatConditions.StyleFormatCondition[] {
             styleFormatCondition1});
             this.tlHostlist.Location = new System.Drawing.Point(0, 0);
@@ -415,7 +416,7 @@
             // tsMSaveSolution
             // 
             this.tsMSaveSolution.Name = "tsMSaveSolution";
-            this.tsMSaveSolution.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
+            this.tsMSaveSolution.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
             this.tsMSaveSolution.Size = new System.Drawing.Size(234, 22);
             this.tsMSaveSolution.Text = "Save Solution";
@@ -533,7 +534,9 @@
             // tsMHelp
             // 
             this.tsMHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsMAbout});
+            this.tsMAbout,
+            this.tsMEnableDns,
+            this.tsMDisableDns});
             this.tsMHelp.Name = "tsMHelp";
             this.tsMHelp.Size = new System.Drawing.Size(47, 21);
             this.tsMHelp.Text = "Help";
@@ -541,9 +544,23 @@
             // tsMAbout
             // 
             this.tsMAbout.Name = "tsMAbout";
-            this.tsMAbout.Size = new System.Drawing.Size(111, 22);
+            this.tsMAbout.Size = new System.Drawing.Size(184, 22);
             this.tsMAbout.Text = "About";
             this.tsMAbout.Click += new System.EventHandler(this.miAbout_Click);
+            // 
+            // tsMEnableDns
+            // 
+            this.tsMEnableDns.Name = "tsMEnableDns";
+            this.tsMEnableDns.Size = new System.Drawing.Size(184, 22);
+            this.tsMEnableDns.Text = "Enable Dns Cache";
+            this.tsMEnableDns.Click += new System.EventHandler(this.tsMEnableDns_Click);
+            // 
+            // tsMDisableDns
+            // 
+            this.tsMDisableDns.Name = "tsMDisableDns";
+            this.tsMDisableDns.Size = new System.Drawing.Size(184, 22);
+            this.tsMDisableDns.Text = "Disable Dns Cache";
+            this.tsMDisableDns.Click += new System.EventHandler(this.tsMDisableDns_Click);
             // 
             // panel2
             // 
@@ -799,5 +816,7 @@
         private DevExpress.XtraBars.BarButtonItem barMuAdditem;
         private DevExpress.XtraBars.PopupMenu popupMuGroup;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private System.Windows.Forms.ToolStripMenuItem tsMEnableDns;
+        private System.Windows.Forms.ToolStripMenuItem tsMDisableDns;
     }
 }

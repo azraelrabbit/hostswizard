@@ -740,5 +740,15 @@ namespace HostsWizard
             e.Node["Expended"] = false;
         }
 
+        private void tsMEnableDns_Click(object sender, EventArgs e)
+        {
+            RegisterHelper.EnableDnsCache();
+        }
+
+        private void tsMDisableDns_Click(object sender, EventArgs e)
+        {
+            RegisterHelper.DisableDnsCache();
+        }
+
     }
 }
