@@ -49,6 +49,7 @@
             this.btnsSaveApply = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonGroup1 = new DevExpress.XtraBars.BarButtonGroup();
             this.btnsUpdateGoogle = new DevExpress.XtraBars.BarButtonItem();
+            this.brsSystemHostsbyTxt = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -106,7 +107,6 @@
             this.popUpMuChild = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMuGroup = new DevExpress.XtraBars.PopupMenu(this.components);
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            this.brsSystemHostsbyTxt = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.tlHostlist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -230,7 +230,10 @@
             this.tlHostlist.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.tlHostlist.Margin = new System.Windows.Forms.Padding(3, 3, 21, 3);
             this.tlHostlist.Name = "tlHostlist";
+            this.tlHostlist.OptionsBehavior.DragNodes = true;
+            this.tlHostlist.OptionsBehavior.ImmediateEditor = false;
             this.tlHostlist.OptionsBehavior.PopulateServiceColumns = true;
+            this.tlHostlist.OptionsBehavior.ShowEditorOnMouseUp = true;
             this.tlHostlist.OptionsView.EnableAppearanceEvenRow = true;
             this.tlHostlist.OptionsView.EnableAppearanceOddRow = true;
             this.tlHostlist.OptionsView.ShowCheckBoxes = true;
@@ -239,6 +242,7 @@
             this.repositoryItemTextEdit1});
             this.tlHostlist.Size = new System.Drawing.Size(907, 400);
             this.tlHostlist.TabIndex = 0;
+            this.tlHostlist.VertScrollVisibility = DevExpress.XtraTreeList.ScrollVisibility.Always;
             this.tlHostlist.AfterExpand += new DevExpress.XtraTreeList.NodeEventHandler(this.tlHostlist_AfterExpand);
             this.tlHostlist.AfterCollapse += new DevExpress.XtraTreeList.NodeEventHandler(this.tlHostlist_AfterCollapse);
             this.tlHostlist.AfterCheckNode += new DevExpress.XtraTreeList.NodeEventHandler(this.tlHostlist_AfterCheckNode);
@@ -406,6 +410,15 @@
             this.btnsUpdateGoogle.Name = "btnsUpdateGoogle";
             this.btnsUpdateGoogle.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnsUpdateGoogle.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnsUpdateGoogle_ItemClick);
+            // 
+            // brsSystemHostsbyTxt
+            // 
+            this.brsSystemHostsbyTxt.Caption = "用记事本打开Hosts";
+            this.brsSystemHostsbyTxt.Glyph = global::HostsWizard.Properties.Resources.onebit_39;
+            this.brsSystemHostsbyTxt.Id = 8;
+            this.brsSystemHostsbyTxt.Name = "brsSystemHostsbyTxt";
+            this.brsSystemHostsbyTxt.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.brsSystemHostsbyTxt.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.brsSystemHostsbyTxt_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -862,15 +875,6 @@
             // defaultLookAndFeel1
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Money Twins";
-            // 
-            // brsSystemHostsbyTxt
-            // 
-            this.brsSystemHostsbyTxt.Caption = "用记事本打开Hosts";
-            this.brsSystemHostsbyTxt.Glyph = global::HostsWizard.Properties.Resources.onebit_39;
-            this.brsSystemHostsbyTxt.Id = 8;
-            this.brsSystemHostsbyTxt.Name = "brsSystemHostsbyTxt";
-            this.brsSystemHostsbyTxt.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.brsSystemHostsbyTxt.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.brsSystemHostsbyTxt_ItemClick);
             // 
             // frmMainR
             // 
