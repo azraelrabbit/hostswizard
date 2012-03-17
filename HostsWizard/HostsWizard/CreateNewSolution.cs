@@ -36,7 +36,20 @@ namespace HostsWizard
             {
                 name = "Auto" + DateTime.Now.ToString("yyyyMMddHHmmss");
             }
-            ((frmMain)this.Owner).SetNewSolution(name);
+            // ((frmMain)this.Owner).SetNewSolution(name);
+
+            string tname = this.Owner.GetType().Name;
+            switch (tname)
+            {
+                case "frmMain":
+                    ((frmMain)this.Owner).SetNewSolution(name);
+                    break;
+                case "frmMainR":
+                    ((frmMainR)this.Owner).SetNewSolution(name);
+                    break;
+                default:
+                    break;
+            }
             this.Close();
         }
 

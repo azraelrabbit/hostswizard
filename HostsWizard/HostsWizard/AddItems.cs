@@ -88,7 +88,19 @@ namespace HostsWizard
             string[] splitStr = { "\r\n" };
             List<string> contentList = hostItemText.Split(splitStr, StringSplitOptions.None).ToList();
             var hostItems = ProcessBody(contentList, groupID, groupName);
-            ((frmMain)this.Owner).AddItems(hostItems);
+            //((frmMainRibbon)this.Owner).AddItems(hostItems);
+            string tname = this.Owner.GetType().Name;
+            switch (tname)
+            {
+                case "frmMain":
+                    ((frmMain)this.Owner).AddItems(hostItems);
+                    break;
+                case "frmMainR":
+                    ((frmMainR)this.Owner).AddItems(hostItems);
+                    break;
+                default:
+                    break;
+            }
             this.Close();
         }
 

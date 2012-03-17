@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using System.IO;
+using HostsWizard.Utilit;
 
 namespace HostsWizard
 {
@@ -16,8 +17,15 @@ namespace HostsWizard
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            
-            Application.Run(new frmMain());
+
+            if (AppConfigHelper.GetAppConfig("ISRIB").Trim().ToLower() == "true")
+            {
+                Application.Run(new frmMainR());
+            }
+            else
+            {
+                Application.Run(new frmMain());
+            }
         }
     }
 }
