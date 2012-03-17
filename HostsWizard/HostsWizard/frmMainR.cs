@@ -851,6 +851,18 @@ namespace HostsWizard
 
         }
 
+        private void oldUIToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AppConfigHelper.UpdateAppConfig("ISRIB", "false");
+            ProcessHelper.RestartSelf();
+            Application.Exit();
+        }
+
+        private void brsSystemHostsbyTxt_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ProcessHelper.OpenHostFile();
+        }
+
 
 
     }

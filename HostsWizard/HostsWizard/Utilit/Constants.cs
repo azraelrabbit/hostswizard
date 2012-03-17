@@ -19,6 +19,8 @@ namespace HostsWizard.Utilit
 
         public static readonly string ApplicationStartUpPath = Application.StartupPath;
 
+        public static readonly string ApplicationFilePath = Application.ExecutablePath;
+
         public static readonly string DefaultAppDataFilePath = ApplicationStartUpPath + "\\hsw.db";
 
         public static readonly string HostsWizardsDataPath = AppDataLocalPath + "\\HostsWizards\\Data";
