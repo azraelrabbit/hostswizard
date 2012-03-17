@@ -217,7 +217,10 @@
             this.tlHostlist.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.tlHostlist.Margin = new System.Windows.Forms.Padding(3, 3, 21, 3);
             this.tlHostlist.Name = "tlHostlist";
+            this.tlHostlist.OptionsBehavior.DragNodes = true;
+            this.tlHostlist.OptionsBehavior.ImmediateEditor = false;
             this.tlHostlist.OptionsBehavior.PopulateServiceColumns = true;
+            this.tlHostlist.OptionsBehavior.ShowEditorOnMouseUp = true;
             this.tlHostlist.OptionsView.EnableAppearanceEvenRow = true;
             this.tlHostlist.OptionsView.EnableAppearanceOddRow = true;
             this.tlHostlist.OptionsView.ShowCheckBoxes = true;
@@ -226,6 +229,7 @@
             this.repositoryItemTextEdit1});
             this.tlHostlist.Size = new System.Drawing.Size(907, 461);
             this.tlHostlist.TabIndex = 0;
+            this.tlHostlist.VertScrollVisibility = DevExpress.XtraTreeList.ScrollVisibility.Always;
             this.tlHostlist.AfterExpand += new DevExpress.XtraTreeList.NodeEventHandler(this.tlHostlist_AfterExpand);
             this.tlHostlist.AfterCollapse += new DevExpress.XtraTreeList.NodeEventHandler(this.tlHostlist_AfterCollapse);
             this.tlHostlist.AfterCheckNode += new DevExpress.XtraTreeList.NodeEventHandler(this.tlHostlist_AfterCheckNode);
