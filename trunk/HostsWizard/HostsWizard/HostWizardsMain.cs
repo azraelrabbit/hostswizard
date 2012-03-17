@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using HostsWizard.Utilit;
-using DevExpress.XtraTreeList.Nodes;
-using HostsWizard.Helpers;
-using HostsWizard.DL;
 using DevExpress.XtraTreeList;
+using DevExpress.XtraTreeList.Nodes;
+using HostsWizard.DL;
+using HostsWizard.Helpers;
+using HostsWizard.Utilit;
 
 namespace HostsWizard
 {
@@ -60,7 +57,8 @@ namespace HostsWizard
             LoadSolutionList();
             InitSolutionMenuItems();
 
-
+            //打开系统hosts
+            LoadSystemHosts();
         }
 
 
@@ -621,11 +619,17 @@ namespace HostsWizard
             {
                 this.tsMzhCN.CheckState = CheckState.Checked;
                 this.tsMenUS.CheckState = CheckState.Unchecked;
+
+                //this.brChinese.Checked = true;
+                //this.brEnglish.Checked = false;
             }
             else
             {
                 this.tsMzhCN.CheckState = CheckState.Unchecked;
                 this.tsMenUS.CheckState = CheckState.Checked;
+
+                //this.brEnglish.Checked = true;
+                //this.brChinese.Checked = false;
             }
         }
 
@@ -732,12 +736,20 @@ namespace HostsWizard
 
         private void tlHostlist_AfterExpand(object sender, NodeEventArgs e)
         {
-            e.Node["Expended"] = true;
+            try
+            {
+                e.Node["Expended"] = true;
+            }
+            catch { }
         }
 
         private void tlHostlist_AfterCollapse(object sender, NodeEventArgs e)
         {
-            e.Node["Expended"] = false;
+            try
+            {
+                e.Node["Expended"] = false;
+            }
+            catch { }
         }
 
         private void tsMEnableDns_Click(object sender, EventArgs e)
@@ -749,6 +761,29 @@ namespace HostsWizard
         {
             ProcessHelper.DisableDnsCache();
         }
+
+        private void tsmUpdateGoogle_Click_1(object sender, EventArgs e)
+        {
+            //从源更新可正常访问google及某些国外网站的hosts,并写入到系统中.
+            var item = this.host.fullContent.FirstOrDefault(p => p.IP.ToLower().Contains("anti_gfw"));
+            string groupname = string.Empty;
+            Guid groupid = Guid.Empty;
+            if (item != null)
+            {
+                groupname = item.IP;
+                groupid = item.ID;
+
+                host.fullContent.RemoveAll(p => p.ParentID == groupid);
+            }
+            else
+            {
+
+            }
+            RequestHelpers.GetNewHosts(this, groupname, groupid);
+            SetStatusText("Anti-GFW Hosts Update Successful!");
+        }
+
+
 
     }
 }

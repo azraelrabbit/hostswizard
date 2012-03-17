@@ -294,4 +294,79 @@
   <data name="frmMain_tsMEnableDns" xml:space="preserve">
     <value>启用Dns缓存</value>
   </data>
+  <data name="frmMain_brAbout" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="frmMain_brApply" xml:space="preserve">
+    <value>应用</value>
+  </data>
+  <data name="frmMain_brBackUpHosts" xml:space="preserve">
+    <value>备份系统Hosts</value>
+  </data>
+  <data name="frmMain_brChinese" xml:space="preserve">
+    <value>简体中文</value>
+  </data>
+  <data name="frmMain_brDisableDns" xml:space="preserve">
+    <value>禁用Dns缓存(hosts即时生效)</value>
+  </data>
+  <data name="frmMain_brEdit" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="frmMain_brEnableDns" xml:space="preserve">
+    <value>启用Dns缓存</value>
+  </data>
+  <data name="frmMain_brEnglish" xml:space="preserve">
+    <value>英文</value>
+  </data>
+  <data name="frmMain_brExit" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="frmMain_brExport" xml:space="preserve">
+    <value>导出...</value>
+  </data>
+  <data name="frmMain_brExportCurrent" xml:space="preserve">
+    <value>导出当前方案...</value>
+  </data>
+  <data name="frmMain_brExportOther" xml:space="preserve">
+    <value>导出其他方案...</value>
+  </data>
+  <data name="frmMain_brFile" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="frmMain_brHelp" xml:space="preserve">
+    <value>帮助</value>
+  </data>
+  <data name="frmMain_brImport" xml:space="preserve">
+    <value>导入...</value>
+  </data>
+  <data name="frmMain_brLanguage" xml:space="preserve">
+    <value>多语言设置</value>
+  </data>
+  <data name="frmMain_brNewSolution" xml:space="preserve">
+    <value>新建方案</value>
+  </data>
+  <data name="frmMain_brOpen" xml:space="preserve">
+    <value>打开系统Hosts</value>
+  </data>
+  <data name="frmMain_brRefreshDns" xml:space="preserve">
+    <value>刷新DNS</value>
+  </data>
+  <data name="frmMain_brRestoreHosts" xml:space="preserve">
+    <value>还原系统Hosts</value>
+  </data>
+  <data name="frmMain_brSaveAs" xml:space="preserve">
+    <value>另存为</value>
+  </data>
+  <data name="frmMain_brSaveSolution" xml:space="preserve">
+    <value>保存方案</value>
+  </data>
+  <data name="frmMain_brSolotionMgr" xml:space="preserve">
+    <value>方案管理</value>
+  </data>
+  <data name="frmMain_brSolutions" xml:space="preserve">
+    <value>方案</value>
+  </data>
+  <data name="frmMain_tsmUpdateGoogle" xml:space="preserve">
+    <value>更新谷歌Hosts</value>
+  </data>
 </root>

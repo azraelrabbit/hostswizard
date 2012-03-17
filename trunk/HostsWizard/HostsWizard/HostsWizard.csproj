@@ -32,7 +32,7 @@
     <SuiteName>WizardsUtility</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>45</ApplicationRevision>
+    <ApplicationRevision>48</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -76,7 +76,25 @@
     <ApplicationIcon>Resources\320.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.CodeRush.Common, Version=11.1.8.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.CodeRush.Core, Version=11.1.8.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.CodeRush.PlugInCore, Version=11.1.8.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.CodeRush.StructuralParser, Version=11.1.8.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.CodeRush.VSCore, Version=11.1.8.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="DevExpress.Data.v11.1, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.DXCore.Parser, Version=11.1.8.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
     <Reference Include="DevExpress.Printing.v11.1.Core, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
@@ -169,6 +187,7 @@
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Helpers\ProcessHelper.cs" />
     <Compile Include="Helpers\RegisterHelper.cs" />
+    <Compile Include="Helpers\RequestHelpers.cs" />
     <Compile Include="Helpers\SerializationHelper.cs" />
     <Compile Include="Helpers\SqliteHelper.cs" />
     <Compile Include="Helpers\SqliteHelper2.cs" />
@@ -200,6 +219,13 @@
       <DesignTime>True</DesignTime>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Resources\Global_en_US.cs" />
+    <Compile Include="RibbonMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RibbonMain.Designer.cs">
+      <DependentUpon>RibbonMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utilit\Constants.cs" />
     <Compile Include="Utilit\EnumItemType.cs" />
     <Compile Include="Utilit\HostsProcesscer.cs" />
@@ -223,6 +249,12 @@
     <Compile Include="SolutionManageForm.Designer.cs">
       <DependentUpon>SolutionManageForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMainR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainR.Designer.cs">
+      <DependentUpon>frmMainR.cs</DependentUpon>
+    </Compile>
     <Content Include="Libs\ICSharpCode.Build.Tasks.dll" />
     <Content Include="Libs\ICSharpCode.Core.dll" />
     <Content Include="Libs\ICSharpCode.Core.Presentation.dll" />
@@ -233,7 +265,83 @@
     <Content Include="Libs\ICSharpCode.SharpDevelop.Sda.dll" />
     <Content Include="Libs\ICSharpCode.SharpDevelop.Widgets.dll" />
     <Content Include="Libs\ICSharpCode.TextEditor.dll" />
+    <Content Include="Libs\Resources.Global.en-US.Designer.cs.dll" />
     <Content Include="Resources\320.ico" />
+    <None Include="Resources\bonus48x48_25.png" />
+    <None Include="Resources\bonus48x48_24.png" />
+    <None Include="Resources\bonus48x48_23.png" />
+    <None Include="Resources\bonus48x48_22.png" />
+    <None Include="Resources\bonus48x48_21.png" />
+    <None Include="Resources\bonus48x48_20.png" />
+    <None Include="Resources\bonus48x48_19.png" />
+    <None Include="Resources\bonus48x48_18.png" />
+    <None Include="Resources\bonus48x48_17.png" />
+    <None Include="Resources\bonus48x48_16.png" />
+    <None Include="Resources\bonus48x48_15.png" />
+    <None Include="Resources\bonus48x48_14.png" />
+    <None Include="Resources\bonus48x48_13.png" />
+    <None Include="Resources\bonus48x48_12.png" />
+    <None Include="Resources\bonus48x48_11.png" />
+    <None Include="Resources\bonus48x48_10.png" />
+    <None Include="Resources\bonus48x48_09.png" />
+    <None Include="Resources\bonus48x48_08.png" />
+    <None Include="Resources\bonus48x48_07.png" />
+    <None Include="Resources\bonus48x48_06.png" />
+    <None Include="Resources\bonus48x48_05.png" />
+    <None Include="Resources\bonus48x48_04.png" />
+    <None Include="Resources\bonus48x48_03.png" />
+    <None Include="Resources\bonus48x48_02.png" />
+    <None Include="Resources\bonus48x48_01.png" />
+    <None Include="Resources\onebit_50.png" />
+    <None Include="Resources\onebit_49.png" />
+    <None Include="Resources\onebit_48.png" />
+    <None Include="Resources\onebit_47.png" />
+    <None Include="Resources\onebit_46.png" />
+    <None Include="Resources\onebit_45.png" />
+    <None Include="Resources\onebit_44.png" />
+    <None Include="Resources\onebit_43.png" />
+    <None Include="Resources\onebit_42.png" />
+    <None Include="Resources\onebit_41.png" />
+    <None Include="Resources\onebit_40.png" />
+    <None Include="Resources\onebit_39.png" />
+    <None Include="Resources\onebit_38.png" />
+    <None Include="Resources\onebit_37.png" />
+    <None Include="Resources\onebit_36.png" />
+    <None Include="Resources\onebit_35.png" />
+    <None Include="Resources\onebit_34.png" />
+    <None Include="Resources\onebit_33.png" />
+    <None Include="Resources\onebit_32.png" />
+    <None Include="Resources\onebit_31.png" />
+    <None Include="Resources\onebit_30.png" />
+    <None Include="Resources\onebit_29.png" />
+    <None Include="Resources\onebit_28.png" />
+    <None Include="Resources\onebit_27.png" />
+    <None Include="Resources\onebit_26.png" />
+    <None Include="Resources\onebit_25.png" />
+    <None Include="Resources\onebit_24.png" />
+    <None Include="Resources\onebit_23.png" />
+    <None Include="Resources\onebit_15.png" />
+    <None Include="Resources\onebit_14.png" />
+    <None Include="Resources\onebit_13.png" />
+    <None Include="Resources\onebit_03.png" />
+    <None Include="Resources\onebit_02.png" />
+    <None Include="Resources\onebit_01.png" />
+    <None Include="Resources\onebit_22.png" />
+    <None Include="Resources\onebit_21.png" />
+    <None Include="Resources\onebit_20.png" />
+    <None Include="Resources\onebit_19.png" />
+    <None Include="Resources\onebit_18.png" />
+    <None Include="Resources\onebit_17.png" />
+    <None Include="Resources\onebit_16.png" />
+    <None Include="Resources\onebit_12.png" />
+    <None Include="Resources\onebit_11.png" />
+    <None Include="Resources\onebit_10.png" />
+    <None Include="Resources\onebit_09.png" />
+    <None Include="Resources\onebit_08.png" />
+    <None Include="Resources\onebit_07.png" />
+    <None Include="Resources\onebit_06.png" />
+    <None Include="Resources\onebit_05.png" />
+    <None Include="Resources\onebit_04.png" />
     <EmbeddedResource Include="AddItems.resx">
       <DependentUpon>AddItems.cs</DependentUpon>
     </EmbeddedResource>
@@ -247,6 +355,9 @@
       <LastGenOutput>Global.en-US2.Designer.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="RibbonMain.resx">
+      <DependentUpon>RibbonMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SolutionManageForm.resx">
       <DependentUpon>SolutionManageForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -256,6 +367,9 @@
     <Content Include="EnableDnsCache.reg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="frmMainR.resx">
+      <DependentUpon>frmMainR.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Resources\hacks.ico" />
     <None Include="Resources\categories.ico" />
     <None Include="Resources\blaster.ico" />

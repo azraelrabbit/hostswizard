@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.ddlGroup = new System.Windows.Forms.ComboBox();
+            this.lblGroup = new DevExpress.XtraEditors.LabelControl();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSaveBack = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.xtcAddItems = new DevExpress.XtraTab.XtraTabControl();
             this.xtpAddbyText = new DevExpress.XtraTab.XtraTabPage();
             this.xtpAddbyLists = new DevExpress.XtraTab.XtraTabPage();
-            this.ddlGroup = new System.Windows.Forms.ComboBox();
-            this.lblGroup = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
@@ -57,9 +57,26 @@
             this.panelControl1.Size = new System.Drawing.Size(626, 40);
             this.panelControl1.TabIndex = 2;
             // 
+            // ddlGroup
+            // 
+            this.ddlGroup.FormattingEnabled = true;
+            this.ddlGroup.Location = new System.Drawing.Point(74, 8);
+            this.ddlGroup.Name = "ddlGroup";
+            this.ddlGroup.Size = new System.Drawing.Size(295, 20);
+            this.ddlGroup.TabIndex = 12;
+            // 
+            // lblGroup
+            // 
+            this.lblGroup.Location = new System.Drawing.Point(3, 8);
+            this.lblGroup.Name = "lblGroup";
+            this.lblGroup.Size = new System.Drawing.Size(37, 14);
+            this.lblGroup.TabIndex = 11;
+            this.lblGroup.Text = "Group:";
+            // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(387, 5);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Padding = new System.Windows.Forms.Padding(0, 5, 10, 0);
@@ -94,10 +111,10 @@
             new DevExpress.XtraTab.Buttons.CustomHeaderButton(),
             new DevExpress.XtraTab.Buttons.CustomHeaderButton()});
             this.xtcAddItems.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtcAddItems.Location = new System.Drawing.Point(2, 2);
+            this.xtcAddItems.Location = new System.Drawing.Point(3, 3);
             this.xtcAddItems.Name = "xtcAddItems";
             this.xtcAddItems.SelectedTabPage = this.xtpAddbyText;
-            this.xtcAddItems.Size = new System.Drawing.Size(622, 461);
+            this.xtcAddItems.Size = new System.Drawing.Size(620, 459);
             this.xtcAddItems.TabIndex = 1;
             this.xtcAddItems.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtpAddbyText,
@@ -108,35 +125,21 @@
             // xtpAddbyText
             // 
             this.xtpAddbyText.Name = "xtpAddbyText";
-            this.xtpAddbyText.Size = new System.Drawing.Size(616, 434);
+            this.xtpAddbyText.Size = new System.Drawing.Size(618, 436);
             this.xtpAddbyText.Text = "Add By Text";
             // 
             // xtpAddbyLists
             // 
             this.xtpAddbyLists.Name = "xtpAddbyLists";
-            this.xtpAddbyLists.Size = new System.Drawing.Size(616, 434);
+            this.xtpAddbyLists.Size = new System.Drawing.Size(618, 436);
             this.xtpAddbyLists.Text = "Add By List";
-            // 
-            // ddlGroup
-            // 
-            this.ddlGroup.FormattingEnabled = true;
-            this.ddlGroup.Location = new System.Drawing.Point(74, 8);
-            this.ddlGroup.Name = "ddlGroup";
-            this.ddlGroup.Size = new System.Drawing.Size(295, 20);
-            this.ddlGroup.TabIndex = 12;
-            // 
-            // lblGroup
-            // 
-            this.lblGroup.Location = new System.Drawing.Point(3, 8);
-            this.lblGroup.Name = "lblGroup";
-            this.lblGroup.Size = new System.Drawing.Size(37, 14);
-            this.lblGroup.TabIndex = 11;
-            this.lblGroup.Text = "Group:";
             // 
             // AddItems
             // 
+            this.AcceptButton = this.btnSaveBack;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(626, 505);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);

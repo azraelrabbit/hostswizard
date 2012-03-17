@@ -42,7 +42,21 @@ namespace HostsWizard
             item.Group = string.Empty;
             item.ID = Guid.NewGuid();
 
-            ((frmMain)this.Owner).AddGroup(item);
+            // ((frmMain)this.Owner).AddGroup(item);
+
+            string name = this.Owner.GetType().Name;
+            switch (name)
+            {
+                case "frmMain":
+                    ((frmMain)this.Owner).AddGroup(item);
+                    break;
+                case "frmMainR":
+                    ((frmMainR)this.Owner).AddGroup(item);
+                    break;
+                default:
+                    break;
+            }
+
             this.Close();
         }
 

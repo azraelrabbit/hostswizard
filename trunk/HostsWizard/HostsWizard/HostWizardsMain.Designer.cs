@@ -66,21 +66,21 @@
             this.tsMzhCN = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMenUS = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmSolotionMgr = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMSolutions = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMEnableDns = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMDisableDns = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmUpdateGoogle = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tslblstatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.tslbl2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
-            this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -92,6 +92,7 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.popUpMuChild = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMuGroup = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.tlHostlist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -211,6 +212,7 @@
             this.tlHostlist.FormatConditions.AddRange(new DevExpress.XtraTreeList.StyleFormatConditions.StyleFormatCondition[] {
             styleFormatCondition1});
             this.tlHostlist.Location = new System.Drawing.Point(0, 0);
+            this.tlHostlist.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.tlHostlist.Margin = new System.Windows.Forms.Padding(3, 3, 21, 3);
             this.tlHostlist.Name = "tlHostlist";
             this.tlHostlist.OptionsBehavior.PopulateServiceColumns = true;
@@ -220,7 +222,7 @@
             this.tlHostlist.Padding = new System.Windows.Forms.Padding(0, 0, 45, 0);
             this.tlHostlist.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1});
-            this.tlHostlist.Size = new System.Drawing.Size(907, 438);
+            this.tlHostlist.Size = new System.Drawing.Size(907, 461);
             this.tlHostlist.TabIndex = 0;
             this.tlHostlist.AfterExpand += new DevExpress.XtraTreeList.NodeEventHandler(this.tlHostlist_AfterExpand);
             this.tlHostlist.AfterCollapse += new DevExpress.XtraTreeList.NodeEventHandler(this.tlHostlist_AfterCollapse);
@@ -247,7 +249,6 @@
             // 
             // repositoryItemTextEdit1
             // 
-            this.repositoryItemTextEdit1.AutoHeight = false;
             this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
             // 
             // clIP
@@ -437,8 +438,7 @@
             this.tsMExportMenu,
             this.tsMImport,
             this.tsMLanguage,
-            this.tsmSolotionMgr,
-            this.toolStripMenuItem2});
+            this.tsmSolotionMgr});
             this.tsMEdit.Name = "tsMEdit";
             this.tsMEdit.Size = new System.Drawing.Size(42, 21);
             this.tsMEdit.Text = "Edit";
@@ -518,12 +518,6 @@
             this.tsmSolotionMgr.Text = "Solution Manager...";
             this.tsmSolotionMgr.Click += new System.EventHandler(this.tsmSolotionMgr_Click);
             // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(207, 22);
-            this.toolStripMenuItem2.Text = " ";
-            // 
             // tsMSolutions
             // 
             this.tsMSolutions.CheckOnClick = true;
@@ -536,7 +530,8 @@
             this.tsMHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsMAbout,
             this.tsMEnableDns,
-            this.tsMDisableDns});
+            this.tsMDisableDns,
+            this.tsmUpdateGoogle});
             this.tsMHelp.Name = "tsMHelp";
             this.tsMHelp.Size = new System.Drawing.Size(47, 21);
             this.tsMHelp.Text = "Help";
@@ -544,23 +539,30 @@
             // tsMAbout
             // 
             this.tsMAbout.Name = "tsMAbout";
-            this.tsMAbout.Size = new System.Drawing.Size(184, 22);
+            this.tsMAbout.Size = new System.Drawing.Size(203, 22);
             this.tsMAbout.Text = "About";
             this.tsMAbout.Click += new System.EventHandler(this.miAbout_Click);
             // 
             // tsMEnableDns
             // 
             this.tsMEnableDns.Name = "tsMEnableDns";
-            this.tsMEnableDns.Size = new System.Drawing.Size(184, 22);
+            this.tsMEnableDns.Size = new System.Drawing.Size(203, 22);
             this.tsMEnableDns.Text = "Enable Dns Cache";
             this.tsMEnableDns.Click += new System.EventHandler(this.tsMEnableDns_Click);
             // 
             // tsMDisableDns
             // 
             this.tsMDisableDns.Name = "tsMDisableDns";
-            this.tsMDisableDns.Size = new System.Drawing.Size(184, 22);
+            this.tsMDisableDns.Size = new System.Drawing.Size(203, 22);
             this.tsMDisableDns.Text = "Disable Dns Cache";
             this.tsMDisableDns.Click += new System.EventHandler(this.tsMDisableDns_Click);
+            // 
+            // tsmUpdateGoogle
+            // 
+            this.tsmUpdateGoogle.Name = "tsmUpdateGoogle";
+            this.tsmUpdateGoogle.Size = new System.Drawing.Size(203, 22);
+            this.tsmUpdateGoogle.Text = "Update Google Hosts";
+            this.tsmUpdateGoogle.Click += new System.EventHandler(this.tsmUpdateGoogle_Click_1);
             // 
             // panel2
             // 
@@ -571,14 +573,14 @@
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 24);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 24);
-            this.panel2.Size = new System.Drawing.Size(907, 462);
+            this.panel2.Size = new System.Drawing.Size(907, 485);
             this.panel2.TabIndex = 2;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.statusStrip1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 499);
+            this.panel3.Location = new System.Drawing.Point(0, 522);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(907, 23);
             this.panel3.TabIndex = 3;
@@ -587,7 +589,8 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tslblstatus,
-            this.tslbl2});
+            this.tslbl2,
+            this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 1);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -605,14 +608,18 @@
             this.tslbl2.Name = "tslbl2";
             this.tslbl2.Size = new System.Drawing.Size(0, 17);
             // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(131, 17);
+            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // barManager1
             // 
-            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar3});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -625,20 +632,6 @@
             this.barMuAdditem,
             this.barButtonItem2});
             this.barManager1.MaxItemId = 5;
-            this.barManager1.StatusBar = this.bar3;
-            // 
-            // bar3
-            // 
-            this.bar3.BarName = "Status bar";
-            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
-            this.bar3.DockCol = 0;
-            this.bar3.DockRow = 0;
-            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            this.bar3.OptionsBar.AllowQuickCustomization = false;
-            this.bar3.OptionsBar.DrawDragBorder = false;
-            this.bar3.OptionsBar.UseWholeRow = true;
-            this.bar3.Text = "Status bar";
-            this.bar3.Visible = false;
             // 
             // barDockControlTop
             // 
@@ -651,22 +644,22 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 522);
-            this.barDockControlBottom.Size = new System.Drawing.Size(907, 23);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 545);
+            this.barDockControlBottom.Size = new System.Drawing.Size(907, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 522);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 545);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(907, 0);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 522);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 545);
             // 
             // barMenuDelete
             // 
@@ -717,6 +710,10 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Caption, this.barMuAdditem, "Add Item")});
             this.popupMuGroup.Manager = this.barManager1;
             this.popupMuGroup.Name = "popupMuGroup";
+            // 
+            // defaultLookAndFeel1
+            // 
+            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Money Twins";
             // 
             // frmMain
             // 
@@ -802,9 +799,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsMenUS;
         private DevExpress.XtraEditors.SimpleButton btnAddItems;
         private System.Windows.Forms.ToolStripMenuItem tsmSolotionMgr;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private DevExpress.XtraBars.BarManager barManager1;
-        private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
@@ -818,5 +813,8 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private System.Windows.Forms.ToolStripMenuItem tsMEnableDns;
         private System.Windows.Forms.ToolStripMenuItem tsMDisableDns;
+        private System.Windows.Forms.ToolStripMenuItem tsmUpdateGoogle;
+        private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }

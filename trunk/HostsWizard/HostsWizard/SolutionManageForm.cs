@@ -77,7 +77,18 @@ namespace HostsWizard
 
         private void SolutionManageForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            ((frmMain)this.Owner).ReloadSolution();
+            string name = this.Owner.GetType().Name;
+            switch (name)
+            {
+                case "frmMain":
+                    ((frmMain)this.Owner).ReloadSolution();
+                    break;
+                case "frmMainR":
+                    ((frmMainR)this.Owner).ReloadSolution();
+                    break;
+                default:
+                    break;
+            }
         }
 
     }

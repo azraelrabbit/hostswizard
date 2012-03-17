@@ -75,7 +75,20 @@ namespace HostsWizard
                 byte[] hostcontents = SerializationHelper.GetBinaryFormatSerialize(host);
                 FileHelper.WriteSolutionFile(hostcontents, filePath);
                 MessageBox.Show("方案已导出到文件:" + filePath);
-                ((frmMain)this.Owner).SetStatusText("方案已导出到文件:" + filePath);
+                // ((frmMainRibbon)this.Owner).SetStatusText("方案已导出到文件:" + filePath);
+
+                string tname = this.Owner.GetType().Name;
+                switch (tname)
+                {
+                    case "frmMain":
+                        ((frmMain)this.Owner).SetStatusText("方案已导出到文件:" + filePath);
+                        break;
+                    case "frmMainR":
+                        ((frmMainR)this.Owner).SetStatusText("方案已导出到文件:" + filePath);
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 

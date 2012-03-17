@@ -40,7 +40,19 @@ namespace HostsWizard
             item.Group = groupname;
             item.ID = Guid.NewGuid();
 
-            ((frmMain)this.Owner).AddItem(item);
+            // ((frmMainRibbon)this.Owner).AddItem(item);
+            string tname = this.Owner.GetType().Name;
+            switch (tname)
+            {
+                case "frmMain":
+                    ((frmMain)this.Owner).AddItem(item);
+                    break;
+                case "frmMainR":
+                    ((frmMainR)this.Owner).AddItem(item);
+                    break;
+                default:
+                    break;
+            }
             this.Close();
         }
 

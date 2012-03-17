@@ -7,6 +7,7 @@ using System.Threading;
 using System.Globalization;
 using System.Windows.Forms;
 using System.ComponentModel;
+using System.Linq;
 
 namespace HostsWizard.Utilit
 {
@@ -86,6 +87,10 @@ namespace HostsWizard.Utilit
                 formName = control.Name + "_";
                 control.Text = getMsg(control.Name);
             }
+            if (formName == "frmMainR_")
+            {
+                formName = "frmMain_";
+            }
             for (int i = 0; i < control.Controls.Count; i++)
             {
                 //若在资源文件中设置了值,则替换为对应语言
@@ -152,6 +157,31 @@ namespace HostsWizard.Utilit
                 //    default:
                 //        break;
                 //}
+            }
+            foreach (var item in control.Controls)
+            {
+                //((HostsWizard.frmMain)control).Controls.Cast<Control>().Where(p=>p.;
+                Type type = item.GetType();
+                switch (type.Name)
+                {
+                    case "BarButtonItem":
+                        var obj = ((DevExpress.XtraBars.BarButtonItem)item);
+                        obj.Caption = getMsg(formName + obj.Name);
+                        break;
+                    case "BarCheckItem":
+                        var obj1 = ((DevExpress.XtraBars.BarCheckItem)item);
+                        obj1.Caption = getMsg(formName + obj1.Name);
+                        break;
+                    case "BarSubItem":
+                        var obj2 = ((DevExpress.XtraBars.BarCheckItem)item);
+                        obj2.Caption = getMsg(formName + obj2.Name);
+                        break;
+                    default:
+                        break;
+                }
+
+
+
             }
         }
 
