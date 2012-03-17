@@ -783,6 +783,18 @@ namespace HostsWizard
             SetStatusText("Anti-GFW Hosts Update Successful!");
         }
 
+        private void ribbonUIToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AppConfigHelper.UpdateAppConfig("ISRIB", "true");
+            ProcessHelper.RestartSelf();
+            Application.Exit();
+        }
+
+        private void btnOpenHost_Click(object sender, EventArgs e)
+        {
+            ProcessHelper.OpenHostFile();
+        }
+
 
 
     }

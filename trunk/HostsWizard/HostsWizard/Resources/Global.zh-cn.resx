@@ -369,4 +369,13 @@
   <data name="frmMain_tsmUpdateGoogle" xml:space="preserve">
     <value>更新谷歌Hosts</value>
   </data>
+  <data name="frmMain_tsmOldUI" xml:space="preserve">
+    <value>切换到旧界面模式</value>
+  </data>
+  <data name="frmMain_tsmRibbonUI" xml:space="preserve">
+    <value>切换到新界面模式</value>
+  </data>
+  <data name="frmMain_btnOpenHost" xml:space="preserve">
+    <value>用记事本打开Hosts</value>
+  </data>
 </root>

@@ -85,12 +85,12 @@
             this.tsMEnableDns = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMDisableDns = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmUpdateGoogle = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmOldUI = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tslblstatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.tslbl2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -106,6 +106,7 @@
             this.popUpMuChild = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMuGroup = new DevExpress.XtraBars.PopupMenu(this.components);
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.brsSystemHostsbyTxt = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.tlHostlist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -328,9 +329,10 @@
             this.btnsFlushDns,
             this.btnsSaveApply,
             this.barButtonGroup1,
-            this.btnsUpdateGoogle});
+            this.btnsUpdateGoogle,
+            this.brsSystemHostsbyTxt});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 25);
-            this.ribbonControl1.MaxItemId = 8;
+            this.ribbonControl1.MaxItemId = 9;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -438,6 +440,7 @@
             // ribbonPageGroup4
             // 
             this.ribbonPageGroup4.ItemLinks.Add(this.btnsUpdateGoogle);
+            this.ribbonPageGroup4.ItemLinks.Add(this.brsSystemHostsbyTxt);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             this.ribbonPageGroup4.Text = "Other Commands";
             // 
@@ -675,7 +678,8 @@
             this.tsMAbout,
             this.tsMEnableDns,
             this.tsMDisableDns,
-            this.tsmUpdateGoogle});
+            this.tsmUpdateGoogle,
+            this.tsmOldUI});
             this.tsMHelp.Name = "tsMHelp";
             this.tsMHelp.Size = new System.Drawing.Size(47, 21);
             this.tsMHelp.Text = "Help";
@@ -708,6 +712,13 @@
             this.tsmUpdateGoogle.Text = "Update Google Hosts";
             this.tsmUpdateGoogle.Click += new System.EventHandler(this.tsmUpdateGoogle_Click_1);
             // 
+            // tsmOldUI
+            // 
+            this.tsmOldUI.Name = "tsmOldUI";
+            this.tsmOldUI.Size = new System.Drawing.Size(203, 22);
+            this.tsmOldUI.Text = "Old UI";
+            this.tsmOldUI.Click += new System.EventHandler(this.oldUIToolStripMenuItem_Click);
+            // 
             // panel2
             // 
             this.panel2.AutoScroll = true;
@@ -733,8 +744,7 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tslblstatus,
-            this.tslbl2,
-            this.toolStripStatusLabel1});
+            this.tslbl2});
             this.statusStrip1.Location = new System.Drawing.Point(0, 1);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -751,12 +761,6 @@
             // 
             this.tslbl2.Name = "tslbl2";
             this.tslbl2.Size = new System.Drawing.Size(0, 17);
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(131, 17);
-            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
             // openFileDialog1
             // 
@@ -859,6 +863,15 @@
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Money Twins";
             // 
+            // brsSystemHostsbyTxt
+            // 
+            this.brsSystemHostsbyTxt.Caption = "用记事本打开Hosts";
+            this.brsSystemHostsbyTxt.Glyph = global::HostsWizard.Properties.Resources.onebit_39;
+            this.brsSystemHostsbyTxt.Id = 8;
+            this.brsSystemHostsbyTxt.Name = "brsSystemHostsbyTxt";
+            this.brsSystemHostsbyTxt.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.brsSystemHostsbyTxt.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.brsSystemHostsbyTxt_ItemClick);
+            // 
             // frmMainR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -960,7 +973,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsMDisableDns;
         private System.Windows.Forms.ToolStripMenuItem tsmUpdateGoogle;
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
         private DevExpress.XtraBars.BarButtonItem btnsAddItem;
         private DevExpress.XtraBars.BarButtonItem btnsAddItems;
@@ -974,5 +986,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
         private DevExpress.XtraBars.BarButtonItem btnsUpdateGoogle;
+        private System.Windows.Forms.ToolStripMenuItem tsmOldUI;
+        private DevExpress.XtraBars.BarButtonItem brsSystemHostsbyTxt;
     }
 }

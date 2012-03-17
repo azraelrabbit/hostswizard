@@ -41,6 +41,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsCDel = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnOpenHost = new DevExpress.XtraEditors.SimpleButton();
             this.btnAddItems = new DevExpress.XtraEditors.SimpleButton();
             this.btnAddGroup = new DevExpress.XtraEditors.SimpleButton();
             this.btnAddItem = new DevExpress.XtraEditors.SimpleButton();
@@ -72,6 +73,7 @@
             this.tsMEnableDns = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMDisableDns = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmUpdateGoogle = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmRibbonUI = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -285,6 +287,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnOpenHost);
             this.panel1.Controls.Add(this.btnAddItems);
             this.panel1.Controls.Add(this.btnAddGroup);
             this.panel1.Controls.Add(this.btnAddItem);
@@ -296,6 +299,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(907, 60);
             this.panel1.TabIndex = 1;
+            // 
+            // btnOpenHost
+            // 
+            this.btnOpenHost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpenHost.Location = new System.Drawing.Point(460, 25);
+            this.btnOpenHost.Name = "btnOpenHost";
+            this.btnOpenHost.Padding = new System.Windows.Forms.Padding(0, 5, 10, 0);
+            this.btnOpenHost.Size = new System.Drawing.Size(153, 32);
+            this.btnOpenHost.TabIndex = 6;
+            this.btnOpenHost.Text = "Open Hosts By NotePad";
+            this.btnOpenHost.Click += new System.EventHandler(this.btnOpenHost_Click);
             // 
             // btnAddItems
             // 
@@ -531,7 +545,8 @@
             this.tsMAbout,
             this.tsMEnableDns,
             this.tsMDisableDns,
-            this.tsmUpdateGoogle});
+            this.tsmUpdateGoogle,
+            this.tsmRibbonUI});
             this.tsMHelp.Name = "tsMHelp";
             this.tsMHelp.Size = new System.Drawing.Size(47, 21);
             this.tsMHelp.Text = "Help";
@@ -563,6 +578,13 @@
             this.tsmUpdateGoogle.Size = new System.Drawing.Size(203, 22);
             this.tsmUpdateGoogle.Text = "Update Google Hosts";
             this.tsmUpdateGoogle.Click += new System.EventHandler(this.tsmUpdateGoogle_Click_1);
+            // 
+            // tsmRibbonUI
+            // 
+            this.tsmRibbonUI.Name = "tsmRibbonUI";
+            this.tsmRibbonUI.Size = new System.Drawing.Size(203, 22);
+            this.tsmRibbonUI.Text = "Ribbon UI";
+            this.tsmRibbonUI.Click += new System.EventHandler(this.ribbonUIToolStripMenuItem_Click);
             // 
             // panel2
             // 
@@ -816,5 +838,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmUpdateGoogle;
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripMenuItem tsmRibbonUI;
+        private DevExpress.XtraEditors.SimpleButton btnOpenHost;
     }
 }
