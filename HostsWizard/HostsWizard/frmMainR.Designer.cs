@@ -736,6 +736,7 @@
             // tlsSearch
             // 
             this.tlsSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tlsSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tlsSearch.Name = "tlsSearch";
             this.tlsSearch.Size = new System.Drawing.Size(100, 23);
             this.tlsSearch.TextChanged += new System.EventHandler(this.tlsSearch_TextChanged);
