@@ -60,6 +60,9 @@ namespace HostsWizard
 
             //打开系统hosts
             LoadSystemHosts();
+
+            //
+            tlHostlist.FilterNode += new FilterNodeEventHandler(tlHostlist_FilterNode);
         }
 
 
@@ -92,6 +95,12 @@ namespace HostsWizard
             SetStatusText("Init completed! Enjoy!");
 
             this.Text = Constants.ApplicationName + "--[Current SolutionName:" + host.SolutionName + "]";
+            tlHostlist.BestFitColumns();
+
+            if (!string.IsNullOrEmpty(tlsSearch.Text.Trim()))
+            {
+                FilterTreeNodes(new List<string>() { "Domain", "IP", "Group" }, tlsSearch.Text.Trim());
+            }
         }
 
         public void RefreshTreeList()
@@ -739,7 +748,11 @@ namespace HostsWizard
         {
             try
             {
-                e.Node["Expended"] = true;
+                if (string.IsNullOrEmpty(tlsSearch.Text.Trim()))
+                {
+                    e.Node["Expended"] = true;
+                }
+
             }
             catch { }
         }
@@ -748,7 +761,10 @@ namespace HostsWizard
         {
             try
             {
-                e.Node["Expended"] = false;
+                if (string.IsNullOrEmpty(tlsSearch.Text.Trim()))
+                {
+                    e.Node["Expended"] = false;
+                }
             }
             catch { }
         }
@@ -863,7 +879,112 @@ namespace HostsWizard
             ProcessHelper.OpenHostFile();
         }
 
+        private void SearchFilter(string filterStr)
+        {
+            tlHostlist.OptionsBehavior.EnableFiltering = true;
+            //  Application.DoEvents();
+            tlHostlist.FilterConditions.Clear();
 
+            if (string.IsNullOrEmpty(filterStr))
+            {
+
+            }
+            else
+            {
+                // Application.DoEvents();
+                //var domainFilter2 = new FilterCondition(FilterConditionEnum.NotContains, tlHostlist.Columns["Domain"], filterStr, null, false);
+                var domainFilter = new FilterCondition(FilterConditionEnum.Contains, tlHostlist.Columns["Domain"], filterStr, filterStr);
+
+                // var ipFilter = new FilterCondition(FilterConditionEnum.Like, tlHostlist.Columns["IP"], filterStr, null, true);
+                //  tlHostlist.FilterConditions.Add(domainFilter2);
+                // domainFilter2.Visible = false;
+                tlHostlist.FilterConditions.Add(domainFilter);
+                // Application.DoEvents();
+                // tlHostlist.FilterConditions.Add(ipFilter);
+                // domainFilter.Visible = true;
+                //  ipFilter.Visible = false;
+                //tlHostlist.StartIncrementalSearch(filterStr);
+            }
+
+            //  Application.DoEvents();
+        }
+
+        void tlHostlist_FilterNode(object sender, FilterNodeEventArgs e)
+        {
+            // FilterTreeNodes();
+        }
+
+        private void FilterTreeNodes(string columnName, string val)
+        {
+            foreach (TreeListNode nodeg in tlHostlist.Nodes.Cast<TreeListNode>().Where(node => node != null && node[columnName] != null))
+            {
+                foreach (TreeListNode node in nodeg.Nodes)
+                {
+                    node.Visible = node[columnName].ToString().Contains(val);
+                }
+            }
+        }
+
+        private void FilterTreeNodes(List<string> columnNames, string val)
+        {
+            foreach (TreeListNode nodeg in tlHostlist.Nodes.Cast<TreeListNode>().Where(n => n != null))
+            {
+                if (nodeg["IP"].ToString().Contains("GFW")) continue;
+                foreach (TreeListNode node in nodeg.Nodes)
+                {
+                    node.Visible = false;
+                }
+
+            }
+            Application.DoEvents();
+
+            foreach (var columnName in columnNames)
+            {
+                foreach (TreeListNode nodeg in tlHostlist.Nodes.Cast<TreeListNode>().Where(n => n != null))
+                {
+                    if (nodeg["IP"].ToString().Contains("GFW")) continue;
+                    foreach (TreeListNode node in nodeg.Nodes)
+                    {
+                        if (node[columnName] != null && node[columnName].ToString().Contains(val))
+                        {
+                            node.Visible = true;
+                            node.ParentNode.Expanded = true;
+                        }
+                        // Application.DoEvents();
+                    }
+                    Application.DoEvents();
+                }
+            }
+            Application.DoEvents();
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            tlsSearch.Text = string.Empty;
+            //tlHostlist.FilterConditions.Clear();
+            foreach (TreeListNode node in tlHostlist.Nodes.Cast<TreeListNode>().Where(node => node != null))
+            {
+                node.Visible = true;
+                Application.DoEvents();
+            }
+
+            LoadSystemHosts();
+        }
+
+        private void tlsSearch_TextChanged(object sender, EventArgs e)
+        {
+            var filter = ((ToolStripTextBox)sender).Text;
+            //SearchFilter(filter);
+            if (string.IsNullOrEmpty(filter))
+            {
+                LoadSystemHosts();
+            }
+            else
+            {
+                FilterTreeNodes(new List<string>() { "Domain", "IP", "Group" }, filter);
+            }
+            //  Application.DoEvents();
+        }
 
     }
 }

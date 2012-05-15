@@ -87,6 +87,8 @@
             this.tsMDisableDns = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmUpdateGoogle = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmOldUI = new System.Windows.Forms.ToolStripMenuItem();
+            this.tlsSearch = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -230,9 +232,6 @@
             this.tlHostlist.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.tlHostlist.Margin = new System.Windows.Forms.Padding(3, 3, 21, 3);
             this.tlHostlist.Name = "tlHostlist";
-            this.tlHostlist.OptionsBehavior.DragNodes = true;
-            this.tlHostlist.OptionsBehavior.ImmediateEditor = false;
-            this.tlHostlist.OptionsBehavior.PopulateServiceColumns = true;
             this.tlHostlist.OptionsBehavior.ShowEditorOnMouseUp = true;
             this.tlHostlist.OptionsView.EnableAppearanceEvenRow = true;
             this.tlHostlist.OptionsView.EnableAppearanceOddRow = true;
@@ -335,7 +334,7 @@
             this.barButtonGroup1,
             this.btnsUpdateGoogle,
             this.brsSystemHostsbyTxt});
-            this.ribbonControl1.Location = new System.Drawing.Point(0, 25);
+            this.ribbonControl1.Location = new System.Drawing.Point(0, 27);
             this.ribbonControl1.MaxItemId = 9;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -459,7 +458,7 @@
             // 
             // btnAddItems
             // 
-            this.btnAddItems.Location = new System.Drawing.Point(124, 25);
+            this.btnAddItems.Location = new System.Drawing.Point(124, 33);
             this.btnAddItems.Name = "btnAddItems";
             this.btnAddItems.Padding = new System.Windows.Forms.Padding(0, 5, 10, 0);
             this.btnAddItems.Size = new System.Drawing.Size(102, 32);
@@ -469,7 +468,7 @@
             // 
             // btnAddGroup
             // 
-            this.btnAddGroup.Location = new System.Drawing.Point(236, 25);
+            this.btnAddGroup.Location = new System.Drawing.Point(236, 36);
             this.btnAddGroup.Name = "btnAddGroup";
             this.btnAddGroup.Padding = new System.Windows.Forms.Padding(0, 5, 10, 0);
             this.btnAddGroup.Size = new System.Drawing.Size(102, 32);
@@ -479,7 +478,7 @@
             // 
             // btnAddItem
             // 
-            this.btnAddItem.Location = new System.Drawing.Point(12, 25);
+            this.btnAddItem.Location = new System.Drawing.Point(12, 34);
             this.btnAddItem.Name = "btnAddItem";
             this.btnAddItem.Padding = new System.Windows.Forms.Padding(0, 5, 10, 0);
             this.btnAddItem.Size = new System.Drawing.Size(102, 32);
@@ -490,7 +489,7 @@
             // btnFlushDns
             // 
             this.btnFlushDns.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFlushDns.Location = new System.Drawing.Point(631, 25);
+            this.btnFlushDns.Location = new System.Drawing.Point(631, 35);
             this.btnFlushDns.Name = "btnFlushDns";
             this.btnFlushDns.Padding = new System.Windows.Forms.Padding(0, 5, 10, 0);
             this.btnFlushDns.Size = new System.Drawing.Size(119, 32);
@@ -501,7 +500,7 @@
             // btnSaveApply
             // 
             this.btnSaveApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveApply.Location = new System.Drawing.Point(779, 25);
+            this.btnSaveApply.Location = new System.Drawing.Point(779, 34);
             this.btnSaveApply.Name = "btnSaveApply";
             this.btnSaveApply.Padding = new System.Windows.Forms.Padding(0, 5, 10, 0);
             this.btnSaveApply.Size = new System.Drawing.Size(113, 32);
@@ -515,10 +514,12 @@
             this.tsMFile,
             this.tsMEdit,
             this.tsMSolutions,
-            this.tsMHelp});
+            this.tsMHelp,
+            this.tlsSearch,
+            this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(907, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(907, 27);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -533,7 +534,7 @@
             this.tsMSaveSolution,
             this.tsMExit});
             this.tsMFile.Name = "tsMFile";
-            this.tsMFile.Size = new System.Drawing.Size(39, 21);
+            this.tsMFile.Size = new System.Drawing.Size(39, 23);
             this.tsMFile.Text = "File";
             // 
             // tsMOpenHosts
@@ -600,7 +601,7 @@
             this.tsMLanguage,
             this.tsmSolotionMgr});
             this.tsMEdit.Name = "tsMEdit";
-            this.tsMEdit.Size = new System.Drawing.Size(42, 21);
+            this.tsMEdit.Size = new System.Drawing.Size(42, 23);
             this.tsMEdit.Text = "Edit";
             // 
             // tsMBackupHosts
@@ -682,7 +683,7 @@
             // 
             this.tsMSolutions.CheckOnClick = true;
             this.tsMSolutions.Name = "tsMSolutions";
-            this.tsMSolutions.Size = new System.Drawing.Size(73, 21);
+            this.tsMSolutions.Size = new System.Drawing.Size(73, 23);
             this.tsMSolutions.Text = "Solutions";
             // 
             // tsMHelp
@@ -694,7 +695,7 @@
             this.tsmUpdateGoogle,
             this.tsmOldUI});
             this.tsMHelp.Name = "tsMHelp";
-            this.tsMHelp.Size = new System.Drawing.Size(47, 21);
+            this.tsMHelp.Size = new System.Drawing.Size(47, 23);
             this.tsMHelp.Text = "Help";
             // 
             // tsMAbout
@@ -731,6 +732,21 @@
             this.tsmOldUI.Size = new System.Drawing.Size(203, 22);
             this.tsmOldUI.Text = "Old UI";
             this.tsmOldUI.Click += new System.EventHandler(this.oldUIToolStripMenuItem_Click);
+            // 
+            // tlsSearch
+            // 
+            this.tlsSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tlsSearch.Name = "tlsSearch";
+            this.tlsSearch.Size = new System.Drawing.Size(100, 23);
+            this.tlsSearch.TextChanged += new System.EventHandler(this.tlsSearch_TextChanged);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(28, 23);
+            this.toolStripMenuItem1.Text = "X";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // panel2
             // 
@@ -992,5 +1008,7 @@
         private DevExpress.XtraBars.BarButtonItem btnsUpdateGoogle;
         private System.Windows.Forms.ToolStripMenuItem tsmOldUI;
         private DevExpress.XtraBars.BarButtonItem brsSystemHostsbyTxt;
+        private System.Windows.Forms.ToolStripTextBox tlsSearch;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }
