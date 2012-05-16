@@ -232,6 +232,7 @@
             this.tlHostlist.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.tlHostlist.Margin = new System.Windows.Forms.Padding(3, 3, 21, 3);
             this.tlHostlist.Name = "tlHostlist";
+            this.tlHostlist.OptionsBehavior.ImmediateEditor = false;
             this.tlHostlist.OptionsBehavior.ShowEditorOnMouseUp = true;
             this.tlHostlist.OptionsView.EnableAppearanceEvenRow = true;
             this.tlHostlist.OptionsView.EnableAppearanceOddRow = true;
