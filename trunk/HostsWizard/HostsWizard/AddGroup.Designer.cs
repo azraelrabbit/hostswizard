@@ -73,7 +73,7 @@
             // 
             this.txtGroupName.Location = new System.Drawing.Point(80, 12);
             this.txtGroupName.Name = "txtGroupName";
-            this.txtGroupName.Size = new System.Drawing.Size(360, 21);
+            this.txtGroupName.Size = new System.Drawing.Size(360, 20);
             this.txtGroupName.TabIndex = 6;
             // 
             // lblGroup

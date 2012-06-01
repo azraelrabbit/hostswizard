@@ -90,14 +90,14 @@
             // 
             this.txtDomain.Location = new System.Drawing.Point(93, 90);
             this.txtDomain.Name = "txtDomain";
-            this.txtDomain.Size = new System.Drawing.Size(360, 21);
+            this.txtDomain.Size = new System.Drawing.Size(360, 20);
             this.txtDomain.TabIndex = 7;
             // 
             // txtIp
             // 
             this.txtIp.Location = new System.Drawing.Point(93, 51);
             this.txtIp.Name = "txtIp";
-            this.txtIp.Size = new System.Drawing.Size(360, 21);
+            this.txtIp.Size = new System.Drawing.Size(360, 20);
             this.txtIp.TabIndex = 6;
             // 
             // lblDomain

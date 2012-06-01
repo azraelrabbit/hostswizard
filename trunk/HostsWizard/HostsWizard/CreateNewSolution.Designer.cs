@@ -74,7 +74,7 @@
             // 
             this.txtSolutionName.Location = new System.Drawing.Point(111, 12);
             this.txtSolutionName.Name = "txtSolutionName";
-            this.txtSolutionName.Size = new System.Drawing.Size(329, 21);
+            this.txtSolutionName.Size = new System.Drawing.Size(329, 20);
             this.txtSolutionName.TabIndex = 6;
             // 
             // lblSolutionName

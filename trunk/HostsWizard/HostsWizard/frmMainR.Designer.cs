@@ -229,7 +229,7 @@
             this.tlHostlist.FormatConditions.AddRange(new DevExpress.XtraTreeList.StyleFormatConditions.StyleFormatCondition[] {
             styleFormatCondition1});
             this.tlHostlist.Location = new System.Drawing.Point(0, 0);
-            this.tlHostlist.LookAndFeel.SkinName = "DevExpress Dark Style";
+            this.tlHostlist.LookAndFeel.SkinName = "VS2010";
             this.tlHostlist.Margin = new System.Windows.Forms.Padding(3, 3, 21, 3);
             this.tlHostlist.Name = "tlHostlist";
             this.tlHostlist.OptionsBehavior.ImmediateEditor = false;
@@ -320,9 +320,6 @@
             // ribbonControl1
             // 
             this.ribbonControl1.ApplicationButtonText = null;
-            // 
-            // 
-            // 
             this.ribbonControl1.ExpandCollapseItem.Id = 0;
             this.ribbonControl1.ExpandCollapseItem.Name = global::HostsWizard.Resources.Global_en_US.aboutMsg;
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
@@ -346,7 +343,7 @@
             this.ribbonControl1.ShowExpandCollapseButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl1.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.ShowOnMultiplePages;
             this.ribbonControl1.ShowToolbarCustomizeItem = false;
-            this.ribbonControl1.Size = new System.Drawing.Size(907, 97);
+            this.ribbonControl1.Size = new System.Drawing.Size(907, 93);
             this.ribbonControl1.Toolbar.ItemLinks.Add(this.barButtonGroup1);
             this.ribbonControl1.Toolbar.ShowCustomizeItem = false;
             this.ribbonControl1.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
@@ -892,7 +889,7 @@
             // 
             // defaultLookAndFeel1
             // 
-            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Money Twins";
+            this.defaultLookAndFeel1.LookAndFeel.SkinName = "VS2010";
             // 
             // frmMainR
             // 
