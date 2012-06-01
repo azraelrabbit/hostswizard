@@ -111,10 +111,10 @@
             new DevExpress.XtraTab.Buttons.CustomHeaderButton(),
             new DevExpress.XtraTab.Buttons.CustomHeaderButton()});
             this.xtcAddItems.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtcAddItems.Location = new System.Drawing.Point(3, 3);
+            this.xtcAddItems.Location = new System.Drawing.Point(2, 2);
             this.xtcAddItems.Name = "xtcAddItems";
             this.xtcAddItems.SelectedTabPage = this.xtpAddbyText;
-            this.xtcAddItems.Size = new System.Drawing.Size(620, 459);
+            this.xtcAddItems.Size = new System.Drawing.Size(622, 461);
             this.xtcAddItems.TabIndex = 1;
             this.xtcAddItems.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtpAddbyText,
@@ -125,13 +125,13 @@
             // xtpAddbyText
             // 
             this.xtpAddbyText.Name = "xtpAddbyText";
-            this.xtpAddbyText.Size = new System.Drawing.Size(618, 436);
+            this.xtpAddbyText.Size = new System.Drawing.Size(616, 432);
             this.xtpAddbyText.Text = "Add By Text";
             // 
             // xtpAddbyLists
             // 
             this.xtpAddbyLists.Name = "xtpAddbyLists";
-            this.xtpAddbyLists.Size = new System.Drawing.Size(618, 436);
+            this.xtpAddbyLists.Size = new System.Drawing.Size(614, 430);
             this.xtpAddbyLists.Text = "Add By List";
             // 
             // AddItems
