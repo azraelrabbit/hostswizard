@@ -16,8 +16,8 @@ namespace HostsWizard.Helpers
         private static string password = "";  //请修改***为实际密码
 
         private static string dbFilePath = Constants.HostsWizardsDataFilePath;  //请修改***为实际SQLite数据库名
-        private static string connectString = string.Format("Data Source ={0}", dbFilePath, password);
-        private static SQLiteConnection myConnect = new SQLiteConnection(connectString);
+        private static string connectString = string.Format(@"Data Source={0};Pooling=true;FailIfMissing=false;Version=3", dbFilePath);
+        private static SQLiteConnection myConnect = new SQLiteConnection();
 
         /// <summary>
         /// 取当前SQLite连接
@@ -96,7 +96,7 @@ namespace HostsWizard.Helpers
             try
             {
                 PrepareCommand(command, null, commandString, parameters);
-                SQLiteDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                SQLiteDataReader reader = (SQLiteDataReader)command.ExecuteReader(CommandBehavior.CloseConnection);
                 command.Parameters.Clear();
                 return reader;
             }
@@ -119,7 +119,8 @@ namespace HostsWizard.Helpers
             try
             {
                 PrepareCommand(command, null, commandString, parameters);
-                SQLiteDataAdapter adapter = new SQLiteDataAdapter(command);
+                var adapter = new SQLiteDataAdapter();
+                adapter.SelectCommand = command;
                 adapter.Fill(ds);
                 return ds;
             }
@@ -140,7 +141,10 @@ namespace HostsWizard.Helpers
             string commandString, params SQLiteParameter[] parameters)
         {
             if (myConnect.State != ConnectionState.Open)
+            {
+                myConnect.ConnectionString = connectString;
                 myConnect.Open();
+            }
 
             command.Connection = myConnect;
             command.CommandText = commandString;

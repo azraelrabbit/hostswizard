@@ -9,23 +9,23 @@ namespace HostsWizard.Utilit
 {
     public class Constants
     {
-        public static readonly string AppDataLocalPath = Path.GetDirectoryName(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)) + "\\Local";
+        public static readonly string AppDataLocalPath = Path.GetDirectoryName(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)) + @"\Local";
 
         public static readonly string ApplicationName = "HostsWizards";
 
         public static readonly string HostsPath = (Environment.SystemDirectory + @"\drivers\etc\Hosts");
 
-        public static readonly string HostsBackUpPath = AppDataLocalPath + "\\HostsWizards\\Backup";
+        public static readonly string HostsBackUpPath = AppDataLocalPath + @"\HostsWizards\Backup";
 
         public static readonly string ApplicationStartUpPath = Application.StartupPath;
 
         public static readonly string ApplicationFilePath = Application.ExecutablePath;
 
-        public static readonly string DefaultAppDataFilePath = ApplicationStartUpPath + "\\hsw.db";
+        public static readonly string DefaultAppDataFilePath = ApplicationStartUpPath + @"\hsw.db";
 
-        public static readonly string HostsWizardsDataPath = AppDataLocalPath + "\\HostsWizards\\Data";
+        public static readonly string HostsWizardsDataPath = AppDataLocalPath + @"\HostsWizards\Data";
 
-        public static readonly string HostsWizardsDataFilePath = HostsWizardsDataPath + "\\hsw.db";
+        public static readonly string HostsWizardsDataFilePath = HostsWizardsDataPath + @"\hsw.db";
 
         public static int StatusBarClearInterval = 8000;
 
