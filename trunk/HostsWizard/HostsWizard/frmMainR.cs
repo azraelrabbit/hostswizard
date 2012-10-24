@@ -54,12 +54,7 @@ namespace HostsWizard
 
             menuSolutions = tsMSolutions;
             menuSolutions.DropDownItemClicked += new ToolStripItemClickedEventHandler(menuSolutions_DropDownItemClicked);
-            //初始化方案列表
-            LoadSolutionList();
-            InitSolutionMenuItems();
-
-            //打开系统hosts
-            LoadSystemHosts();
+         
 
             //
             tlHostlist.FilterNode += new FilterNodeEventHandler(tlHostlist_FilterNode);
@@ -984,6 +979,16 @@ namespace HostsWizard
                 FilterTreeNodes(new List<string>() { "Domain", "IP", "Group" }, filter);
             }
             //  Application.DoEvents();
+        }
+
+        private void frmMainR_Shown(object sender, EventArgs e)
+        {
+            //初始化方案列表
+            LoadSolutionList();
+            InitSolutionMenuItems();
+
+            //打开系统hosts
+            LoadSystemHosts();
         }
 
     }

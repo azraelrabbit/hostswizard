@@ -127,6 +127,8 @@
             // 
             this.clType.Caption = "Type";
             this.clType.FieldName = "Type";
+            this.clType.Fixed = DevExpress.XtraTreeList.Columns.FixedStyle.Right;
+            this.clType.MinWidth = 80;
             this.clType.Name = "clType";
             this.clType.Visible = true;
             this.clType.VisibleIndex = 4;
@@ -909,6 +911,7 @@
             this.Text = "HostWizardsMain";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
             this.Load += new System.EventHandler(this.HostWizardsMain_Load);
+            this.Shown += new System.EventHandler(this.frmMainR_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.tlHostlist)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
