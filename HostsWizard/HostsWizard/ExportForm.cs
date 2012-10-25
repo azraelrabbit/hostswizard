@@ -68,6 +68,7 @@ namespace HostsWizard
         {
 
             saveFileDialog1.Filter = "*.hws";
+            
             DialogResult dr = saveFileDialog1.ShowDialog(this);
             if (dr == DialogResult.OK)
             {

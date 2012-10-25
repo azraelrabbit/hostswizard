@@ -32,7 +32,7 @@
     <SuiteName>WizardsUtility</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>58</ApplicationRevision>
+    <ApplicationRevision>59</ApplicationRevision>
     <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -168,6 +168,12 @@
     <Compile Include="ExportForm.Designer.cs">
       <DependentUpon>ExportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSaveNewSolution.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSaveNewSolution.Designer.cs">
+      <DependentUpon>frmSaveNewSolution.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Helpers\ProcessHelper.cs" />
     <Compile Include="Helpers\RegisterHelper.cs" />
@@ -239,6 +245,12 @@
     <Compile Include="frmMainR.Designer.cs">
       <DependentUpon>frmMainR.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmImportSolutionAsNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImportSolutionAsNew.Designer.cs">
+      <DependentUpon>frmImportSolutionAsNew.cs</DependentUpon>
+    </Compile>
     <Content Include="Libs\ICSharpCode.Build.Tasks.dll" />
     <Content Include="Libs\ICSharpCode.Core.dll" />
     <Content Include="Libs\ICSharpCode.Core.Presentation.dll" />
@@ -257,6 +269,9 @@
     <Content Include="x86\SQLite.Interop.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="frmImportSolutionAsNew.resx">
+      <DependentUpon>frmImportSolutionAsNew.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Resources\bonus48x48_25.png" />
     <None Include="Resources\bonus48x48_24.png" />
@@ -335,6 +350,9 @@
     <None Include="Resources\onebit_04.png" />
     <EmbeddedResource Include="AddItems.resx">
       <DependentUpon>AddItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSaveNewSolution.resx">
+      <DependentUpon>frmSaveNewSolution.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Global.zh-CN.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
