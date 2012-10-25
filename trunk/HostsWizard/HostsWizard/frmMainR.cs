@@ -54,7 +54,7 @@ namespace HostsWizard
 
             menuSolutions = tsMSolutions;
             menuSolutions.DropDownItemClicked += new ToolStripItemClickedEventHandler(menuSolutions_DropDownItemClicked);
-         
+
 
             //
             tlHostlist.FilterNode += new FilterNodeEventHandler(tlHostlist_FilterNode);
@@ -89,13 +89,15 @@ namespace HostsWizard
             CheckAllExpendedState();
             SetStatusText("Init completed! Enjoy!");
 
-            this.Text = Constants.ApplicationName + "--[Current SolutionName:" + host.SolutionName + "]";
+            this.Text = Constants.ApplicationName + "--[当前方案:" + host.SolutionName + "]";
             tlHostlist.BestFitColumns();
 
             if (!string.IsNullOrEmpty(tlsSearch.Text.Trim()))
             {
                 FilterTreeNodes(new List<string>() { "Domain", "IP", "Group" }, tlsSearch.Text.Trim());
             }
+
+            SetCurrentSolutionHost();
         }
 
         public void RefreshTreeList()
@@ -110,6 +112,11 @@ namespace HostsWizard
             //RestoreGroupState();
             CheckAllExpendedState();
             SetStatusText("Refresh completed!");
+
+            if (host != null)
+            {
+                this.Text = Constants.ApplicationName + "--[当前方案:" + host.SolutionName + "]";
+            }
 
         }
 
@@ -379,7 +386,7 @@ namespace HostsWizard
                 //solutionMenuItem.CheckOnClick = true;
                 menuSolutions.DropDownItems.Add(solutionMenuItem);
             }
-
+           
         }
 
         //void solutionMenuItem_CheckStateChanged(object sender, EventArgs e)
@@ -442,6 +449,14 @@ namespace HostsWizard
                 dl.AddNewSolution(host);
             }
 
+            LoadSolutionList();
+            InitSolutionMenuItems();
+            SetCurrentSolutionHost();
+        }
+        public void SaveNewSolutionCallback(HostsProcesscer newHost)
+        {
+            host = newHost;
+            RefreshTreeList();
             LoadSolutionList();
             InitSolutionMenuItems();
             SetCurrentSolutionHost();
@@ -582,7 +597,7 @@ namespace HostsWizard
                 MessageBox.Show("导入失败,不是方案文件,或文件被破坏!\r\n INFO:" + ex.Message);
             }
         }
-        private void ImportSolution(HostsProcesscer item)
+        public void ImportSolution(HostsProcesscer item)
         {
             SolutionDL dl = new SolutionDL();
             if (dl.SolutionExist(item.SolutionID))
@@ -989,6 +1004,19 @@ namespace HostsWizard
 
             //打开系统hosts
             LoadSystemHosts();
+           // 
+        }
+
+        private void renameSaveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //重命名方案并保存为文件
+            frmSaveNewSolution saveNewSol = new frmSaveNewSolution(host,this);
+            saveNewSol.ShowDialog(this);
+        }
+
+        private void 作为新方案导入ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

@@ -68,6 +68,7 @@
             this.tsMApply = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMRefreshDns = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMSaveSolution = new System.Windows.Forms.ToolStripMenuItem();
+            this.renameSaveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMExit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMBackupHosts = new System.Windows.Forms.ToolStripMenuItem();
@@ -109,6 +110,7 @@
             this.popUpMuChild = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMuGroup = new DevExpress.XtraBars.PopupMenu(this.components);
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.作为新方案导入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.tlHostlist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -532,6 +534,7 @@
             this.tsMApply,
             this.tsMRefreshDns,
             this.tsMSaveSolution,
+            this.renameSaveAsToolStripMenuItem,
             this.tsMExit});
             this.tsMFile.Name = "tsMFile";
             this.tsMFile.Size = new System.Drawing.Size(39, 23);
@@ -584,6 +587,13 @@
             this.tsMSaveSolution.Text = "Save Solution";
             this.tsMSaveSolution.Click += new System.EventHandler(this.tsMenuUpdateSolution_Click);
             // 
+            // renameSaveAsToolStripMenuItem
+            // 
+            this.renameSaveAsToolStripMenuItem.Name = "renameSaveAsToolStripMenuItem";
+            this.renameSaveAsToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
+            this.renameSaveAsToolStripMenuItem.Text = "重命名并保存新方案";
+            this.renameSaveAsToolStripMenuItem.Click += new System.EventHandler(this.renameSaveAsToolStripMenuItem_Click);
+            // 
             // tsMExit
             // 
             this.tsMExit.Name = "tsMExit";
@@ -598,6 +608,7 @@
             this.tsMRestoreHosts,
             this.tsMExportMenu,
             this.tsMImport,
+            this.作为新方案导入ToolStripMenuItem,
             this.tsMLanguage,
             this.tsmSolotionMgr});
             this.tsMEdit.Name = "tsMEdit";
@@ -893,6 +904,13 @@
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "VS2010";
             // 
+            // 作为新方案导入ToolStripMenuItem
+            // 
+            this.作为新方案导入ToolStripMenuItem.Name = "作为新方案导入ToolStripMenuItem";
+            this.作为新方案导入ToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.作为新方案导入ToolStripMenuItem.Text = "作为新方案导入";
+            this.作为新方案导入ToolStripMenuItem.Click += new System.EventHandler(this.作为新方案导入ToolStripMenuItem_Click);
+            // 
             // frmMainR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1012,5 +1030,7 @@
         private DevExpress.XtraBars.BarButtonItem brsSystemHostsbyTxt;
         private System.Windows.Forms.ToolStripTextBox tlsSearch;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem renameSaveAsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 作为新方案导入ToolStripMenuItem;
     }
 }
