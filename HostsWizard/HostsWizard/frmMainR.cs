@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
@@ -13,19 +14,21 @@ namespace HostsWizard
 {
     public partial class frmMainR : Form
     {
-        HostsProcesscer host;
+        public HostsProcesscer host;
 
-        ToolStripMenuItem menuSolutions;
+        public ToolStripMenuItem menuSolutions;
 
-        List<HostsProcesscer> hostlist = new List<HostsProcesscer>();
+        public List<HostsProcesscer> hostlist = new List<HostsProcesscer>();
 
 
-        System.Timers.Timer t1 = null;
+        public System.Timers.Timer t1 = null;
         //System.Timers.Timer t2;
 
         public frmMainR()
         {
             InitializeComponent();
+            // CheckForIllegalCrossThreadCalls = false;
+
         }
 
         private void HostWizardsMain_Load(object sender, EventArgs e)
@@ -64,8 +67,14 @@ namespace HostsWizard
         public void ReloadSolution()
         {
             //初始化方案列表
+            //Task.Factory.StartNew(() =>
+            //{
+            Application.DoEvents();
             LoadSolutionList();
+            Application.DoEvents();
+
             InitSolutionMenuItems();
+            //});
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -102,21 +111,32 @@ namespace HostsWizard
 
         public void RefreshTreeList()
         {
-            // RemGroupState();
-            SetStatusText("Refreshing ... ...");
-            tlHostlist.DataSource = null;
-            tlHostlist.DataSource = host.fullContent;
-            // tlHostlist.Refresh();
-            CheckAllCheckState(tlHostlist.Nodes);
-            // tlHostlist.ExpandAll();
-            //RestoreGroupState();
-            CheckAllExpendedState();
-            SetStatusText("Refresh completed!");
+            //异步方式刷新界面和数据
+            //var t = new Task(
+            //() =>
+            //{
+                // RemGroupState();
+            Application.DoEvents();
+                SetStatusText("Refreshing ... ...");
+                tlHostlist.DataSource = null;
+                tlHostlist.DataSource = host.fullContent;
+                Application.DoEvents();
+                // tlHostlist.Refresh();
+                CheckAllCheckState(tlHostlist.Nodes);
+                Application.DoEvents();
+                // tlHostlist.ExpandAll();
+                //RestoreGroupState();
+                CheckAllExpendedState();
+                Application.DoEvents();
+                SetStatusText("Refresh completed!");
 
-            if (host != null)
-            {
-                this.Text = Constants.ApplicationName + "--[当前方案:" + host.SolutionName + "]";
-            }
+                if (host != null)
+                {
+                    this.Text = Constants.ApplicationName + "--[当前方案:" + host.SolutionName +
+                                "]";
+                }
+            //});
+            //t.Start();
 
         }
 
@@ -286,8 +306,11 @@ namespace HostsWizard
         //保存并应用host,同事刷新DNS缓存
         private void SaveAndApply()
         {
+            Application.DoEvents();
             FileHelper.WriteHosts(host.ToStringList());
+            Application.DoEvents();
             Utility.FlushDNS();
+            Application.DoEvents();
             LoadSystemHosts();
             SetStatusText("已保存系统Hosts,并已刷新DNS缓存!");
         }
@@ -376,6 +399,7 @@ namespace HostsWizard
         private void InitSolutionMenuItems()
         {
             menuSolutions.DropDownItems.Clear();
+            Application.DoEvents();
             foreach (var s in hostlist)
             {
                 ToolStripMenuItem solutionMenuItem = new ToolStripMenuItem();
@@ -385,8 +409,9 @@ namespace HostsWizard
                 solutionMenuItem.Tag = s;
                 //solutionMenuItem.CheckOnClick = true;
                 menuSolutions.DropDownItems.Add(solutionMenuItem);
+                Application.DoEvents();
             }
-           
+
         }
 
         //void solutionMenuItem_CheckStateChanged(object sender, EventArgs e)
@@ -449,17 +474,19 @@ namespace HostsWizard
                 dl.AddNewSolution(host);
             }
 
-            LoadSolutionList();
-            InitSolutionMenuItems();
-            SetCurrentSolutionHost();
+            //LoadSolutionList();
+            //InitSolutionMenuItems();
+            //SetCurrentSolutionHost();
+            ReloadAsync();
         }
         public void SaveNewSolutionCallback(HostsProcesscer newHost)
         {
             host = newHost;
             RefreshTreeList();
-            LoadSolutionList();
-            InitSolutionMenuItems();
-            SetCurrentSolutionHost();
+            //LoadSolutionList();
+            //InitSolutionMenuItems();
+            //SetCurrentSolutionHost();
+            ReloadAsync();
         }
 
         private void SetCurrentSolutionHost()
@@ -613,9 +640,10 @@ namespace HostsWizard
                 dl.AddNewSolution(item);
             }
 
-            LoadSolutionList();
-            InitSolutionMenuItems();
-            SetCurrentSolutionHost();
+            //LoadSolutionList();
+            //InitSolutionMenuItems();
+            //SetCurrentSolutionHost();
+            ReloadAsync();
         }
 
         private void tsMzhCN_Click(object sender, EventArgs e)
@@ -799,6 +827,7 @@ namespace HostsWizard
             try
             {
                 //从源更新可正常访问google及某些国外网站的hosts,并写入到系统中.
+                Application.DoEvents();
                 var item = this.host.fullContent.FirstOrDefault(p => p.IP.ToLower().Contains("anti_gfw"));
                 string groupname = string.Empty;
                 Guid groupid = Guid.Empty;
@@ -813,7 +842,9 @@ namespace HostsWizard
                 {
 
                 }
+                Application.DoEvents();
                 RequestHelpers.GetNewHosts(this, groupname, groupid);
+                Application.DoEvents();
                 SetStatusText("Anti-GFW Hosts Update Successful!");
             }
             catch
@@ -942,9 +973,10 @@ namespace HostsWizard
                 if (nodeg["IP"].ToString().Contains("GFW")) continue;
                 foreach (TreeListNode node in nodeg.Nodes)
                 {
+                   // Application.DoEvents();
                     node.Visible = false;
                 }
-
+                Application.DoEvents();
             }
             Application.DoEvents();
 
@@ -999,24 +1031,41 @@ namespace HostsWizard
         private void frmMainR_Shown(object sender, EventArgs e)
         {
             //初始化方案列表
-            LoadSolutionList();
-            InitSolutionMenuItems();
+            SetStatusText("loading system hosts file ......");
+            Application.DoEvents();
+            ReloadAsync();
+            // 
+        }
 
-            //打开系统hosts
-            LoadSystemHosts();
-           // 
+        //异步加载数据
+        private void ReloadAsync()
+        {
+            //  Task.Factory.StartNew(() =>
+            //var t = new Task(() =>
+            //{
+            Application.DoEvents();
+                LoadSolutionList();
+                Application.DoEvents();
+                InitSolutionMenuItems();
+                Application.DoEvents();
+                //打开系统hosts
+                LoadSystemHosts();
+                Application.DoEvents();
+            //});
+            //t.Start();
         }
 
         private void renameSaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //重命名方案并保存为文件
-            frmSaveNewSolution saveNewSol = new frmSaveNewSolution(host,this);
+            frmSaveNewSolution saveNewSol = new frmSaveNewSolution(host, this);
             saveNewSol.ShowDialog(this);
         }
 
         private void 作为新方案导入ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            frmImportSolutionAsNew saveNewSol = new frmImportSolutionAsNew(this);
+            saveNewSol.ShowDialog(this);
         }
 
     }
