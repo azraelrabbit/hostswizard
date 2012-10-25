@@ -95,6 +95,7 @@ namespace HostsWizard
 
         public void RefreshTreeList()
         {
+            
             // RemGroupState();
             SetStatusText("Refreshing ... ...");
             tlHostlist.DataSource = null;

@@ -17,14 +17,16 @@ namespace HostsWizard
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
+            
             if (AppConfigHelper.GetAppConfig("ISRIB").Trim().ToLower() == "true")
             {
-                Application.Run(new frmMainR());
+                var mainR = new frmMainR();
+                Application.Run(mainR);
             }
             else
             {
-                Application.Run(new frmMain());
+                var main = new frmMain();
+                Application.Run(main);
             }
         }
     }
