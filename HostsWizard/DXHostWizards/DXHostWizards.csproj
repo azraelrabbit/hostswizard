@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FD61BBFC-B556-4EB2-AD49-DFAA7A0F788D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DXHostWizards</RootNamespace>
+    <AssemblyName>DXHostWizards</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v12.1, Version=12.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v12.1.Core, Version=12.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Core.v12.1, Version=12.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Docking.v12.1, Version=12.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Grid.v12.1, Version=12.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Grid.v12.1.Core, Version=12.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Layout.v12.1.Core, Version=12.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.NavBar.v12.1, Version=12.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Printing.v12.1, Version=12.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Ribbon.v12.1, Version=12.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\new-16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\open-16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\close-16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\save-16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\save-as-16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\print-16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\undo-16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\redo-16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\cut-16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\copy-16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\paste-16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\index-16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\zoom-16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\index-32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\cut-32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\copy-32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\paste-32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\new-32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\close-32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\print-32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\open-32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\zoom-32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\Group.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\Item.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Buttons\320.ico" />
+    <Resource Include="Images\Buttons\bonus48x48_03.png" />
+    <Resource Include="Images\Buttons\bonus48x48_04.png" />
+    <Resource Include="Images\Buttons\bonus48x48_05.png" />
+    <Resource Include="Images\Buttons\bonus48x48_06.png" />
+    <Resource Include="Images\Buttons\bonus48x48_07.png" />
+    <Resource Include="Images\Buttons\bonus48x48_08.png" />
+    <Resource Include="Images\Buttons\bonus48x48_09.png" />
+    <Resource Include="Images\Buttons\bonus48x48_10.png" />
+    <Resource Include="Images\Buttons\bonus48x48_11.png" />
+    <Resource Include="Images\Buttons\bonus48x48_12.png" />
+    <Resource Include="Images\Buttons\bonus48x48_13.png" />
+    <Resource Include="Images\Buttons\bonus48x48_14.png" />
+    <Resource Include="Images\Buttons\bonus48x48_15.png" />
+    <Resource Include="Images\Buttons\bonus48x48_16.png" />
+    <Resource Include="Images\Buttons\bonus48x48_17.png" />
+    <Resource Include="Images\Buttons\bonus48x48_18.png" />
+    <Resource Include="Images\Buttons\bonus48x48_20.png" />
+    <Resource Include="Images\Buttons\bonus48x48_21.png" />
+    <Resource Include="Images\Buttons\bonus48x48_22.png" />
+    <Resource Include="Images\Buttons\bonus48x48_23.png" />
+    <Resource Include="Images\Buttons\bonus48x48_24.png" />
+    <Resource Include="Images\Buttons\bonus48x48_25.png" />
+    <Resource Include="Images\Buttons\hacks.ico" />
+    <Resource Include="Images\Buttons\onebit_01.png" />
+    <Resource Include="Images\Buttons\onebit_02.png" />
+    <Resource Include="Images\Buttons\onebit_03.png" />
+    <Resource Include="Images\Buttons\onebit_04.png" />
+    <Resource Include="Images\Buttons\onebit_05.png" />
+    <Resource Include="Images\Buttons\onebit_06.png" />
+    <Resource Include="Images\Buttons\onebit_07.png" />
+    <Resource Include="Images\Buttons\onebit_08.png" />
+    <Resource Include="Images\Buttons\onebit_09.png" />
+    <Resource Include="Images\Buttons\onebit_10.png" />
+    <Resource Include="Images\Buttons\onebit_11.png" />
+    <Resource Include="Images\Buttons\onebit_12.png" />
+    <Resource Include="Images\Buttons\onebit_13.png" />
+    <Resource Include="Images\Buttons\onebit_14.png" />
+    <Resource Include="Images\Buttons\onebit_15.png" />
+    <Resource Include="Images\Buttons\onebit_16.png" />
+    <Resource Include="Images\Buttons\onebit_17.png" />
+    <Resource Include="Images\Buttons\onebit_18.png" />
+    <Resource Include="Images\Buttons\onebit_19.png" />
+    <Resource Include="Images\Buttons\onebit_20.png" />
+    <Resource Include="Images\Buttons\onebit_21.png" />
+    <Resource Include="Images\Buttons\onebit_22.png" />
+    <Resource Include="Images\Buttons\onebit_23.png" />
+    <Resource Include="Images\Buttons\onebit_24.png" />
+    <Resource Include="Images\Buttons\onebit_25.png" />
+    <Resource Include="Images\Buttons\onebit_26.png" />
+    <Resource Include="Images\Buttons\onebit_27.png" />
+    <Resource Include="Images\Buttons\onebit_28.png" />
+    <Resource Include="Images\Buttons\onebit_29.png" />
+    <Resource Include="Images\Buttons\onebit_30.png" />
+    <Resource Include="Images\Buttons\onebit_31.png" />
+    <Resource Include="Images\Buttons\onebit_32.png" />
+    <Resource Include="Images\Buttons\onebit_33.png" />
+    <Resource Include="Images\Buttons\onebit_34.png" />
+    <Resource Include="Images\Buttons\onebit_35.png" />
+    <Resource Include="Images\Buttons\onebit_36.png" />
+    <Resource Include="Images\Buttons\onebit_37.png" />
+    <Resource Include="Images\Buttons\onebit_38.png" />
+    <Resource Include="Images\Buttons\onebit_39.png" />
+    <Resource Include="Images\Buttons\onebit_40.png" />
+    <Resource Include="Images\Buttons\onebit_41.png" />
+    <Resource Include="Images\Buttons\onebit_42.png" />
+    <Resource Include="Images\Buttons\onebit_43.png" />
+    <Resource Include="Images\Buttons\onebit_44.png" />
+    <Resource Include="Images\Buttons\onebit_45.png" />
+    <Resource Include="Images\Buttons\onebit_46.png" />
+    <Resource Include="Images\Buttons\onebit_47.png" />
+    <Resource Include="Images\Buttons\onebit_48.png" />
+    <Resource Include="Images\Buttons\onebit_49.png" />
+    <Resource Include="Images\Buttons\onebit_50.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
