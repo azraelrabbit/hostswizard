@@ -89,31 +89,33 @@
                 </dxr:RibbonControl.ToolbarItemLinks>
             </dxr:RibbonControl>
             <dxd:DockLayoutManager x:Name="dockLayoutManager">
-                <dxd:LayoutGroup>
-                    <dxd:LayoutGroup Orientation="Vertical"  ItemWidth="3*">
+                <dxd:DockLayoutManager.ClosedPanels>
+                    <dxd:LayoutPanel Caption="Explorer" />
+                    <dxd:LayoutPanel Caption="Properties" Visibility="Collapsed" Closed="True" />
+                </dxd:DockLayoutManager.ClosedPanels>
+                <dxd:LayoutGroup Orientation="Vertical">
+                    <dxd:LayoutGroup Orientation="Vertical"  ItemWidth="3*" ItemHeight="2.4*">
                         <dxd:DocumentGroup ItemHeight="3*" SelectedTabIndex="0">
-                            <dxd:DocumentPanel Caption="Document1" ItemHeight="3*">
-                                <dxg:GridControl x:Name="gridControl" AutoPopulateColumns="True" ItemsSource="{Binding Data}" ShowBorder="False">
+                            <dxd:DocumentPanel Caption="Document1" ItemHeight="3*" Margin="10,10,-10,-10">
+                                <dxg:GridControl x:Name="gridControl" AutoPopulateColumns="True" ItemsSource="{Binding Data,Mode=TwoWay}" ShowBorder="False" Margin="-6,-6,6,6">
+                                    <dxg:GridControl.Columns>
+                                        <dxg:GridColumn FieldName="Enable" Header="启用" AllowEditing="True" BestFitWidth="20" Width="20" AllowResizing="False" AllowMoving="False" Fixed="Left"/>
+                                        <dxg:GridColumn FieldName="IP" Header="IP" AllowEditing="True"/>
+                                        <dxg:GridColumn FieldName="Domain" Header="域名" AllowEditing="True" />
+                                        <dxg:GridColumn FieldName="Group" Header="组"/>
+                                
+                                    </dxg:GridControl.Columns>
                                     <dxg:GridControl.View>
-                                        <dxg:TreeListView />
+                                        <dxg:TreeListView SearchString="" SearchColumns="Domain,IP" TreeLineStyle="None" AutoWidth="True" KeyFieldName="ID" ParentFieldName="ParentID" BestFitArea="Header" BestFitMode="VisibleRows" >
+                                            <dxg:TreeListView.SearchControl>
+                                                <dxg:GridSearchControl ActualVisibility="Visible" AllowDrop="True"/>
+                                            </dxg:TreeListView.SearchControl>
+                                        </dxg:TreeListView>
                                     </dxg:GridControl.View>
                                 </dxg:GridControl>
                             </dxd:DocumentPanel>
                         </dxd:DocumentGroup>
-                        <dxd:LayoutPanel Caption="DetailView" ItemHeight="2*">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="0" />
-                                </Grid.ColumnDefinitions>
-                                <TextBox BorderThickness="0" />
-                            </Grid>
-                        </dxd:LayoutPanel>
                     </dxd:LayoutGroup>
-                    <dxd:TabbedGroup ItemWidth="*" SelectedTabIndex="1">
-                        <dxd:LayoutPanel Caption="Properties" />
-                        <dxd:LayoutPanel Caption="Explorer" />
-                    </dxd:TabbedGroup>
                 </dxd:LayoutGroup>
                 <dxd:DockLayoutManager.AutoHideGroups>
                     <dxd:AutoHideGroup >
@@ -141,8 +143,21 @@
                         </dxd:LayoutPanel>
                         <dxd:LayoutPanel Caption="Tools"/>
                     </dxd:AutoHideGroup>
+                    <dxd:AutoHideGroup DockType="Bottom">
+                        <dxd:LayoutPanel Caption="DetailView" ItemHeight="0.6*">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="0" />
+                                </Grid.ColumnDefinitions>
+                                <TextBox BorderThickness="0" />
+                            </Grid>
+                        </dxd:LayoutPanel>
+                    </dxd:AutoHideGroup>
                 </dxd:DockLayoutManager.AutoHideGroups>
             </dxd:DockLayoutManager>
+            <dxe:SearchControl Height="527" Margin="0" VerticalAlignment="Top"/>
+
         </DockPanel>
     </dxb:BarManager>
 
