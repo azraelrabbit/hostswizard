@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -20,6 +21,8 @@ using DevExpress.Xpf.Printing;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 using DevExpress.Xpf.NavBar;
+using HWUtility.Helpers;
+using HWUtility.Utilit;
 
 
 namespace DXHostWizards
@@ -29,7 +32,13 @@ namespace DXHostWizards
         public MainWindow()
         {
             
-            InitializeComponent();
+            InitializeComponent();            
+
+            //检查sqlite库是否存在,不存在则拷贝自己的,存在则略过
+            Task.Factory.StartNew(FileHelper.InitAppDataFile);
+
+            
+
             DataContext = new DataSource();
         }
 
@@ -90,26 +99,25 @@ namespace DXHostWizards
 
     public class DataSource
     {
-        ObservableCollection<TestDataViewModel> source;
+        ObservableCollection<HostsItem> source;
+
+        HostsProcesscer hosts=new HostsProcesscer(true);
+
         public DataSource()
         {
             source = CreateDataSource();
         }
-        protected ObservableCollection<TestDataViewModel> CreateDataSource()
+        protected ObservableCollection<HostsItem> CreateDataSource()
         {
-            ObservableCollection<TestDataViewModel> res = new ObservableCollection<TestDataViewModel>();
-            res.Add(new TestDataViewModel() { Text = "Row0", Number = 0 });
-            res.Add(new TestDataViewModel() { Text = "Row1", Number = 1 });
-            res.Add(new TestDataViewModel() { Text = "Row2", Number = 2 });
-            res.Add(new TestDataViewModel() { Text = "Row3", Number = 3 });
-            res.Add(new TestDataViewModel() { Text = "Row4", Number = 4 });
-            res.Add(new TestDataViewModel() { Text = "Row5", Number = 5 });
-            res.Add(new TestDataViewModel() { Text = "Row6", Number = 6 });
-            res.Add(new TestDataViewModel() { Text = "Row7", Number = 7 });
-            res.Add(new TestDataViewModel() { Text = "Row8", Number = 8 });
-            res.Add(new TestDataViewModel() { Text = "Row9", Number = 9 });
+            ObservableCollection<HostsItem> res = new ObservableCollection<HostsItem>();
+           HostsProcesscer host=new HostsProcesscer(true);
+             
+            foreach (var item in host.fullContent)
+            {
+                res.Add(item);
+            }
             return res;
         }
-        public ObservableCollection<TestDataViewModel> Data { get { return source; } }
+        public ObservableCollection<HostsItem> Data { get { return source; } }
     }
 }

@@ -250,6 +250,12 @@
     <Resource Include="Images\Buttons\onebit_49.png" />
     <Resource Include="Images\Buttons\onebit_50.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HWUtility\HWUtility.csproj">
+      <Project>{036ee666-5f50-44db-ad43-f9cb0c2fae40}</Project>
+      <Name>HWUtility</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
