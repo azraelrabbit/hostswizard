@@ -85,6 +85,21 @@ namespace HWUtility.Helpers
 
         }
 
+        public static Tuple<bool,string> OpenHostByEmeditorfix()
+        {
+            try
+            {
+                var app = "emeditor.exe";
+                OpenFileByApp(Constants.HostsPath, app);
+                return new Tuple<bool, string>(true,"用Emeditor打开系统Hosts.");
+            }
+            catch
+            {
+                var t= OpanHostByNotepad();
+                return new Tuple<bool, string>(true,"用记事本打开系统Hosts.");
+            }
+        }
+
         public static void OpenFileByApp(string filePath, string AppPathname)
         {
             using (Process p = new Process())

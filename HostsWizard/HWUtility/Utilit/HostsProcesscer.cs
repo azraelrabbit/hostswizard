@@ -305,14 +305,65 @@ namespace HWUtility.Utilit
                     {
                         if (item.Enable)
                         {
-                            if (item.IP.Substring(0, 1) == "#")
+                            if (item.IP.Contains("#"))
                             {
                                 item.IP = item.IP.Replace("#", string.Empty);
                             }
                         }
                         else
                         {
-                            if (item.IP.Substring(0, 1) != "#")
+                            if (!item.IP.Contains("#"))
+                            {
+                                item.IP = "#" + item.IP;
+                            }
+                        }
+                    }
+
+                    itemstring = item.IP + "  " + item.Domain;
+                    hostlist.Add(itemstring);
+                }
+                hostlist.Add(string.Empty);
+            }
+            return hostlist;
+        }
+
+        public List<string> ToStringList(List<HostsItem> tmpList )
+        {
+            List<string> hostlist = new List<string>();
+
+            // 保存solution 信息
+
+            hostlist.Add(string.Empty);
+            hostlist.Add("#*#" + SolutionName);
+            hostlist.Add("##*" + SolutionID.ToString());
+            hostlist.Add(string.Empty);
+
+            var grouplist = tmpList.Where(p => p.Type == EnumItemType.GroupTag);
+
+            foreach (var group in grouplist)
+            {
+                var groupstring = string.Empty;
+                groupstring += group.IP + "  |" + group.ID.ToString() + "  |" + group.Domain + "  |" + group.Expended.ToString();
+                hostlist.Add(groupstring);
+                hostlist.Add(string.Empty);
+
+                //查找分组下所有的item
+                var itemList = tmpList.Where(p => p.ParentID == group.ID);
+                foreach (var item in itemList)
+                {
+                    var itemstring = string.Empty;
+                    if (item.Type == EnumItemType.HostItem)
+                    {
+                        if (item.Enable)
+                        {
+                            if (item.IP.Contains("#"))
+                            {
+                                item.IP = item.IP.Replace("#", string.Empty);
+                            }
+                        }
+                        else
+                        {
+                            if (!item.IP.Contains("#"))
                             {
                                 item.IP = "#" + item.IP;
                             }
