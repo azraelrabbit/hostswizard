@@ -35,11 +35,11 @@
                 </dxb:BarSubItem.ItemLinks>
             </dxb:BarSubItem>-->
             <!-- 文件区域-->
-            <dxb:BarButtonItem x:Name="btnOpenSyshost" Content="用记事本打开Hosts" Glyph="Images/Buttons/onebit_39.png" LargeGlyph="Images/Buttons/onebit_39.png" />
+            <dxb:BarButtonItem x:Name="btnOpenSyshost" Content="用记事本打开Hosts" Glyph="Images/Buttons/onebit_39.png" LargeGlyph="Images/Buttons/onebit_39.png" ItemClick="btnOpenSyshost_ItemClick" />
             <dxb:BarButtonItem x:Name="btnLoadSyshost" Content="加载系统Hosts" Glyph="Images/Buttons/bonus48x48_09.png" LargeGlyph="Images/Buttons/bonus48x48_09.png" />
             <!--操作区域-->
-            <dxb:BarButtonItem x:Name="btnRefreshDns" Content="刷新DNS缓存" Glyph="Images\Buttons\bonus48x48_04.png" LargeGlyph="Images\Buttons\bonus48x48_04.png" />
-            <dxb:BarButtonItem x:Name="btnApply" Content="应用"  Glyph="Images\Buttons\bonus48x48_11.png" LargeGlyph="Images\Buttons\bonus48x48_11.png" OverridesDefaultStyle="False">
+            <dxb:BarButtonItem x:Name="btnRefreshDns" Content="刷新DNS缓存" Glyph="Images\Buttons\bonus48x48_04.png" LargeGlyph="Images\Buttons\bonus48x48_04.png" ItemClick="btnRefreshDns_ItemClick" />
+            <dxb:BarButtonItem x:Name="btnApply" Content="应用"  Glyph="Images\Buttons\bonus48x48_11.png" LargeGlyph="Images\Buttons\bonus48x48_11.png" OverridesDefaultStyle="False" ItemClick="btnApply_ItemClick">
  
             </dxb:BarButtonItem>
         </dxb:BarManager.Items>
@@ -96,21 +96,31 @@
                 <dxd:LayoutGroup Orientation="Vertical">
                     <dxd:LayoutGroup Orientation="Vertical"  ItemWidth="3*" ItemHeight="2.4*">
                         <dxd:DocumentGroup ItemHeight="3*" SelectedTabIndex="0">
-                            <dxd:DocumentPanel Caption="Document1" ItemHeight="3*" Margin="10,10,-10,-10">
-                                <dxg:GridControl x:Name="gridControl" AutoPopulateColumns="True" ItemsSource="{Binding Data,Mode=TwoWay}" ShowBorder="False" Margin="-6,-6,6,6">
+                            <dxd:DocumentPanel Caption="Hosts" ItemHeight="3*" Margin="10,10,-10,-10" CustomizationCaption="Hosts" AllowSelection="True" AllowClose="False" FloatOnDoubleClick="False" EnableMouseHoverWhenInactive="True" IsActive="True" IsManipulationEnabled="True">
+                                <dxd:DocumentPanel.Appearance>
+                                    <dxd:Appearance>
+                                        <Validation.ValidationAdornerSiteFor>
+                                            <DependencyObject />
+                                        </Validation.ValidationAdornerSiteFor>
+                                        <Validation.ValidationAdornerSite>
+                                            <DependencyObject />
+                                        </Validation.ValidationAdornerSite>
+                                    </dxd:Appearance>
+                                </dxd:DocumentPanel.Appearance>
+                                <dxg:GridControl x:Name="gridControl" AutoPopulateColumns="False" ItemsSource="{Binding BindsDirectlyToSource=True, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True,Path=Data}" ShowBorder="True" Margin="-6,-6,6,6" ShowLoadingPanel="True" IsRecursiveExpand="True" IsManipulationEnabled="True">
                                     <dxg:GridControl.Columns>
-                                        <dxg:GridColumn FieldName="Enable" Header="启用" AllowEditing="True" BestFitWidth="20" Width="20" AllowResizing="False" AllowMoving="False" Fixed="Left"/>
+                                        <dxg:GridColumn FieldName="Enable" Header="启用"  BestFitWidth="20" Width="20" AllowResizing="False" AllowMoving="False" Fixed="Left" SortIndex="0">
+                                            <dxg:GridColumn.EditSettings>
+                                                <dxe:CheckEditSettings ClickMode="Press" />
+                                            </dxg:GridColumn.EditSettings>
+                                        </dxg:GridColumn>
                                         <dxg:GridColumn FieldName="IP" Header="IP" AllowEditing="True"/>
                                         <dxg:GridColumn FieldName="Domain" Header="域名" AllowEditing="True" />
                                         <dxg:GridColumn FieldName="Group" Header="组"/>
                                 
                                     </dxg:GridControl.Columns>
                                     <dxg:GridControl.View>
-                                        <dxg:TreeListView SearchString="" SearchColumns="Domain,IP" TreeLineStyle="None" AutoWidth="True" KeyFieldName="ID" ParentFieldName="ParentID" BestFitArea="Header" BestFitMode="VisibleRows" >
-                                            <dxg:TreeListView.SearchControl>
-                                                <dxg:GridSearchControl ActualVisibility="Visible" AllowDrop="True"/>
-                                            </dxg:TreeListView.SearchControl>
-                                        </dxg:TreeListView>
+                                        <dxg:TreeListView SearchString="" TreeLineStyle="None" AutoWidth="True" KeyFieldName="ID" ParentFieldName="ParentID" BestFitArea="Header" BestFitMode="AllRows" CellValueChanged="TreeListView_CellValueChanged" DataContextChanged="TreeListView_DataContextChanged" AllowCascadeUpdate="True" IsManipulationEnabled="True" AllowLeaveFocusOnTab="True" AutoPopulateServiceColumns="False" ClipToBounds="True" ShowSearchPanelCloseButton="False"></dxg:TreeListView>
                                     </dxg:GridControl.View>
                                 </dxg:GridControl>
                             </dxd:DocumentPanel>
@@ -151,13 +161,12 @@
                                     <ColumnDefinition Width="0" />
                                 </Grid.ColumnDefinitions>
                                 <TextBox BorderThickness="0" />
+                                <dxe:TextEdit Name="txtLogs" PrintTextWrapping="WrapWithOverflow" />
                             </Grid>
                         </dxd:LayoutPanel>
                     </dxd:AutoHideGroup>
                 </dxd:DockLayoutManager.AutoHideGroups>
             </dxd:DockLayoutManager>
-            <dxe:SearchControl Height="527" Margin="0" VerticalAlignment="Top"/>
-
         </DockPanel>
     </dxb:BarManager>
 

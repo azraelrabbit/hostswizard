@@ -42,82 +42,69 @@ namespace DXHostWizards
             DataContext = new DataSource();
         }
 
-    }
-
-    public class TestData
-    {
-        public string Text { get; set; }
-        public int Number { get; set; }
-    }
-
-    public class TestDataViewModel : INotifyPropertyChanged
-    {
-        TestData data;
-        public TestDataViewModel()
+        private void TreeListView_CellValueChanged(object sender, DevExpress.Xpf.Grid.TreeList.TreeListCellValueChangedEventArgs e)
         {
-            data = new TestData() { Text = string.Empty, Number = 0 };
-        }
-        public string Text
-        {
-            get { return Data.Text; }
-            set
+            //通过以下代码验证,当在界面更改列表数据时,数据源同时被改变.//已确认.
+            //var tmp = e.Value;
+            var srcData = (HostsItem)e.Node.Content;
+            var id = srcData.ID;
+            //var changedStat = srcData.Enable;
+            //var changedOldStat = e.OldValue;
+            if (srcData.IP.Contains("#"))
             {
-                if (Data.Text == value)
-                    return;
-                Data.Text = value;
-                RaisePropertyChanged("Text");
+                if (srcData.Enable)
+                {
+                    srcData.IP = srcData.IP.Replace("#", string.Empty);
+                }
             }
-        }
-        public int Number
-        {
-            get { return Data.Number; }
-            set
+            else
             {
-                if (Data.Number == value)
-                    return;
-                Data.Number = value;
-                RaisePropertyChanged("Number");
+                if (!srcData.Enable)
+                {
+                    srcData.IP = "#"+srcData.IP;
+                }
             }
+
+            var sourceDt = DataSource.GetItemByID(id);
+            var srcStat = sourceDt.Enable;
+
+            //var strMsg = string.Format("当前改变值为:{0},改变之前为:{1}; 数据源当前值为:{2}", changedStat, changedOldStat, srcStat);
+            //MessageBox.Show(strMsg);
+
         }
-        protected TestData Data
+
+        private void TreeListView_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            get { return data; }
+          //  var tmps = e.OldValue;
         }
-        #region INotifyPropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(PropertyChangedEventArgs e)
+
+        private void btnRefreshDns_ItemClick(object sender, ItemClickEventArgs e)
+        {//刷新dns
+            Utility.FlushDNS();
+            txtLogs.Text += string.Format("{0}  :  DNS缓存已刷新.\r\n",DateTime.Now.ToString("yyyy-MM-dd:HH:mm:ss.fff"));
+        }
+
+        private void btnApply_ItemClick(object sender, ItemClickEventArgs e)
+        {//应用//保存并刷新flushDNS
+            DataSource.SaveToHosts();
+            txtLogs.Text += string.Format("{0}  :  Hosts已保存.\r\n", DateTime.Now.ToString("yyyy-MM-dd:HH:mm:ss.fff"));
+            Utility.FlushDNS();
+            txtLogs.Text += string.Format("{0}  :  DNS缓存已刷新.\r\n", DateTime.Now.ToString("yyyy-MM-dd:HH:mm:ss.fff"));
+        }
+
+        private void btnOpenSyshost_ItemClick(object sender, ItemClickEventArgs e)
+        {//文本方式打开系统Hosts文件
+            var ret=ProcessHelper.OpenHostByEmeditorfix();
+            txtLogs.Text += string.Format("{0}  :  {1}\r\n", DateTime.Now.ToString("yyyy-MM-dd:HH:mm:ss.fff"),ret.Item2);
+        }
+
+
+        private void FrameworkContentElement_OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, e);
+            var tmp = e.OldValue;
         }
-        protected void RaisePropertyChanged(string propertyName)
-        {
-            OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion
     }
 
-    public class DataSource
-    {
-        ObservableCollection<HostsItem> source;
-
-        HostsProcesscer hosts=new HostsProcesscer(true);
-
-        public DataSource()
-        {
-            source = CreateDataSource();
-        }
-        protected ObservableCollection<HostsItem> CreateDataSource()
-        {
-            ObservableCollection<HostsItem> res = new ObservableCollection<HostsItem>();
-           HostsProcesscer host=new HostsProcesscer(true);
-             
-            foreach (var item in host.fullContent)
-            {
-                res.Add(item);
-            }
-            return res;
-        }
-        public ObservableCollection<HostsItem> Data { get { return source; } }
-    }
+   
+   
 }

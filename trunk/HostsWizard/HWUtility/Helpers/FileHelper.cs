@@ -17,7 +17,7 @@ namespace HWUtility.Helpers
 
             List<string> hostsContentList = new List<string>();
 
-            var hostContent = File.ReadAllLines(Constants.HostsPath,Encoding.Default).ToList();
+            var hostContent = File.ReadAllLines(Constants.HostsPath,Encoding.UTF8).ToList();
             int i = 0;
             foreach (var hitem in hostContent)
             {
@@ -45,7 +45,7 @@ namespace HWUtility.Helpers
             tmpList.AddRange(headlistconst);
             tmpList.AddRange(hostContent);
 
-            File.WriteAllLines(Constants.HostsPath,tmpList);
+            File.WriteAllLines(Constants.HostsPath,tmpList,Encoding.UTF8);
             tmpList.Clear();
         }
 
@@ -57,7 +57,7 @@ namespace HWUtility.Helpers
             var tmpList = new List<string>();
             tmpList.AddRange(headlistconst);
             tmpList.AddRange(hostContent);
-            File.WriteAllLines(filePath, tmpList);
+            File.WriteAllLines(filePath, tmpList,Encoding.UTF8);
             tmpList.Clear();
         }
 
