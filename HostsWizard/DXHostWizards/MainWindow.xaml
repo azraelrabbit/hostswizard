@@ -29,21 +29,7 @@
         </dxb:BarManager.Items>
         <DockPanel>
             <dxr:RibbonControl x:Name="ribbonControl1" RibbonStyle="Office2007"  DockPanel.Dock="Top">
-                <dxr:RibbonControl.ApplicationMenu>
-                    <dxr:ApplicationMenuInfo RightPaneWidth="280" ShowRightPane="True">
-                        <dxr:ApplicationMenuInfo.ItemLinks>
-                            <dxb:BarButtonItemLink BarItemName="bHelp" />
-                        </dxr:ApplicationMenuInfo.ItemLinks>
-                        <dxr:ApplicationMenuInfo.RightPane>
-                            <Button Content="Right Pane" />
-                        </dxr:ApplicationMenuInfo.RightPane>
-                        <dxr:ApplicationMenuInfo.BottomPane>
-                            <StackPanel Orientation="Horizontal">
-                                <Button Content="OK button" />
-                            </StackPanel>
-                        </dxr:ApplicationMenuInfo.BottomPane>
-                    </dxr:ApplicationMenuInfo>
-                </dxr:RibbonControl.ApplicationMenu>
+              
                 <dxr:RibbonControl.PageHeaderItemLinks>
                     <dxb:BarButtonItemLink BarItemName="bHelp" />
                 </dxr:RibbonControl.PageHeaderItemLinks>
