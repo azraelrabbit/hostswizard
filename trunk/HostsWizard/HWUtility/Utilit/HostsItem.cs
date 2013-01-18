@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using HWUtility.Utilit;
@@ -7,33 +8,70 @@ using HWUtility.Utilit;
 namespace HWUtility.Utilit
 {
     [Serializable]
-    public class HostsItem
+    public class HostsItem : INotifyPropertyChanged
     {
         string _enabled;
 
+        private Guid _ID;
         public Guid ID
         {
-            get;
-            set;
+            get { return _ID; }
+            set
+            {
+                if (_ID == value)
+                {
+                    return;
+                }
+                _ID = value;
+                RaisePropertyChanged("ID");
+            }
         }
 
+        private Guid _parentID;
         public Guid ParentID
         {
-            get;
-            set;
+            get { return _parentID; }
+            set
+            {
+                if (_parentID == value)
+                {
+                    return;
+                }
+                _parentID = value;
+                RaisePropertyChanged("ParentID");
+            }
         }
 
+        private string _IP;
         public string IP
         {
-            get;
-            set;
+            get { return _IP; }
+            set
+            {
+                if (_IP == value)
+                {
+                    return;
+                }
+                _IP = value;
+                RaisePropertyChanged("IP");
+            }
         }
 
+        private string _Domain;
         public string Domain
         {
-            get;
-            set;
+            get { return _Domain; }
+            set
+            {
+                if (_Domain == value)
+                {
+                    return;
+                }
+                _Domain = value;
+                RaisePropertyChanged("Domain");
+            }
         }
+
 
         public bool Enable
         {
@@ -43,6 +81,14 @@ namespace HWUtility.Utilit
             }
             set
             {
+                if (value && _enabled == null)
+                {
+                    return;
+                }
+                if (!value && _enabled == "#")
+                {
+                    return;
+                }
                 if (value)
                 {
                     _enabled = null;
@@ -51,25 +97,53 @@ namespace HWUtility.Utilit
                 {
                     _enabled = "#";
                 }
+                RaisePropertyChanged("Enable");
             }
         }
 
+        private bool _Expended;
         public bool Expended
         {
-            get;
-            set;
+            get { return _Expended; }
+            set
+            {
+                if (_Expended == value)
+                {
+                    return;
+                }
+                _Expended = value;
+                RaisePropertyChanged("Expended");
+            }
         }
 
+        private string _Group;
         public string Group
         {
-            get;
-            set;
+            get { return _Group; }
+            set
+            {
+                if (_Group == value)
+                {
+                    return;
+                }
+                _Group = value;
+                RaisePropertyChanged("Group");
+            }
         }
 
         public EnumItemType Type
         {
             get;
             set;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }

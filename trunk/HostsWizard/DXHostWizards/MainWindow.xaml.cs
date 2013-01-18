@@ -31,13 +31,11 @@ namespace DXHostWizards
     {
         public MainWindow()
         {
-            
-            InitializeComponent();            
+
+            InitializeComponent();
 
             //检查sqlite库是否存在,不存在则拷贝自己的,存在则略过
             Task.Factory.StartNew(FileHelper.InitAppDataFile);
-
-            
 
             DataContext = new DataSource();
         }
@@ -47,41 +45,44 @@ namespace DXHostWizards
             //通过以下代码验证,当在界面更改列表数据时,数据源同时被改变.//已确认.
             //var tmp = e.Value;
             var srcData = (HostsItem)e.Node.Content;
-            var id = srcData.ID;
-            //var changedStat = srcData.Enable;
-            //var changedOldStat = e.OldValue;
-            if (srcData.IP.Contains("#"))
+            if (srcData.Type == EnumItemType.HostItem)
             {
-                if (srcData.Enable)
+                var id = srcData.ID;
+                //var changedStat = srcData.Enable;
+                //var changedOldStat = e.OldValue;
+                if (srcData.IP.Contains("#"))
                 {
-                    srcData.IP = srcData.IP.Replace("#", string.Empty);
+                    if (srcData.Enable)
+                    {
+                        srcData.IP = srcData.IP.Replace("#", string.Empty);
+                    }
                 }
-            }
-            else
-            {
-                if (!srcData.Enable)
+                else
                 {
-                    srcData.IP = "#"+srcData.IP;
+                    if (!srcData.Enable)
+                    {
+                        srcData.IP = "#" + srcData.IP;
+                    }
                 }
+
+                var sourceDt = DataSource.GetItemByID(id);
+                var srcStat = sourceDt.Enable;
+
+                //var strMsg = string.Format("当前改变值为:{0},改变之前为:{1}; 数据源当前值为:{2}", changedStat, changedOldStat, srcStat);
+                //MessageBox.Show(strMsg);
             }
-
-            var sourceDt = DataSource.GetItemByID(id);
-            var srcStat = sourceDt.Enable;
-
-            //var strMsg = string.Format("当前改变值为:{0},改变之前为:{1}; 数据源当前值为:{2}", changedStat, changedOldStat, srcStat);
-            //MessageBox.Show(strMsg);
 
         }
 
         private void TreeListView_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-          //  var tmps = e.OldValue;
+            //  var tmps = e.OldValue;
         }
 
         private void btnRefreshDns_ItemClick(object sender, ItemClickEventArgs e)
         {//刷新dns
             Utility.FlushDNS();
-            txtLogs.Text += string.Format("{0}  :  DNS缓存已刷新.\r\n",DateTime.Now.ToString("yyyy-MM-dd:HH:mm:ss.fff"));
+            txtLogs.Text += string.Format("{0}  :  DNS缓存已刷新.\r\n", DateTime.Now.ToString("yyyy-MM-dd:HH:mm:ss.fff"));
         }
 
         private void btnApply_ItemClick(object sender, ItemClickEventArgs e)
@@ -94,8 +95,8 @@ namespace DXHostWizards
 
         private void btnOpenSyshost_ItemClick(object sender, ItemClickEventArgs e)
         {//文本方式打开系统Hosts文件
-            var ret=ProcessHelper.OpenHostByEmeditorfix();
-            txtLogs.Text += string.Format("{0}  :  {1}\r\n", DateTime.Now.ToString("yyyy-MM-dd:HH:mm:ss.fff"),ret.Item2);
+            var ret = ProcessHelper.OpenHostByEmeditorfix();
+            txtLogs.Text += string.Format("{0}  :  {1}\r\n", DateTime.Now.ToString("yyyy-MM-dd:HH:mm:ss.fff"), ret.Item2);
         }
 
 
@@ -103,8 +104,14 @@ namespace DXHostWizards
         {
             var tmp = e.OldValue;
         }
+
+        private void btnLoadSyshost_ItemClick(object sender, ItemClickEventArgs e)
+        {//reload hostfiles
+            DataContext = new DataSource();
+            txtLogs.Text += string.Format("{0}  :  重新加载系统Hosts文件.\r\n", DateTime.Now.ToString("yyyy-MM-dd:HH:mm:ss.fff"));
+        }
     }
 
-   
-   
+
+
 }

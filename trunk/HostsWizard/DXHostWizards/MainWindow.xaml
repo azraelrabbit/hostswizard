@@ -12,39 +12,23 @@
     xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
     xmlns:collections="clr-namespace:System.Collections;assembly=mscorlib"
     xmlns:dxnb="http://schemas.devexpress.com/winfx/2008/xaml/navbar"
-    Title="DXApplication" Height="700" Width="1100"
-    SnapsToDevicePixels="True" UseLayoutRounding="True"
-    dx:ThemeManager.ThemeName="DXStyle"
+    Title="HostsWizards" Height="700" Width="1100"
+    dx:ThemeManager.ThemeName="Seven"
     >
-    <dxr:DXRibbonWindow.Resources>
 
-    </dxr:DXRibbonWindow.Resources>
-
-    <dxb:BarManager x:Name="barManager" dxbh:BlendHelperForBarsAndRibbon.IsDesignControl="true">
+    <dxb:BarManager x:Name="barManager" >
         <dxb:BarManager.Items>
             <dxb:BarButtonItem x:Name="bHelp" Content="Help" Glyph="Images/Icons/index-16x16.png" LargeGlyph="Images/Icons/index-32x32.png" />
-            <!--<dxb:BarButtonItem x:Name="bCopy" Content="Copy" Glyph="Images/Icons/copy-16x16.png" LargeGlyph="Images/Icons/copy-32x32.png" />
-            <dxb:BarButtonItem x:Name="bPaste" Content="Paste" Glyph="Images/Icons/paste-16x16.png" LargeGlyph="Images/Icons/paste-32x32.png" />
-            <dxb:BarButtonItem x:Name="bNew" Content="New" Glyph="Images/Icons/new-16x16.png" LargeGlyph="Images/Icons/New-32x32.png" />
-            <dxb:BarButtonItem x:Name="bPrint" Content="Print" Glyph="Images/Icons/print-16x16.png" LargeGlyph="Images/Icons/print-32x32.png" />
-            <dxb:BarButtonItem x:Name="bOpen" Content="Open" Glyph="Images/Icons/open-16x16.png" LargeGlyph="Images/Icons/open-32x32.png" />
-            <dxb:BarSubItem x:Name="mmFile" Content="File" Glyph="Images/Icons/zoom-16x16.png" LargeGlyph="Images/Icons/zoom-32x32.png">
-                <dxb:BarSubItem.ItemLinks>
-                    <dxb:BarButtonItemLink BarItemName="bNew" />
-                    <dxb:BarButtonItemLink BarItemName="bOpen" />
-                </dxb:BarSubItem.ItemLinks>
-            </dxb:BarSubItem>-->
             <!-- 文件区域-->
             <dxb:BarButtonItem x:Name="btnOpenSyshost" Content="用记事本打开Hosts" Glyph="Images/Buttons/onebit_39.png" LargeGlyph="Images/Buttons/onebit_39.png" ItemClick="btnOpenSyshost_ItemClick" />
-            <dxb:BarButtonItem x:Name="btnLoadSyshost" Content="加载系统Hosts" Glyph="Images/Buttons/bonus48x48_09.png" LargeGlyph="Images/Buttons/bonus48x48_09.png" />
+            <dxb:BarButtonItem x:Name="btnLoadSyshost" Content="加载系统Hosts" Glyph="Images/Buttons/bonus48x48_09.png" LargeGlyph="Images/Buttons/bonus48x48_09.png" ItemClick="btnLoadSyshost_ItemClick" />
             <!--操作区域-->
             <dxb:BarButtonItem x:Name="btnRefreshDns" Content="刷新DNS缓存" Glyph="Images\Buttons\bonus48x48_04.png" LargeGlyph="Images\Buttons\bonus48x48_04.png" ItemClick="btnRefreshDns_ItemClick" />
             <dxb:BarButtonItem x:Name="btnApply" Content="应用"  Glyph="Images\Buttons\bonus48x48_11.png" LargeGlyph="Images\Buttons\bonus48x48_11.png" OverridesDefaultStyle="False" ItemClick="btnApply_ItemClick">
- 
             </dxb:BarButtonItem>
         </dxb:BarManager.Items>
         <DockPanel>
-            <dxr:RibbonControl x:Name="ribbonControl1" RibbonStyle="Office2007" dxbh:BlendHelperForBarsAndRibbon.IsDesignControl="true" DockPanel.Dock="Top">
+            <dxr:RibbonControl x:Name="ribbonControl1" RibbonStyle="Office2007"  DockPanel.Dock="Top">
                 <dxr:RibbonControl.ApplicationMenu>
                     <dxr:ApplicationMenuInfo RightPaneWidth="280" ShowRightPane="True">
                         <dxr:ApplicationMenuInfo.ItemLinks>
@@ -96,7 +80,7 @@
                 <dxd:LayoutGroup Orientation="Vertical">
                     <dxd:LayoutGroup Orientation="Vertical"  ItemWidth="3*" ItemHeight="2.4*">
                         <dxd:DocumentGroup ItemHeight="3*" SelectedTabIndex="0">
-                            <dxd:DocumentPanel Caption="Hosts" ItemHeight="3*" Margin="10,10,-10,-10" CustomizationCaption="Hosts" AllowSelection="True" AllowClose="False" FloatOnDoubleClick="False" EnableMouseHoverWhenInactive="True" IsActive="True" IsManipulationEnabled="True">
+                            <dxd:DocumentPanel Caption="Hosts" ItemHeight="3*" Margin="10,10,-10,-10" CustomizationCaption="Hosts" AllowClose="False" FloatOnDoubleClick="False">
                                 <dxd:DocumentPanel.Appearance>
                                     <dxd:Appearance>
                                         <Validation.ValidationAdornerSiteFor>
@@ -107,20 +91,15 @@
                                         </Validation.ValidationAdornerSite>
                                     </dxd:Appearance>
                                 </dxd:DocumentPanel.Appearance>
-                                <dxg:GridControl x:Name="gridControl" AutoPopulateColumns="False" ItemsSource="{Binding BindsDirectlyToSource=True, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True,Path=Data}" ShowBorder="True" Margin="-6,-6,6,6" ShowLoadingPanel="True" IsRecursiveExpand="True" IsManipulationEnabled="True">
+                                <dxg:GridControl x:Name="gridControl" ItemsSource="{Binding Data}" ShowBorder="True" >
                                     <dxg:GridControl.Columns>
-                                        <dxg:GridColumn FieldName="Enable" Header="启用"  BestFitWidth="20" Width="20" AllowResizing="False" AllowMoving="False" Fixed="Left" SortIndex="0">
-                                            <dxg:GridColumn.EditSettings>
-                                                <dxe:CheckEditSettings ClickMode="Press" />
-                                            </dxg:GridColumn.EditSettings>
-                                        </dxg:GridColumn>
-                                        <dxg:GridColumn FieldName="IP" Header="IP" AllowEditing="True"/>
-                                        <dxg:GridColumn FieldName="Domain" Header="域名" AllowEditing="True" />
+                                        <dxg:GridColumn FieldName="Enable" Header="启用" Width="20"  Fixed="Left"  AllowEditing="True" local:CommitHelper.CommitOnValueChanged="True" />
+                                        <dxg:GridColumn FieldName="IP" Header="IP" AllowEditing="True" local:CommitHelper.CommitOnValueChanged="True"/>
+                                        <dxg:GridColumn FieldName="Domain" Header="域名" AllowEditing="True" local:CommitHelper.CommitOnValueChanged="True" />
                                         <dxg:GridColumn FieldName="Group" Header="组"/>
-                                
                                     </dxg:GridControl.Columns>
                                     <dxg:GridControl.View>
-                                        <dxg:TreeListView SearchString="" TreeLineStyle="None" AutoWidth="True" KeyFieldName="ID" ParentFieldName="ParentID" BestFitArea="Header" BestFitMode="AllRows" CellValueChanged="TreeListView_CellValueChanged" DataContextChanged="TreeListView_DataContextChanged" AllowCascadeUpdate="True" IsManipulationEnabled="True" AllowLeaveFocusOnTab="True" AutoPopulateServiceColumns="False" ClipToBounds="True" ShowSearchPanelCloseButton="False"></dxg:TreeListView>
+                                        <dxg:TreeListView TreeLineStyle="Solid" AutoWidth="True" KeyFieldName="ID" ParentFieldName="ParentID" BestFitArea="Header" BestFitMode="AllRows" CellValueChanged="TreeListView_CellValueChanged" ></dxg:TreeListView>
                                     </dxg:GridControl.View>
                                 </dxg:GridControl>
                             </dxd:DocumentPanel>
